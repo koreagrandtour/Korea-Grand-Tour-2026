@@ -49,6 +49,28 @@ Keep confirmed decisions separate from recommendations and open questions.
 | 2026-05-26 | Route images/files under `Website/Sites - All images/Route/` may be included in the first GitHub commit. | Approved |
 | 2026-05-26 | New KGT 2026 assets created for Instagram, YouTube, website, sponsors, or public communication should be saved in the relevant local folder and added to GitHub when public-safe, 2026-relevant, and reasonably sized. | Approved |
 | 2026-05-26 | Approved actual migration of old source folders into the numbered 2026 architecture according to `.agents/workspace_migration_map.md`. | Approved |
+| 2026-05-27 | Rides page should be the 2026 line-up page; current 2025 rides should become a separate `2025 rides` page. | Approved |
+| 2026-05-27 | Public headcount to show now is 14. | Approved |
+| 2026-05-27 | Website remains English-primary bilingual. | Approved |
+| 2026-05-27 | Full route stays hidden until reveal timing; Phase 1 may remain displayed as currently shown. | Approved |
+| 2026-05-27 | Brand colors/fonts are working style, not final official brand law. Working colors: white, pungent blue, strong orange. Working fonts: current website fonts. | Approved |
+| 2026-05-27 | Create and use a lightweight working brand guide before more visual work. | Approved |
+| 2026-05-27 | Avoid `KGT` in public visual titles by default; prefer `Korea Grand Tour`. | Approved |
+| 2026-05-27 | Use only verified 2025 metrics until analytics are verified. | Approved |
+| 2026-05-27 | Master participant tracker is Google Sheet `16VXP5YBeCo9yiTCfAWUsbVQvQbR5FHT48KLSihDLF50`; Codex needs Google Drive permission before inspection/editing. | Approved with access blocker |
+| 2026-05-27 | Public line-up posts use car identity only for now; people identity is not disclosed unless approved. | Approved |
+| 2026-05-27 | Document participant interview criteria. | Approved |
+| 2026-05-27 | Jonathon's 4 cars cancelled; do not treat them as active independent registrations. | Approved |
+| 2026-05-27 | Inje Speedium format is a track day in the morning. | Approved |
+| 2026-05-27 | Ulsan direction is evening arrival, beach, and party/fun. | Approved |
+| 2026-05-27 | Hotels are coordinated by KGT but paid directly by participants. | Approved |
+| 2026-05-27 | Contacted brands stay `contacted / not confirmed` until explicit confirmation. | Approved |
+| 2026-05-27 | Sponsor decks do not need extra review before current external sharing unless requested. | Approved |
+| 2026-05-27 | T&C remains marked `not legally reviewed` internally; no legal reviewer is planned for now. | Approved |
+| 2026-05-27 | Alcohol/driving equals immediate eviction in participant-facing materials. | Approved |
+| 2026-05-27 | Insurance proof is trust-based for now. | Approved |
+| 2026-05-27 | Dispute/eviction wording is already covered in T&C and agreement; no new public wording needed now. | Approved |
+| 2026-05-27 | Phase 1 is complete enough for skill creation after these decisions are recorded, but skill creation is deferred for now. | Approved / deferred |
 
 ## Changed / Corrected Decisions
 
@@ -62,9 +84,9 @@ Keep confirmed decisions separate from recommendations and open questions.
 | 2025 participant/cars | Conflicting numbers | 20 participants / 10 cars |
 | Fee/deposit | Deposit treated as part of fee in some contexts | KRW 100,000 deposit is separate from KRW 200,000 fee |
 
-## Recommendations Awaiting Approval
+## Remaining Recommendations / Watch Items
 
-- Keep old asset folders in place for now and use inventory/index files before any moves.
 - Create a shareable external handoff only after the private/local-only rules are fully tested.
-- Commit only Markdown operating docs and selected non-sensitive templates to the private GitHub repo first.
 - Keep raw media, agreements, credentials, participant trackers, and payment/insurance documents out of GitHub.
+- Review the currently missing website prototype folders before committing those deletions.
+- Grant Google Drive/Sheets access to the participant tracker for connected account `francois.alonso537@gmail.com`.

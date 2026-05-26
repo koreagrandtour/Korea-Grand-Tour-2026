@@ -1,6 +1,6 @@
 # Sponsor Context
 
-Last updated: 2026-05-26
+Last updated: 2026-05-27
 
 ## Confirmed Facts
 
@@ -13,6 +13,9 @@ Last updated: 2026-05-26
 - DJI/Osmo and Insta360 translated decks are final according to the handoff.
 - Sponsor deliverables are not finalized.
 - Micro partnership range is KRW 100,000-1,000,000 and flexible.
+- Tinybot exact deliverables: later.
+- Neotech next step: later.
+- Nexen Tire next step: later.
 
 ## Sponsor Value Proposition
 
@@ -32,6 +35,8 @@ Last updated: 2026-05-26
 - Do not overclaim reach, views, partner status, or guaranteed deliverables.
 - Do not present contacted brands as official partners.
 - Use Korea Grand Tour Team publicly.
+- Contacted brands stay `contacted / not confirmed` until explicit confirmation.
+- Sponsor decks do not need extra review before current external sharing unless Francois asks.
 
 ## Possible Deliverables
 
@@ -52,4 +57,3 @@ Last updated: 2026-05-26
 - OPEN QUESTION: Next action and owner for Neotech and Nexen Tire.
 - OPEN QUESTION: Final sponsor package levels beyond micro partnership.
 - OPEN QUESTION: Sponsor report format.
-- OPEN QUESTION: Which sponsor decks contain private negotiation details and need redaction.

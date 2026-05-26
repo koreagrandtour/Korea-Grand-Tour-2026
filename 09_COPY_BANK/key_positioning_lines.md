@@ -1,6 +1,6 @@
 # Key Positioning Lines
 
-Last updated: 2026-05-26
+Last updated: 2026-05-27
 
 Use these as a copy bank. Adapt to the channel and keep claims factual.
 
@@ -41,3 +41,4 @@ Use these as a copy bank. Adapt to the channel and keep claims factual.
 - Do not present projections as actuals.
 - Do not say sponsors are confirmed unless they are confirmed.
 - Do not use `Registered Car` on car line-up visuals.
+- Avoid `KGT` in public visual titles by default; use `Korea Grand Tour`.

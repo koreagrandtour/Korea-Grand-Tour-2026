@@ -2,7 +2,7 @@
 
 Daily working memory for Korea Grand Tour. Keep this short. Full archive/source of truth: `codex_handoff_internal.md`.
 
-Last updated: 2026-05-26
+Last updated: 2026-05-27
 
 ## Confirmed Project Facts
 
@@ -55,12 +55,15 @@ Last updated: 2026-05-26
 
 ## Current Registration Status
 
+- Public headcount to show now: 14
 - 13 pre-RSVPs
 - 17 people
 - 9 confirmed cars
 - 5 deposits paid
 - 5 agreements signed
 - 1 car photo received
+
+Participant tracker source of truth: Google Sheet `16VXP5YBeCo9yiTCfAWUsbVQvQbR5FHT48KLSihDLF50`. Connected Google Drive account needs permission before Codex can inspect or write.
 
 Do not add private names, phone numbers, emails, plates, insurance files, agreement PDFs, payment proof, or private conversations here.
 
@@ -79,7 +82,7 @@ Do not add private names, phone numbers, emails, plates, insurance files, agreem
 - About page: needs wording review for 4-day 2026 inland edition.
 - Route page: Phase One visible; Phase Two due June 1; Phase Three due July 1.
 - Join page: registration and Google Form live.
-- Rides page: currently shows 2025 rides; decide whether archive or 2026 line-up.
+- Rides page should be the 2026 line-up page. Current 2025 rides should become its own `2025 rides` page.
 - T&C page: live, not legally reviewed.
 
 ## Safety / Legal
@@ -91,7 +94,8 @@ Do not add private names, phone numbers, emails, plates, insurance files, agreem
 - Support cars are allowed if registered.
 - Drivers must be 19+, licensed, insured, interviewed, and aligned with the KGT spirit.
 - Signed agreement, car photo, insurance, required participant details, and interview are mandatory.
-- T&C needs legal review before being relied on at scale.
+- T&C is not legally reviewed; no legal reviewer is planned for now.
+- Insurance proof is trust-based for now.
 
 ## Current Priorities
 
@@ -119,8 +123,7 @@ Do not add private names, phone numbers, emails, plates, insurance files, agreem
 
 - OPEN QUESTION: Final day-by-day 2026 route and checkpoint order.
 - OPEN QUESTION: Hotels, restaurants/cafes, parking/rest stops, and timing windows.
-- OPEN QUESTION: Inje Speedium format.
+- Inje Speedium format: track day in the morning.
+- Ulsan direction: evening arrival, beach and party/fun.
 - OPEN QUESTION: Final sponsor deliverables and sponsor report format.
-- OPEN QUESTION: Official brand guide, colors, and fonts.
-- OPEN QUESTION: Whether Rides page becomes 2026 line-up or remains 2025 archive.
-- OPEN QUESTION: Legal review path for T&C and agreement.
+- OPEN QUESTION: Exact safety/rest windows.

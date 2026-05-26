@@ -1,6 +1,6 @@
 # Marketing Context
 
-Last updated: 2026-05-26
+Last updated: 2026-05-27
 
 ## Confirmed Facts
 
@@ -9,6 +9,7 @@ Last updated: 2026-05-26
 - Main channels: Instagram, YouTube, website, Kakao group, email, participant referrals, sponsor/community reposts.
 - No Meta ads are currently planned and no ads budget is confirmed.
 - Communications should be bilingual English/Korean; website is English primary.
+- Public visual titles should prefer `Korea Grand Tour`; avoid `KGT` by default.
 - 2025 recap video is live on YouTube.
 - Phase One content is already posted.
 - Phase Two content is due June 1, 2026.
@@ -42,6 +43,14 @@ Do not use inflated or unverified metrics.
 - Do not include `Registered Car`.
 - BMW M2 is part of the official line-up.
 - Officially registered cars can be shown publicly.
+- Public line-up posts should use car identity only for now; people identity is not disclosed unless approved.
+
+## Working Brand Direction
+
+- Current colors are working style, not official final brand colors.
+- Working colors: white, pungent blue, strong orange.
+- Working fonts: current website fonts.
+- Lightweight working brand guide: `01_STRATEGY/visual_identity_WORKING.md`.
 
 ## Recommendations
 
@@ -53,5 +62,5 @@ Do not use inflated or unverified metrics.
 
 - OPEN QUESTION: Exact Phase Two route reveal copy and visuals.
 - OPEN QUESTION: Exact Phase Three route reveal copy and visuals.
-- OPEN QUESTION: Current public headcount to display.
+- Public headcount to display now: 14.
 - OPEN QUESTION: Which 2026 car photos are approved for public use now.

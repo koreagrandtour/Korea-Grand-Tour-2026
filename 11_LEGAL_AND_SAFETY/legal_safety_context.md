@@ -1,6 +1,6 @@
 # Legal And Safety Context
 
-Last updated: 2026-05-26
+Last updated: 2026-05-27
 
 ## Confirmed Facts
 
@@ -8,6 +8,7 @@ Last updated: 2026-05-26
 - T&C is live on the website.
 - T&C last updated: March 31, 2026.
 - T&C has not been legally reviewed.
+- No legal reviewer is planned for now.
 - Alcohol/driving is completely forbidden.
 - If alcohol/driving is found, the participant is evicted on the spot.
 - Participants are responsible for their own driving, behavior, vehicle, passengers, guests, damage, fines, insurance, and legal compliance.
@@ -24,6 +25,7 @@ Last updated: 2026-05-26
 - Valid insurance for car and driver.
 - Required participant details.
 - Interview / fit check.
+- Insurance proof is trust-based for now.
 
 ## Refund / No-Show
 
@@ -62,7 +64,5 @@ Legal/safety content must be cross-checked for:
 
 ## Open Questions
 
-- OPEN QUESTION: Who will legally review the T&C and agreement?
-- OPEN QUESTION: Exact insurance proof collection standard.
-- OPEN QUESTION: Public-safe wording for the internal dispute/eviction policy.
+- Dispute/eviction wording is already covered in the T&C and agreement.
 - OPEN QUESTION: Emergency contacts, medical plan, incident reporting process, and authority notification procedure.

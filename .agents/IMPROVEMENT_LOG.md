@@ -12,6 +12,16 @@ Append after non-trivial work when the system can become faster, safer, cleaner,
 - Urgency: High
 - Requires François approval: No for docs/safety structure; Yes before moving assets.
 
+## 2026-05-27 - Phase 1 Decision Closure
+
+- Task: Record Francois's Phase 1 approvals and remaining uncertainties.
+- What happened: Most public, brand, route, sponsor, legal, and Phase 2 gate decisions are now confirmed.
+- Issue found: The participant tracker is identified but inaccessible to the connected Google Drive account; website prototype files are currently missing from the working tree and should not be silently deleted.
+- Proposed improvement: Keep a separate approval register/current-state/open-question rhythm, and treat external tool access plus asset deletions as explicit blockers before execution work.
+- Affected file/skill/plugin: `00_START_HERE/approval_register.md`, `00_START_HERE/00_START_HERE/open_questions.md`, Google Drive connector, `07_WEBSITE/prototypes/`
+- Urgency: Medium
+- Requires François approval: No for documentation; Yes before committing website prototype deletions.
+
 ## Template
 
 - Date:

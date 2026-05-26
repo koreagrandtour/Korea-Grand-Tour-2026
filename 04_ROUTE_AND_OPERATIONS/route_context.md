@@ -1,6 +1,6 @@
 # Route Context
 
-Last updated: 2026-05-26
+Last updated: 2026-05-27
 
 ## Confirmed Facts
 
@@ -25,6 +25,14 @@ Last updated: 2026-05-26
 - Winding roads near Jeonju
 - Winding roads near Cheongdo
 
+## Confirmed Program Direction
+
+- Inje Speedium: track day in the morning.
+- Ulsan: arrive in the evening; beach and party/fun direction.
+- Hotels: coordinated by KGT, paid directly by participants.
+- Full route remains hidden until reveal timing.
+- Phase 1 can be displayed publicly as it is now on the website.
+
 ## Working Draft Only - Do Not Present As Final
 
 - Day 1 could move from Seoul toward Buyeo and Jeonju.
@@ -40,6 +48,7 @@ This is inferred from confirmed anchors and must be labeled as a working draft.
 - Online briefings: July 20 and July 25, 2026.
 - Icebreaker: August 1, 2026 at a car cafe.
 - Roadbook, timing windows, parking, rest stops, and emergency plan are not ready.
+- Safety/rest windows are not decided yet. Rest is planned, but exact timing is open.
 
 ## Open Questions
 
@@ -47,6 +56,5 @@ This is inferred from confirmed anchors and must be labeled as a working draft.
 - OPEN QUESTION: Exact road numbers and safe driving sections.
 - OPEN QUESTION: Final hotels and rooming coordination.
 - OPEN QUESTION: Restaurants/cafes.
-- OPEN QUESTION: Inje Speedium format.
-- OPEN QUESTION: Ulsan industrial complex format.
 - OPEN QUESTION: Finish-line format in Yangyang.
+- OPEN QUESTION: Exact safety/rest windows.
