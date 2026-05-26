@@ -84,3 +84,21 @@ Default GitHub-excluded content:
 - unrevealed route files
 
 Website/social-ready media may be included later only after review.
+
+## New Asset Rule
+
+Any new Korea Grand Tour 2026 asset created from now on for Instagram, YouTube, website, sponsor/public communication, or other official public use must be saved in the relevant local project folder and prepared for GitHub when appropriate.
+
+Default local destinations:
+
+- social media assets: `10_ASSETS/website_social_ready/` or `08_MARKETING/`
+- website assets: `10_ASSETS/website_social_ready/` or `07_WEBSITE/`
+- final exports: `10_ASSETS/exports/`
+- sponsor/public assets: `10_ASSETS/` and/or `06_SPONSORS_PARTNERS/`
+
+GitHub rule:
+
+- commit finished or source assets when they are public-safe, 2026-relevant, and reasonably sized
+- do not commit raw production media by default
+- do not commit private participant data, credentials, payment/insurance/ID/license/passport files, or private sponsor negotiation notes
+- visible number plates in images do not require a special plate-specific review

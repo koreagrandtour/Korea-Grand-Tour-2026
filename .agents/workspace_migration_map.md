@@ -177,6 +177,13 @@ Use these fields for the next read-only index:
 - Check privacy, plates, route leaks, and file size.
 - Commit only approved optimized assets.
 
+### Ongoing Asset Creation Rule
+
+- Every new KGT 2026 Instagram, YouTube, website, sponsor/public, or official communication asset should be saved in the relevant local folder.
+- Public-safe finished/source assets should also be added to GitHub so the 2026 repo remains useful and current.
+- Prefer `10_ASSETS/website_social_ready/`, `10_ASSETS/exports/`, `08_MARKETING/`, `07_WEBSITE/`, or `06_SPONSORS_PARTNERS/` depending on the use case.
+- Keep raw working footage/media local unless it is intentionally selected, optimized, and approved for GitHub.
+
 ### Phase 4 - Optional Physical Migration
 
 - Move selected files only after the migration map is approved.

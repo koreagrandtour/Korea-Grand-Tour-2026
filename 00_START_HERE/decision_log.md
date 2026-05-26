@@ -47,6 +47,7 @@ Keep confirmed decisions separate from recommendations and open questions.
 | 2026-05-26 | Visible number plates in images do not require special plate-specific review because Francois has the right to display plates from images. Other privacy/content/route/file-size checks still apply. | Approved |
 | 2026-05-26 | Full internal handoff and sponsor deck PPTX files may be included in the first GitHub review list. Website prototypes remain excluded until a specific active prototype is confirmed. | Approved |
 | 2026-05-26 | Route images/files under `Website/Sites - All images/Route/` may be included in the first GitHub commit. | Approved |
+| 2026-05-26 | New KGT 2026 assets created for Instagram, YouTube, website, sponsors, or public communication should be saved in the relevant local folder and added to GitHub when public-safe, 2026-relevant, and reasonably sized. | Approved |
 
 ## Changed / Corrected Decisions
 

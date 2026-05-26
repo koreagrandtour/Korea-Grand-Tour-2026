@@ -48,6 +48,12 @@ Raw media is excluded by default. Selected compressed media for the website or s
 
 Visible number plates in images do not require a special plate-specific review because Francois has approved plate display rights for images. Continue reviewing media for private documents, confidential details, unrevealed route leaks, file size, and 2026 relevance.
 
+## Future Asset Commit Rule
+
+New KGT 2026 assets created for Instagram, YouTube, the website, sponsors, or public communication should be saved locally in the relevant project folder and committed to GitHub when they are public-safe, 2026-relevant, and reasonably sized.
+
+Raw production media remains excluded by default unless explicitly selected and optimized.
+
 ## Required Pre-Commit Check
 
 Before every commit, run or simulate:
