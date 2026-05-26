@@ -33,9 +33,9 @@ The nested folder `00_START_HERE/01_ASSETS/` is setup-only. It may contain templ
 
 ## Existing Source Folders
 
-The current legacy/source folders stay in place until a migration is approved.
+The legacy/source folders were migrated on 2026-05-26 after Francois approved the migration flow.
 
-They are treated as source shelves:
+They were treated as source shelves:
 
 - `BI/`
 - `Events/`
@@ -56,6 +56,8 @@ No files are moved, renamed, deleted, or restructured until:
 2. Each file/folder has a privacy and GitHub status.
 3. A migration destination is proposed.
 4. Francois approves the migration.
+
+Migration approval was given on 2026-05-26. See `.agents/workspace_migration_map.md` for the completed path map and the small list of leftover `.DS_Store` metadata files in old folders.
 
 ## GitHub Scope
 

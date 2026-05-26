@@ -1,0 +1,56 @@
+{
+  "name": "Korea Grand Tour",
+  "providedUrl": "https://www.koreagrandtour.weebly.com",
+  "canonicalUrl": "https://koreagrandtour.weebly.com/",
+  "platform": "classic-weebly-subdomain",
+  "weeblyEditor": {
+    "editorUrl": "https://www.weebly.com/editor/main.php#/",
+    "siteId": "139963424540925957",
+    "userId": "153465426",
+    "customThemeId": "759368691301971796",
+    "themeName": "MyTheme",
+    "themeBase": "Birdseye",
+    "codeEditorAvailable": true
+  },
+  "publicPages": [
+    "/",
+    "/about.html",
+    "/route.html",
+    "/rides.html",
+    "/join.html"
+  ],
+  "pageIds": {
+    "Home": "620487970191626994",
+    "About": "491066218568225309",
+    "Route": "634215069517994114",
+    "Rides": "731432554267111584",
+    "Join": "641163453983948590",
+    "Terms & Conditions": "188279770860138208"
+  },
+  "themeBackup": {
+    "createdAt": "2026-05-17T18:11:24+09:00",
+    "zipPath": "backups/koreagrandtour-20260517-181124/export.zip",
+    "expandedPath": "backups/koreagrandtour-20260517-181124/theme",
+    "entryFiles": [
+      "header.html",
+      "no-header.html",
+      "splash.html",
+      "styles/main.less",
+      "assets/custom.js"
+    ]
+  },
+  "futureChatInstructions": [
+    "Start by reading this file and the latest exported theme under backups/.",
+    "Use Chrome/Computer Use against the logged-in Weebly editor for live application.",
+    "Draft and test changes locally before editing Weebly.",
+    "Save only after showing the user the intended change.",
+    "Publish only after explicit user approval."
+  ],
+  "notes": [
+    "The www-prefixed Weebly subdomain did not load during public inspection.",
+    "The canonical public site loaded at https://koreagrandtour.weebly.com/.",
+    "The public page includes Weebly branding, which suggests a classic Weebly-hosted site rather than a custom Square Online domain.",
+    "The Square Sites API returned no sites after OAuth authorization, so live code rollout should use the Weebly editor path.",
+    "The Weebly code editor exposes HTML layouts, Less styles, partials, and assets; export the theme before every code rollout."
+  ]
+}

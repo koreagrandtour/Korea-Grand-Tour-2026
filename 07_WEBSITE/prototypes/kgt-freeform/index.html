@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Korea Grand Tour 2026 - Freeform Concept</title>
+  <meta name="description" content="Korea Grand Tour 2026: a car rally and road-trip festival starting from Seoul, August 14-17.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <canvas id="motion-field" aria-hidden="true"></canvas>
+
+  <header class="site-nav">
+    <a class="brand" href="index.html" aria-label="Korea Grand Tour home">
+      <img src="assets/kgt-logo.jpg" alt="Korea Grand Tour logo">
+      <span>Korea Grand Tour</span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a aria-current="page" href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="route.html">Route</a>
+      <a href="rides.html">Rides</a>
+      <a href="guess-engine.html">Sound Game</a>
+      <a href="join.html">Join</a>
+    </nav>
+    <a class="nav-cta" href="https://forms.gle/jyBn35kFik2hA5679" target="_blank" rel="noopener">Register</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <video class="hero-video" src="assets/hero-car-action.mp4" autoplay muted loop playsinline poster="assets/kgt2026-cars-track.jpeg"></video>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="eyebrow">Press start. Hear the grid. Then drive Korea.</p>
+        <h1>Engines before itineraries.</h1>
+        <p class="hero-lede">Korea Grand Tour is for the people who notice the idle before the scenery: registered cars, cold starts, tunnels, fuel stops, convoy pulls, and four days of discovery from Seoul.</p>
+        <div class="hero-actions">
+          <button class="button primary" type="button" data-start-engine>Start engine</button>
+          <a class="button ghost" href="guess-engine.html">Play sound game</a>
+        </div>
+      </div>
+      <div class="hero-car-focus" aria-hidden="true">
+        <img src="assets/kgt2026-cars-track.jpeg" alt="">
+        <span>2026 cars / Phase One</span>
+      </div>
+      <div class="engine-panel" aria-live="polite">
+        <span class="tach-label">Engine sound</span>
+        <div class="tachometer" data-tach>
+          <span></span>
+        </div>
+        <strong data-rpm>Idle</strong>
+        <p>Tap Start Engine. Sound is click-to-play so the browser allows it.</p>
+      </div>
+      <div class="hero-dashboard" aria-label="Event snapshot">
+        <div><strong>Cold starts</strong><span>Petrolhead signal</span></div>
+        <div><strong>8 cars</strong><span>Phase One grid</span></div>
+        <div><strong>Seoul</strong><span>Start line</span></div>
+      </div>
+    </section>
+
+    <section class="manifesto" aria-labelledby="manifesto-title">
+      <div>
+        <p class="eyebrow">The idea</p>
+        <h2 id="manifesto-title">A car event that refuses to stay parked.</h2>
+      </div>
+      <div class="manifesto-copy">
+        <p>First you hear it. Then you look. Then you want to know where it is going. That is the whole site now: engine noise, real 2026 cars, route discovery, and the social magic that happens when car people spend four days moving together.</p>
+        <p>Phase One is the first grid drop: cars already in, Seoul start, Inje, Cheongdo, Ulsan, Damyang, and Jeonju. The trip matters because the cars make every stop feel alive.</p>
+      </div>
+    </section>
+
+    <section class="sound-game-teaser">
+      <div>
+        <p class="eyebrow">Petrolhead checkpoint</p>
+        <h2>Can you guess the engine by sound?</h2>
+        <p>Warm up before the route. Listen to short engine profiles, pick the car character, and see if your ears are sharper than your GPS.</p>
+      </div>
+      <a class="button primary" href="guess-engine.html">Play the engine game</a>
+    </section>
+
+    <section class="lineup">
+      <div class="section-head">
+        <p class="eyebrow">Cars, then discovery</p>
+        <h2>The route is the excuse to hear these cars in motion.</h2>
+      </div>
+      <div class="phase-board">
+        <article class="phase live"><span>Grid</span><strong>Meet the cars</strong><p>Phase One is the first garage wave for KGT 2026, shown with clean current-year car photos.</p><a href="rides.html">Open the garage</a></article>
+        <article><span>Road</span><strong>Leave Seoul</strong><p>The start line becomes mountain roads, support cities, headliners, food, photos, and night arrivals.</p></article>
+        <article><span>Game</span><strong>Use your ears</strong><p>Guess engine sounds, then see which car character fits your driving mood.</p><a href="guess-engine.html">Play now</a></article>
+      </div>
+    </section>
+
+    <section class="garage">
+      <div class="section-head">
+        <p class="eyebrow">Car proof</p>
+        <h2>The site should feel like tires, cameras, and warm engines first.</h2>
+      </div>
+      <div class="media-grid">
+        <button class="media-card wide" data-image="assets/kgt2026-cars-track.jpeg"><img src="assets/kgt2026-cars-track.jpeg" alt="KGT participant cars at a track"><span>Phase One track-side metal</span></button>
+        <button class="media-card tall" data-image="assets/kgt2026-car-vertical-1.jpeg"><img src="assets/kgt2026-car-vertical-1.jpeg" alt="KGT participant car close-up"><span>Close-up car focus</span></button>
+        <button class="media-card" data-image="assets/kgt2026-car-night.jpeg"><img src="assets/kgt2026-car-night.jpeg" alt="KGT participant car at night"><span>Night arrival mood</span></button>
+        <button class="media-card" data-image="assets/kgt2026-car-vertical-2.jpeg"><img src="assets/kgt2026-car-vertical-2.jpeg" alt="KGT 2026 participant car"><span>Participant-built character</span></button>
+        <button class="media-card wide" data-image="assets/convoy-aerial.jpg"><img src="assets/convoy-aerial.jpg" alt="Korea Grand Tour aerial convoy scene"><span>Shared road scale</span></button>
+      </div>
+    </section>
+
+    <section class="join">
+      <div>
+        <p class="eyebrow">Registration is open</p>
+        <h2>Bring the car people ask about at gas stations.</h2>
+      </div>
+      <div class="join-panel">
+        <p>August 14-17, starting from Seoul. If your car has a story, bring it. The route gives that story four days, six city chapters, and a convoy to belong to.</p>
+        <a class="button primary" href="join.html">Register your ride</a>
+      </div>
+    </section>
+  </main>
+
+  <div class="lightbox" data-lightbox hidden>
+    <button type="button" data-close aria-label="Close image">Close</button>
+    <img src="" alt="">
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

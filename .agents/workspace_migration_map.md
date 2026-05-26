@@ -1,12 +1,15 @@
 # Workspace Migration Map
 
 Created: 2026-05-26
+Last updated: 2026-05-26
 
-This is a planning map only. It does not authorize moving, deleting, renaming, or committing files.
+This began as a planning map. On 2026-05-26, Francois approved the flow and the source folders were migrated according to this map.
 
 ## Current Principle
 
-Old folders are source shelves. Numbered folders are 2026 operating destinations. Real migration happens only after an asset index and explicit approval.
+Old folders were source shelves. Numbered folders are now the 2026 operating destinations.
+
+Only `.DS_Store` metadata files remain in some old source folders.
 
 ## Visual Map
 
@@ -108,6 +111,40 @@ flowchart LR
 | `Website/kgt-reimagined/` | Website concept, assets, motion, Weebly paste | `07_WEBSITE/prototypes/kgt-reimagined/` if needed | `Review-before-GitHub`; media size/privacy review | Review before commit |
 | Root `코리아 그랜투어_서명.pdf` | Korean signed/signature-looking PDF | `05_PARTICIPANTS_LOCAL_ONLY/private/` if migrated later | `Local-only-private` until identified | Do not commit |
 | Root `istockphoto-1431176960-612x612.jpg` | Stock image | `10_ASSETS/reference/` only if licensed/needed | `Review-before-GitHub` | Verify license/usefulness |
+
+## Migration Completed - 2026-05-26
+
+| Old path | New path |
+|---|---|
+| `BI/` | `10_ASSETS/brand/BI_source/` |
+| `Events/` | `10_ASSETS/event_visuals/events_source/` |
+| `Filming/` | `10_ASSETS/raw_archive/filming_2025/` |
+| `KGT 2026/Line up phase 1/` | `10_ASSETS/2026_lineup/phase_1/` |
+| `KGT 2026 Registration Followups/private_participant_files/` | `05_PARTICIPANTS_LOCAL_ONLY/private/registration_followups_private_files/` |
+| `KGT 2026 Registration Followups/templates/` | `05_PARTICIPANTS_LOCAL_ONLY/templates/registration_followups_templates/` |
+| `Marketing/Pitch Deck/` | `06_SPONSORS_PARTNERS/decks/pitch_deck/` |
+| `Marketing/Social Media/` | `08_MARKETING/social_media/source_archive/` |
+| `Partners/` | `06_SPONSORS_PARTNERS/partner_assets/source_assets/` |
+| `Rides/` | `02_2025_FIRST_EDITION/rides/source_photos/` |
+| `Tools/KGT Agreement Tools/` | `05_PARTICIPANTS_LOCAL_ONLY/tools/kgt_agreement_tools/` |
+| `Website/Sites - All images/` | `07_WEBSITE/assets/site_images/` |
+| `Website/Weebly Site Editor Plugin/` | `07_WEBSITE/weebly_workflow/weebly_site_editor_plugin/` |
+| `Website/kgt-freeform/` | `07_WEBSITE/prototypes/kgt-freeform/` |
+| `Website/kgt-reimagined/` | `07_WEBSITE/prototypes/kgt-reimagined/` |
+| root `istockphoto-1431176960-612x612.jpg` | `10_ASSETS/reference/istockphoto-1431176960-612x612.jpg` |
+| root `코리아 그랜투어_서명.pdf` | `05_PARTICIPANTS_LOCAL_ONLY/private/코리아 그랜투어_서명.pdf` |
+| `00_START_HERE/gitignore.txt` | `00_START_HERE/Guide/gitignore_legacy_reference.txt` |
+
+## Files Remaining In Original Folders
+
+Only macOS metadata files remain:
+
+- `KGT 2026/.DS_Store`
+- `KGT 2026 Registration Followups/.DS_Store`
+- `Marketing/.DS_Store`
+- `Website/.DS_Store`
+
+These are ignored by Git and can be deleted later if Francois wants a perfectly clean local tree.
 
 ## Proposed Future Structure For 2026 Repo
 

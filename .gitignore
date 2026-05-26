@@ -23,7 +23,8 @@ Website/Weebly Site Editor Plugin/plugins/weebly-site-editor/.square-token.json
 05_PARTICIPANTS_LOCAL_ONLY/**/*passport*
 05_PARTICIPANTS_LOCAL_ONLY/**/*license*
 05_PARTICIPANTS_LOCAL_ONLY/**/*licence*
-05_PARTICIPANTS_LOCAL_ONLY/**/*plate*
+05_PARTICIPANTS_LOCAL_ONLY/**/*plate_number*
+05_PARTICIPANTS_LOCAL_ONLY/**/*license_plate*
 05_PARTICIPANTS_LOCAL_ONLY/**/*phone*
 05_PARTICIPANTS_LOCAL_ONLY/**/*email*
 05_PARTICIPANTS_LOCAL_ONLY/**/*kakao*
@@ -67,6 +68,11 @@ Marketing/Social Media/Instagram/Stories - Reels/
 10_ASSETS/raw_archive/
 10_ASSETS/videos/raw/
 10_ASSETS/exports/**/raw/
+08_MARKETING/social_media/source_archive/Raw content/
+08_MARKETING/social_media/source_archive/Instagram/Stories - Reels/
+06_SPONSORS_PARTNERS/decks/pitch_deck/Visuals/*.mp4
+06_SPONSORS_PARTNERS/decks/pitch_deck/Visuals/*.mov
+06_SPONSORS_PARTNERS/decks/pitch_deck/Visuals/*.MOV
 
 # Local generated/cache files
 __pycache__/
@@ -81,3 +87,6 @@ build/
 
 # Local tool backups
 Website/Weebly Site Editor Plugin/plugins/weebly-site-editor/backups/
+07_WEBSITE/weebly_workflow/weebly_site_editor_plugin/plugins/weebly-site-editor/backups/
+07_WEBSITE/weebly_workflow/weebly_site_editor_plugin/plugins/weebly-site-editor/.env
+07_WEBSITE/weebly_workflow/weebly_site_editor_plugin/plugins/weebly-site-editor/.square-token.json

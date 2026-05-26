@@ -1,0 +1,48 @@
+{
+  "name": "weebly-site-editor",
+  "version": "0.1.0",
+  "description": "Draft, inspect, test, and roll out custom code to classic Weebly and Square Online sites.",
+  "author": {
+    "name": "[TODO: Author Name]",
+    "email": "[TODO: author@example.com]",
+    "url": "[TODO: https://example.com]"
+  },
+  "homepage": "[TODO: Add plugin documentation URL]",
+  "repository": "[TODO: Add repository URL]",
+  "license": "MIT",
+  "keywords": [
+    "weebly",
+    "square-online",
+    "website-editing",
+    "snippets"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "apps": "./.app.json",
+  "interface": {
+    "displayName": "Weebly Site Editor",
+    "shortDescription": "Work safely on classic Weebly and Square Online site code.",
+    "longDescription": "Helps Codex understand a classic Weebly or Square Online site, back up theme code, draft custom HTML/CSS/JavaScript, inspect and test changes locally, then roll out reviewed changes through the Weebly editor or supported Square Online APIs.",
+    "developerName": "[TODO: Developer Name]",
+    "category": "Productivity",
+    "capabilities": [
+      "Website Editing",
+      "OAuth",
+      "Classic Weebly Theme Editor",
+      "Code Review",
+      "Deployment"
+    ],
+    "websiteURL": "[TODO: Add plugin website URL]",
+    "privacyPolicyURL": "[TODO: Add privacy policy URL]",
+    "termsOfServiceURL": "[TODO: Add terms of service URL]",
+    "defaultPrompt": [
+      "Prepare a safe Weebly theme edit for Korea Grand Tour.",
+      "Inspect my Weebly theme backup before editing.",
+      "Explain where this code belongs in my Weebly theme."
+    ],
+    "brandColor": "#2E7D6B",
+    "composerIcon": "[TODO: ./assets/icon.png]",
+    "logo": "[TODO: ./assets/logo.png]",
+    "screenshots": []
+  }
+}

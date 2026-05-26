@@ -1,0 +1,5 @@
+interface:
+  display_name: "Weebly Site Editor"
+  short_description: "Safely edit classic Weebly site code"
+  brand_color: "#2E7D6B"
+  default_prompt: "Use $weebly-site-editor to prepare a safe Weebly theme edit for Korea Grand Tour."

@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+
+# Credentials
+.env
+*.key
+*.pem
+*.p12
+
+# Sensitive KGT participant information
+05_PARTICIPANTS_LOCAL_ONLY/private/
+05_PARTICIPANTS_LOCAL_ONLY/*insurance*
+05_PARTICIPANTS_LOCAL_ONLY/*payment*
+05_PARTICIPANTS_LOCAL_ONLY/*passport*
+05_PARTICIPANTS_LOCAL_ONLY/*license*
+05_PARTICIPANTS_LOCAL_ONLY/*plate*
+
+# Raw / huge media assets
+raw_videos/
+exports/raw/
+*.mp4
+*.mov
+*.avi
+*.m4v
+
+# Temporary files
+*.tmp
+~$*

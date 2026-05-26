@@ -1,0 +1,28 @@
+<style>
+  .codex-weebly-banner {
+    background: #12343b;
+    color: #ffffff;
+    font: 15px/1.4 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    padding: 10px 16px;
+    text-align: center;
+  }
+
+  .codex-weebly-banner a {
+    color: #f6d365;
+    font-weight: 700;
+  }
+</style>
+<script>
+  (() => {
+    const id = "codex-weebly-banner";
+    if (document.getElementById(id)) return;
+
+    const banner = document.createElement("div");
+    banner.id = id;
+    banner.className = "codex-weebly-banner";
+    banner.innerHTML = 'Free local pickup this week. <a href="/contact">Contact us</a>';
+    document.addEventListener("DOMContentLoaded", () => {
+      document.body.prepend(banner);
+    });
+  })();
+</script>

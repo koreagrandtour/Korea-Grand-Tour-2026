@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KGT Hero Video Banner Motion</title>
+  <style>
+    html, body { margin: 0; width: 100%; height: 100%; background: #090b10; overflow: hidden; }
+    [data-composition-id="kgt-hero-banner"] {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #090b10;
+      color: #fff;
+      font-family: Inter, Arial, sans-serif;
+    }
+    .media, .media img, .scrim, .route-line, .red-bar {
+      position: absolute;
+      inset: 0;
+    }
+    .media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.1) contrast(1.08);
+    }
+    .scrim {
+      background:
+        linear-gradient(90deg, rgba(9,11,16,.94), rgba(9,11,16,.34) 58%, rgba(9,11,16,.1)),
+        linear-gradient(180deg, rgba(9,11,16,.1), rgba(9,11,16,.68));
+    }
+    .content {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 120px 130px;
+      box-sizing: border-box;
+    }
+    h1 {
+      width: 1180px;
+      margin: 0;
+      font-size: 154px;
+      line-height: .86;
+      letter-spacing: -.06em;
+      text-transform: uppercase;
+    }
+    p {
+      width: 780px;
+      margin: 34px 0 0;
+      font-size: 34px;
+      line-height: 1.25;
+      color: rgba(255,255,255,.78);
+    }
+    .red-bar {
+      inset: auto 120px 90px 120px;
+      height: 10px;
+      background: #ff3b23;
+      z-index: 4;
+      transform-origin: left center;
+    }
+    .route-line svg {
+      position: absolute;
+      right: 80px;
+      bottom: 110px;
+      width: 760px;
+      height: 420px;
+      overflow: visible;
+    }
+    .route-line path {
+      fill: none;
+      stroke: #ff3b23;
+      stroke-width: 12;
+      stroke-linecap: round;
+      stroke-dasharray: 980;
+      stroke-dashoffset: 980;
+      filter: drop-shadow(0 0 18px rgba(255,59,35,.75));
+    }
+  </style>
+</head>
+<body>
+  <div data-composition-id="kgt-hero-banner" data-width="1920" data-height="1080">
+    <div class="media">
+      <img src="../assets/phase-one/car-focus-track.jpeg" alt="">
+    </div>
+    <div class="scrim"></div>
+    <div class="route-line" aria-hidden="true">
+      <svg viewBox="0 0 800 420">
+        <path d="M42 338 C168 196 258 424 390 238 C500 84 612 246 758 88"></path>
+      </svg>
+    </div>
+    <div class="content">
+      <h1>Four days. One moving festival.</h1>
+      <p>Four days of roads, cars, checkpoints, food, and the people who make the story.</p>
+    </div>
+    <div class="red-bar"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true, defaults: { ease: "power3.out" } });
+    tl.from(".media img", { scale: 1.12, duration: 7, ease: "power1.out" }, 0)
+      .from("h1", { y: 80, opacity: 0, duration: .8 }, .2)
+      .from("p", { y: 38, opacity: 0, duration: .7 }, .5)
+      .from(".red-bar", { scaleX: 0, duration: .8 }, .7)
+      .to(".route-line path", { strokeDashoffset: 0, duration: 2.2, ease: "power2.inOut" }, .8)
+      .to(".media img", { x: -80, duration: 4, ease: "sine.inOut" }, 3);
+    window.__timelines["kgt-hero-banner"] = tl;
+  </script>
+</body>
+</html>

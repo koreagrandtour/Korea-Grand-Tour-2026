@@ -1,0 +1,679 @@
+<style>
+  .wcws-kgt {
+    --wcws-kgt-ink: #15202b;
+    --wcws-kgt-white: #ffffff;
+    --wcws-kgt-muted: rgba(21,32,43,.72);
+    --wcws-kgt-line: rgba(6,60,157,.16);
+    --wcws-kgt-red: #ff3b23;
+    --wcws-kgt-gold: #f6ad16;
+    --wcws-kgt-blue: #1687ff;
+    --wcws-kgt-rally-blue: #063c9d;
+    --wcws-kgt-paper: #f8f2e7;
+    background: #fff8ec;
+    color: var(--wcws-kgt-ink);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    overflow: hidden;
+  }
+
+  .wcws-kgt * {
+    box-sizing: border-box;
+  }
+
+  .wcws-kgt a {
+    color: inherit;
+  }
+
+  .wcws-kgt img,
+  .wcws-kgt svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  .wcws-kgt-hero {
+    position: relative;
+    min-height: 820px;
+    display: grid;
+    align-items: end;
+    padding: 120px clamp(18px,5vw,72px) 42px;
+    overflow: hidden;
+  }
+
+  .wcws-kgt-hero-bg,
+  .wcws-kgt-hero-bg img,
+  .wcws-kgt-hero-shade {
+    position: absolute;
+    inset: 0;
+  }
+
+  .wcws-kgt-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation: wcws-kgt-fade 18s infinite;
+  }
+
+  .wcws-kgt-hero-bg img:nth-child(2) {
+    animation-delay: 6s;
+  }
+
+  .wcws-kgt-hero-bg img:nth-child(3) {
+    animation-delay: 12s;
+  }
+
+  .wcws-kgt-hero-shade {
+    background:
+      radial-gradient(circle at 18% 22%, rgba(246,173,22,.72), transparent 28%),
+      linear-gradient(90deg, rgba(255,248,236,.96), rgba(255,248,236,.58) 48%, rgba(255,255,255,.22)),
+      linear-gradient(180deg, rgba(255,255,255,.18), #fff8ec 100%);
+  }
+
+  .wcws-kgt-road-line {
+    position: absolute;
+    right: -4vw;
+    bottom: 16%;
+    width: min(760px, 72vw);
+    opacity: .82;
+  }
+
+  .wcws-kgt-road-line path {
+    fill: none;
+    stroke: var(--wcws-kgt-blue);
+    stroke-width: 7;
+    stroke-linecap: round;
+    stroke-dasharray: 980;
+    stroke-dashoffset: 980;
+    filter: drop-shadow(0 0 18px rgba(22,135,255,.42));
+    animation: wcws-kgt-draw 4.8s cubic-bezier(.2,.8,.2,1) .4s forwards;
+  }
+
+  .wcws-kgt-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 18px clamp(18px,5vw,72px);
+  }
+
+  .wcws-kgt-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 900;
+    text-decoration: none;
+  }
+
+  .wcws-kgt-mark {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--wcws-kgt-line);
+    background: #fff;
+    color: var(--wcws-kgt-rally-blue);
+    font-size: 13px;
+  }
+
+  .wcws-kgt-cta,
+  .wcws-kgt-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    border-radius: 8px;
+    padding: 0 20px;
+    background: var(--wcws-kgt-gold);
+    color: var(--wcws-kgt-rally-blue) !important;
+    font-weight: 900;
+    text-decoration: none;
+    box-shadow: 0 18px 42px rgba(246,173,22,.32);
+  }
+
+  .wcws-kgt-hero-content {
+    position: relative;
+    z-index: 2;
+    width: min(940px,100%);
+  }
+
+  .wcws-kgt-kicker {
+    margin: 0 0 14px;
+    color: var(--wcws-kgt-gold);
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+
+  .wcws-kgt h1,
+  .wcws-kgt h2,
+  .wcws-kgt h3,
+  .wcws-kgt p {
+    letter-spacing: 0;
+  }
+
+  .wcws-kgt h1 {
+    margin: 0;
+    max-width: 980px;
+    color: var(--wcws-kgt-rally-blue);
+    font-size: clamp(52px,11vw,142px);
+    line-height: .94;
+  }
+
+  .wcws-kgt-hero-copy {
+    max-width: 680px;
+    margin: 24px 0 0;
+    color: var(--wcws-kgt-muted);
+    font-size: clamp(18px,2.2vw,25px);
+    line-height: 1.35;
+  }
+
+  .wcws-kgt-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 34px;
+  }
+
+  .wcws-kgt-button-secondary {
+    border: 1px solid var(--wcws-kgt-line);
+    background: rgba(255,255,255,.74);
+    box-shadow: none;
+  }
+
+  .wcws-kgt-panel {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(3,minmax(92px,1fr));
+    width: min(470px,100%);
+    margin-top: 36px;
+    overflow: hidden;
+    border: 1px solid var(--wcws-kgt-line);
+    border-radius: 8px;
+    background: rgba(255,255,255,.74);
+    backdrop-filter: blur(18px);
+  }
+
+  .wcws-kgt-panel div {
+    padding: 18px;
+    border-left: 1px solid var(--wcws-kgt-line);
+  }
+
+  .wcws-kgt-panel div:first-child {
+    border-left: 0;
+  }
+
+  .wcws-kgt-panel span {
+    display: block;
+    font-size: 34px;
+    font-weight: 900;
+  }
+
+  .wcws-kgt-panel small {
+    display: block;
+    color: var(--wcws-kgt-muted);
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+
+  .wcws-kgt-section {
+    padding: clamp(76px,10vw,130px) clamp(18px,5vw,72px);
+  }
+
+  .wcws-kgt-section-title {
+    display: grid;
+    grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr);
+    gap: 40px;
+    align-items: end;
+    margin-bottom: 44px;
+  }
+
+  .wcws-kgt h2 {
+    margin: 0;
+    color: var(--wcws-kgt-rally-blue);
+    font-size: clamp(42px,7vw,82px);
+    line-height: .96;
+  }
+
+  .wcws-kgt-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1px;
+    background: var(--wcws-kgt-line);
+    border: 1px solid var(--wcws-kgt-line);
+  }
+
+  .wcws-kgt-card {
+    min-height: 230px;
+    padding: clamp(24px,4vw,42px);
+    background: #fff;
+  }
+
+  .wcws-kgt-city-reel {
+    background: linear-gradient(180deg, #fff8ec, #e7f7ff 52%, #fff8ec);
+  }
+
+  .wcws-kgt-city-grid {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 14px;
+  }
+
+  .wcws-kgt-city {
+    position: relative;
+    min-height: 380px;
+    overflow: hidden;
+    border: 1px solid var(--wcws-kgt-line);
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 18px 54px rgba(6,60,157,.14);
+  }
+
+  .wcws-kgt-city img {
+    width: 100%;
+    height: 100%;
+    min-height: 380px;
+    object-fit: cover;
+    transition: transform 900ms ease;
+  }
+
+  .wcws-kgt-city:hover img {
+    transform: scale(1.06);
+  }
+
+  .wcws-kgt-city div {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 84px 18px 18px;
+    background: linear-gradient(180deg, transparent, rgba(21,32,43,.86));
+    color: #fff;
+  }
+
+  .wcws-kgt-city span {
+    display: block;
+    color: rgba(255,255,255,.78);
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .wcws-kgt-city strong {
+    display: block;
+    margin-top: 6px;
+    font-size: 28px;
+  }
+
+  .wcws-kgt-card strong {
+    display: block;
+    font-size: 22px;
+  }
+
+  .wcws-kgt-card p,
+  .wcws-kgt-route-card p,
+  .wcws-kgt-register p {
+    color: var(--wcws-kgt-muted);
+    line-height: 1.58;
+  }
+
+  .wcws-kgt-route {
+    background: linear-gradient(180deg, #e7f7ff, #fff8ec);
+  }
+
+  .wcws-kgt-route-layout {
+    display: grid;
+    grid-template-columns: minmax(280px,.86fr) minmax(0,1.14fr);
+    gap: clamp(24px,5vw,64px);
+    align-items: center;
+  }
+
+  .wcws-kgt-map {
+    overflow: hidden;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 24px 80px rgba(0,0,0,.42);
+  }
+
+  .wcws-kgt-map img {
+    width: 100%;
+    max-height: 680px;
+    object-fit: contain;
+  }
+
+  .wcws-kgt-route-list {
+    display: grid;
+    gap: 16px;
+  }
+
+  .wcws-kgt-route-card {
+    border: 1px solid var(--wcws-kgt-line);
+    border-radius: 8px;
+    padding: 22px;
+    background: rgba(255,255,255,.88);
+  }
+
+  .wcws-kgt-route-card span {
+    color: var(--wcws-kgt-blue);
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .wcws-kgt-route-card h3 {
+    margin: 8px 0;
+    color: var(--wcws-kgt-rally-blue);
+    font-size: 28px;
+  }
+
+  .wcws-kgt-rides-grid {
+    display: grid;
+    grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 16px;
+  }
+
+  .wcws-kgt-ride {
+    position: relative;
+    min-height: 340px;
+    overflow: hidden;
+    border: 1px solid var(--wcws-kgt-line);
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  .wcws-kgt-ride img {
+    width: 100%;
+    height: 100%;
+    min-height: 340px;
+    object-fit: cover;
+    transition: transform 700ms ease;
+  }
+
+  .wcws-kgt-ride:hover img {
+    transform: scale(1.06);
+  }
+
+  .wcws-kgt-ride div {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 74px 20px 20px;
+    background: linear-gradient(180deg, transparent, rgba(0,0,0,.86));
+    color: #fff;
+  }
+
+  .wcws-kgt-ride strong {
+    display: block;
+    font-size: 20px;
+  }
+
+  .wcws-kgt-ride span {
+    display: block;
+    color: rgba(255,255,255,.76);
+    margin-top: 4px;
+  }
+
+  .wcws-kgt-open {
+    display: grid;
+    align-content: end;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(246,173,22,.36), rgba(25,169,116,.18)), #fff;
+  }
+
+  .wcws-kgt-open div {
+    position: static;
+    padding: 0;
+    background: none;
+  }
+
+  .wcws-kgt-open a {
+    margin-top: 22px;
+    color: var(--wcws-kgt-rally-blue);
+    font-weight: 900;
+    text-decoration: none;
+  }
+
+  .wcws-kgt-register {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) auto;
+    gap: 28px;
+    align-items: center;
+    padding: clamp(52px,8vw,96px) clamp(18px,5vw,72px);
+    background: radial-gradient(circle at 12% 30%, rgba(246,173,22,.48), transparent 28%), linear-gradient(135deg, #e7f7ff, #fff8ec);
+    border-top: 1px solid var(--wcws-kgt-line);
+  }
+
+  .wcws-kgt-register p {
+    max-width: 760px;
+    font-size: 18px;
+  }
+
+  .wcws-kgt-reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 700ms ease, transform 700ms ease;
+  }
+
+  .wcws-kgt-reveal.wcws-kgt-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes wcws-kgt-draw {
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes wcws-kgt-fade {
+    0%, 8% { opacity: 0; transform: scale(1); }
+    15%, 38% { opacity: 1; transform: scale(1.06); }
+    48%, 100% { opacity: 0; transform: scale(1.1); }
+  }
+
+  @media (max-width: 900px) {
+    .wcws-kgt-hero {
+      min-height: 900px;
+      align-items: center;
+    }
+
+    .wcws-kgt-section-title,
+    .wcws-kgt-route-layout,
+    .wcws-kgt-register {
+      grid-template-columns: 1fr;
+    }
+
+    .wcws-kgt-grid,
+    .wcws-kgt-city-grid,
+    .wcws-kgt-rides-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .wcws-kgt-brand span:last-child {
+      display: none;
+    }
+
+    .wcws-kgt h1 {
+      font-size: 54px;
+    }
+
+    .wcws-kgt-panel {
+      grid-template-columns: 1fr;
+    }
+
+    .wcws-kgt-panel div {
+      border-left: 0;
+      border-top: 1px solid var(--wcws-kgt-line);
+    }
+
+    .wcws-kgt-panel div:first-child {
+      border-top: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wcws-kgt *,
+    .wcws-kgt *::before,
+    .wcws-kgt *::after {
+      animation-duration: .01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .01ms !important;
+    }
+  }
+</style>
+
+<section class="wcws-kgt" id="wcws-kgt-reimagined" aria-label="Korea Grand Tour 2026 reimagined homepage">
+  <div class="wcws-kgt-hero">
+    <div class="wcws-kgt-hero-bg" aria-hidden="true">
+      <img src="https://koreagrandtour.weebly.com/uploads/1/5/3/4/153465426/published/img-1546.jpg?1753634832" alt="">
+      <img src="https://koreagrandtour.weebly.com/uploads/1/5/3/4/153465426/img-8276_orig.jpg" alt="">
+      <img src="https://koreagrandtour.weebly.com/uploads/1/5/3/4/153465426/published/kakaotalk-photo-2026-05-04-17-54-32.jpeg?1777885063" alt="">
+    </div>
+    <div class="wcws-kgt-hero-shade" aria-hidden="true"></div>
+    <div class="wcws-kgt-nav">
+      <a class="wcws-kgt-brand" href="#wcws-kgt-reimagined">
+        <span class="wcws-kgt-mark">KGT</span>
+        <span>Korea Grand Tour</span>
+      </a>
+      <a class="wcws-kgt-cta" href="https://forms.gle/jyBn35kFik2hA5679" target="_blank" rel="noopener">Register now</a>
+    </div>
+    <div class="wcws-kgt-road-line" aria-hidden="true">
+      <svg viewBox="0 0 800 420" role="presentation">
+        <path d="M42 338 C168 196 258 424 390 238 C500 84 612 246 758 88"></path>
+      </svg>
+    </div>
+    <div class="wcws-kgt-hero-content">
+      <p class="wcws-kgt-kicker">August 14-17, 2026 / Phase One revealed</p>
+      <h1>Inje to Jeonju. Korea opens up.</h1>
+      <p class="wcws-kgt-hero-copy">A bright multi-day rally through Inje, Jeonju, Cheongdo, Ulsan, and Damyang for cars, bikes, scenic roads, food, culture, and the kind of friendships that only happen on the road.</p>
+      <div class="wcws-kgt-actions">
+        <a class="wcws-kgt-button" href="https://forms.gle/jyBn35kFik2hA5679" target="_blank" rel="noopener">Register now</a>
+        <a class="wcws-kgt-button wcws-kgt-button-secondary" href="#wcws-kgt-route">Explore 2026 route</a>
+      </div>
+      <div class="wcws-kgt-panel" aria-label="Live event snapshot">
+        <div><span data-wcws-kgt-count="12">0</span><small>participants</small></div>
+        <div><span data-wcws-kgt-count="8">0</span><small>rides</small></div>
+        <div><span>∞</span><small>memories</small></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wcws-kgt-section wcws-kgt-reveal">
+    <div class="wcws-kgt-section-title">
+      <p class="wcws-kgt-kicker">2026 route-first redesign</p>
+      <h2>The route is the invitation.</h2>
+    </div>
+    <div class="wcws-kgt-grid">
+      <article class="wcws-kgt-card"><strong>Inje adrenaline</strong><p>Track-side energy, mountain air, and the kind of roads that make the first headline city feel earned.</p></article>
+      <article class="wcws-kgt-card"><strong>Jeonju warmth</strong><p>Culture, food, old streets, and a destination that turns the rally from a drive into a shared memory.</p></article>
+      <article class="wcws-kgt-card"><strong>Support-city texture</strong><p>Cheongdo, Ulsan, and Damyang add orchards, coast, bamboo, scenery, and a wider Korea story.</p></article>
+    </div>
+  </div>
+
+  <div class="wcws-kgt-section wcws-kgt-city-reel wcws-kgt-reveal">
+    <div class="wcws-kgt-section-title">
+      <p class="wcws-kgt-kicker">Five-city story</p>
+      <h2>Each stop gets its own reason to go.</h2>
+    </div>
+    <div class="wcws-kgt-city-grid">
+      <article class="wcws-kgt-city"><img src="https://koreagrandtour.weebly.com/uploads/1/5/3/4/153465426/published/img-1546.jpg?1753634832" alt="Korea Grand Tour driving scene"><div><span>Headliner</span><strong>Inje</strong></div></article>
+      <article class="wcws-kgt-city"><img src="https://koreagrandtour.weebly.com/uploads/1/5/3/4/153465426/img-8276_orig.jpg" alt="Korea Grand Tour road scene"><div><span>Headliner</span><strong>Jeonju</strong></div></article>
+      <article class="wcws-kgt-city"><img src="https://koreagrandtour.weebly.com/uploads/1/5/3/4/153465426/published/kakaotalk-photo-2026-05-04-17-54-32.jpeg?1777885063" alt="Korea Grand Tour 2026 lineup scene"><div><span>Support cities</span><strong>Cheongdo / Ulsan / Damyang</strong></div></article>
+    </div>
+  </div>
+
+  <div class="wcws-kgt-section wcws-kgt-route wcws-kgt-reveal" id="wcws-kgt-route">
+    <div class="wcws-kgt-section-title">
+      <p class="wcws-kgt-kicker">Phase One / Cars + Cities reveal</p>
+      <h2>Inje and Jeonju headline the 2026 story.</h2>
+    </div>
+    <div class="wcws-kgt-route-layout">
+      <div class="wcws-kgt-map">
+        <img src="https://koreagrandtour.weebly.com/uploads/1/5/3/4/153465426/published/line-up-phase-1.png?1778332978" alt="Korea Grand Tour 2026 line-up phase one">
+      </div>
+      <div class="wcws-kgt-route-list">
+        <article class="wcws-kgt-route-card"><span>Headliner</span><h3>Inje</h3><p>Mountain roads, track energy, crisp air, and the performance heartbeat of Phase One.</p></article>
+        <article class="wcws-kgt-route-card"><span>Headliner</span><h3>Jeonju</h3><p>Food, hanok streets, warm nights, and the cultural anchor that makes the trip feel human.</p></article>
+        <article class="wcws-kgt-route-card"><span>Support cities</span><h3>Cheongdo / Ulsan / Damyang</h3><p>Peach orchards, coast roads, bamboo forests, and the visual texture that makes Korea feel wide open.</p></article>
+        <article class="wcws-kgt-route-card"><span>Registered cars</span><h3>The grid is already moving</h3><p>Veloster N, 911 Targa, Golf GTI, Avante N, Grandeur, Cayman S Manual, BMW M3, and one surprise slot.</p></article>
+      </div>
+    </div>
+  </div>
+
+  <div class="wcws-kgt-section wcws-kgt-reveal">
+    <div class="wcws-kgt-section-title">
+      <p class="wcws-kgt-kicker">Bring your ride</p>
+      <h2>The grid is already forming.</h2>
+    </div>
+    <div class="wcws-kgt-rides-grid">
+      <article class="wcws-kgt-ride"><img src="https://koreagrandtour.weebly.com/uploads/1/5/3/4/153465426/editor/img-1564.jpg?1753606446" alt="Hyundai Veloster N participant ride"><div><strong>Hyundai Veloster N</strong><span>Francois Alonso</span></div></article>
+      <article class="wcws-kgt-ride"><img src="https://koreagrandtour.weebly.com/uploads/1/5/3/4/153465426/editor/kakaotalk-photo-2025-08-05-18-38-44.jpeg?1754441664" alt="Registered Korea Grand Tour ride"><div><strong>911 Targa / Golf GTI / BMW M3</strong><span>2026 line-up energy</span></div></article>
+      <article class="wcws-kgt-ride"><img src="https://koreagrandtour.weebly.com/uploads/1/5/3/4/153465426/editor/kakaotalk-photo-2025-08-12-14-08-07-003.jpeg?1755163329" alt="Registered Korea Grand Tour ride"><div><strong>Avante N / Grandeur / Cayman S</strong><span>Registered cars</span></div></article>
+      <article class="wcws-kgt-ride wcws-kgt-open"><div><strong>Your ride here</strong><span>Solo or team, car or bike.</span></div><a href="https://forms.gle/jyBn35kFik2hA5679" target="_blank" rel="noopener">Claim a spot</a></article>
+    </div>
+  </div>
+
+  <div class="wcws-kgt-register wcws-kgt-reveal">
+    <div>
+      <p class="wcws-kgt-kicker">Registration is open</p>
+      <h2>Come for the route. Join for the people.</h2>
+      <p>August 14-17, 2026. Inje, Jeonju, Cheongdo, Ulsan, and Damyang are waiting. Bring your ride solo or as a team, then meet everyone at the checkpoints that turn the route into a story.</p>
+    </div>
+    <a class="wcws-kgt-button" href="https://forms.gle/jyBn35kFik2hA5679" target="_blank" rel="noopener">Register now</a>
+  </div>
+</section>
+
+<script>
+  (() => {
+    const root = document.getElementById("wcws-kgt-reimagined");
+    if (!root || root.dataset.wcwsKgtReady) return;
+    root.dataset.wcwsKgtReady = "true";
+
+    const start = () => {
+      const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      root.querySelectorAll("[data-wcws-kgt-count]").forEach((element) => {
+        const target = Number(element.dataset.wcwsKgtCount || 0);
+        if (prefersReduced) {
+          element.textContent = String(target);
+          return;
+        }
+        const started = performance.now();
+        const duration = 1100;
+        const tick = (now) => {
+          const progress = Math.min((now - started) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          element.textContent = String(Math.round(target * eased));
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+
+      const reveals = root.querySelectorAll(".wcws-kgt-reveal");
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("wcws-kgt-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.16 });
+        reveals.forEach((node) => observer.observe(node));
+      } else {
+        reveals.forEach((node) => node.classList.add("wcws-kgt-visible"));
+      }
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", start, { once: true });
+    } else {
+      start();
+    }
+  })();
+</script>

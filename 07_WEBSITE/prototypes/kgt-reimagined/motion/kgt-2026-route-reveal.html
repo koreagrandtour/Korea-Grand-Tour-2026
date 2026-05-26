@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KGT 2026 Route Reveal Motion</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    [data-composition-id="kgt-route-reveal"] {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      position: relative;
+      background: #fff8ec;
+      color: #15202b;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .scene-content {
+      width: 100%;
+      height: 100%;
+      padding: 96px 128px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 28px;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 2;
+    }
+
+    .sky {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(255, 209, 92, .8), transparent 24%),
+        linear-gradient(160deg, #e7f7ff 0%, #ffffff 48%, #fff0c8 100%);
+    }
+
+    .route-ribbon {
+      position: absolute;
+      right: 70px;
+      top: 105px;
+      width: 760px;
+      height: 760px;
+      border-radius: 50%;
+      background: rgba(22, 135, 255, .08);
+      border: 2px solid rgba(22, 135, 255, .2);
+    }
+
+    .route-ribbon svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .route-path {
+      fill: none;
+      stroke: #1687ff;
+      stroke-width: 18;
+      stroke-linecap: round;
+      stroke-dasharray: 1500;
+      stroke-dashoffset: 1500;
+      filter: drop-shadow(0 18px 28px rgba(22, 135, 255, .24));
+    }
+
+    .checkpoint {
+      fill: #fff;
+      stroke: #f6ad16;
+      stroke-width: 8;
+      opacity: 0;
+      transform-origin: center;
+    }
+
+    .kicker {
+      color: #063c9d;
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .title {
+      max-width: 980px;
+      color: #063c9d;
+      font-size: 132px;
+      line-height: .92;
+      font-weight: 950;
+      letter-spacing: 0;
+    }
+
+    .cities {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      max-width: 1100px;
+    }
+
+    .city {
+      padding: 18px 28px;
+      border-radius: 999px;
+      background: #fff;
+      border: 2px solid rgba(6, 60, 157, .14);
+      box-shadow: 0 18px 48px rgba(6, 60, 157, .1);
+      color: #063c9d;
+      font-size: 34px;
+      font-weight: 900;
+    }
+
+    .city.gold {
+      background: #f6ad16;
+      color: #fff;
+      border-color: #f6ad16;
+    }
+
+    .caption {
+      max-width: 860px;
+      color: rgba(21, 32, 43, .72);
+      font-size: 36px;
+      line-height: 1.25;
+    }
+  </style>
+</head>
+<body>
+  <div data-composition-id="kgt-route-reveal" data-width="1920" data-height="1080">
+    <div class="sky"></div>
+    <div class="route-ribbon" aria-hidden="true">
+      <svg viewBox="0 0 760 760">
+        <path class="route-path" d="M560 98 C660 178 660 278 566 342 C460 414 602 512 486 614 C366 720 174 596 228 438 C278 294 104 248 184 126"></path>
+        <circle class="checkpoint cp1" cx="560" cy="98" r="22"></circle>
+        <circle class="checkpoint cp2" cx="566" cy="342" r="22"></circle>
+        <circle class="checkpoint cp3" cx="486" cy="614" r="22"></circle>
+        <circle class="checkpoint cp4" cx="228" cy="438" r="22"></circle>
+        <circle class="checkpoint cp5" cx="184" cy="126" r="22"></circle>
+      </svg>
+    </div>
+    <div class="scene-content">
+      <div class="kicker">Korea Grand Tour 2026 / Phase One</div>
+      <div class="title">Inje to Jeonju. Korea opens up.</div>
+      <div class="cities">
+        <span class="city gold">Inje</span>
+        <span class="city gold">Jeonju</span>
+        <span class="city">Cheongdo</span>
+        <span class="city">Ulsan</span>
+        <span class="city">Damyang</span>
+      </div>
+      <div class="caption">A brighter rally page built around the actual 2026 reveal: headline cities, support cities, registered cars, and a single pull toward registration.</div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true, defaults: { ease: "power3.out" } });
+      tl.from(".kicker", { y: 38, opacity: 0, duration: .7, ease: "power3.out" }, .2);
+      tl.from(".title", { y: 72, opacity: 0, scale: .98, duration: .9, ease: "expo.out" }, .45);
+      tl.to(".route-path", { strokeDashoffset: 0, duration: 2.2, ease: "power2.inOut" }, .72);
+      tl.from(".route-ribbon", { scale: .82, opacity: 0, rotation: -7, duration: .95, ease: "back.out(1.4)" }, .6);
+      tl.to(".checkpoint", { opacity: 1, scale: 1, duration: .35, stagger: .18, ease: "back.out(2)" }, 1.8);
+      tl.from(".city", { y: 34, opacity: 0, scale: .92, duration: .52, stagger: .09, ease: "back.out(1.7)" }, 1.08);
+      tl.from(".caption", { y: 30, opacity: 0, duration: .7, ease: "sine.out" }, 1.85);
+      tl.to(".scene-content", { opacity: 0, y: -24, duration: .5, ease: "power2.in" }, 8.3);
+      tl.to(".route-ribbon", { opacity: 0, scale: 1.08, duration: .5, ease: "power2.in" }, 8.3);
+      window.__timelines["kgt-route-reveal"] = tl;
+    </script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+.env
+*.token.json
+.square-token.json
+.DS_Store
+backups/
