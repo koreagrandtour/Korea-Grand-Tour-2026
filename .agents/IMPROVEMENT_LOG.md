@@ -32,6 +32,16 @@ Append after non-trivial work when the system can become faster, safer, cleaner,
 - Urgency: High
 - Requires François approval: Approved by request.
 
+## 2026-05-28 - First Phase 2 Skills
+
+- Task: Create the first KGT skills in the repo and global Codex skill folder.
+- What happened: `kgt-quality-gate`, `kgt-asset-inventory`, and `kgt-version-control-safety` were created with compact bodies and helper scripts for repeated scans.
+- Issue found: The Git safety helper initially warned on all `KakaoTalk_Photo` filenames, creating noise.
+- Proposed improvement: Remove generic `kakao` filename warnings; keep warnings focused on actual private-conversation or contact/detail indicators.
+- Affected file/skill/plugin: `skills/kgt-version-control-safety/scripts/git_safety_check.py`
+- Urgency: Medium
+- Requires François approval: No; low-risk tuning to reduce false positives.
+
 ## Template
 
 - Date:

@@ -1,0 +1,4 @@
+interface:
+  display_name: "KGT Quality Gate"
+  short_description: "Low-token KGT checks and improvements"
+  default_prompt: "Use $kgt-quality-gate to cross-check this KGT task and run the improvement scan."

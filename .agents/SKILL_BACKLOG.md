@@ -9,6 +9,7 @@ Create skills in Phase 2 only after François confirms the folder is ready.
 0. `kgt-quality-gate`
    - Enforce low-token self-check, cross-check, workflow evidence, and improvement scan.
    - Read `.agents/KGT_QUALITY_GATE.md` first.
+   - Status: created in Phase 2.
 
 1. `kgt-context-router`
    - Route tasks to the smallest necessary context files.
@@ -27,11 +28,13 @@ Create skills in Phase 2 only after François confirms the folder is ready.
 
 5. `kgt-version-control-safety`
    - Protect private data and heavy assets before Git commits/pushes.
+   - Status: created in Phase 2.
 
 ## Execution Skills
 
 1. `kgt-asset-inventory`
    - Build and update asset indexes with privacy and GitHub status.
+   - Status: created in Phase 2.
 
 2. `kgt-participant-ops`
    - Manage local-only participant trackers, reminders, agreements, payment status, and interview status.

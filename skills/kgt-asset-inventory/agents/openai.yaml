@@ -1,0 +1,4 @@
+interface:
+  display_name: "KGT Asset Inventory"
+  short_description: "Inventory KGT files with privacy flags"
+  default_prompt: "Use $kgt-asset-inventory to scan KGT assets and update the inventory safely."

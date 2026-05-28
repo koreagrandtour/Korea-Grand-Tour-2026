@@ -1,0 +1,4 @@
+interface:
+  display_name: "KGT Git Safety"
+  short_description: "Check KGT commits for private data risks"
+  default_prompt: "Use $kgt-version-control-safety to review staged KGT files before commit or push."
