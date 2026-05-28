@@ -22,7 +22,7 @@ Create files when possible. This skill also owns the former `kgt-instagram-conte
 3. Use real KGT assets first.
 4. For new images, prefer OpenAI image 2.0. If it is not exposed in the current runtime, use the best available OpenAI image generation/editing tool and log the limitation.
 5. Use Canva to add or refine text, icons, layout, sizing, and platform variants.
-6. Use HyperFrames for videos, motion, animated static assets, photo animation, text-to-video style compositions, captions, and reels/story motion.
+6. Use HyperFrames by default for videos, motion, animated static assets, photo animation, text-to-video style compositions, captions, and reels/story motion, unless a clearly better video tool fits the task.
 7. Save output under `10_ASSETS/exports/YYYY-MM-DD_slug/`.
 8. Save final output, source/editable file if possible, preview, notes, and QA report.
 9. Run `kgt-quality-gate` before public use.

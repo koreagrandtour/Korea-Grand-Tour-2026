@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KGT 15s Winding Roads Story Preview</title>
+  <style>
+    :root {
+      --blue: #0057b8;
+      --orange: #ff6a00;
+      --ink: #101216;
+      --paper: #f8f8f5;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #111;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      display: grid;
+      min-height: 100vh;
+      place-items: center;
+    }
+    .reel {
+      width: min(420px, 100vw);
+      aspect-ratio: 9 / 16;
+      background: var(--ink);
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: repeat(4, 1fr);
+      border: 1px solid #333;
+    }
+    .frame {
+      position: relative;
+      padding: 22px;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.62), rgba(0,0,0,.12)),
+        radial-gradient(circle at 72% 42%, rgba(255,106,0,.22), transparent 28%),
+        linear-gradient(135deg, #1c2730, #4c5a45 45%, #1d2328);
+      border-bottom: 2px solid rgba(255,255,255,.75);
+    }
+    .frame:nth-child(2) {
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.58), rgba(0,0,0,.10)),
+        radial-gradient(circle at 70% 20%, rgba(255,255,255,.22), transparent 30%),
+        linear-gradient(135deg, #273325, #7d6e43 48%, #243033);
+    }
+    .frame:nth-child(3) {
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.68), rgba(0,0,0,.08)),
+        radial-gradient(circle at 78% 60%, rgba(0,87,184,.28), transparent 30%),
+        linear-gradient(135deg, #1a2329, #594f31 52%, #272b2e);
+    }
+    .frame:nth-child(4) {
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.72), rgba(0,0,0,.16)),
+        radial-gradient(circle at 76% 30%, rgba(255,106,0,.32), transparent 28%),
+        linear-gradient(135deg, #151b22, #51452c 48%, #202a35);
+      border-bottom: 0;
+    }
+    .time {
+      position: absolute;
+      top: 14px;
+      left: 22px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .accent {
+      position: absolute;
+      top: 39px;
+      left: 22px;
+      width: 98px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--blue) 68%, var(--orange) 68%);
+    }
+    .road {
+      position: absolute;
+      right: -20px;
+      bottom: 0;
+      width: 72%;
+      height: 55%;
+      border-top: 10px solid rgba(255,255,255,.65);
+      border-radius: 100% 0 0 0;
+      transform: skewX(-17deg);
+      opacity: .72;
+    }
+    .cars {
+      position: absolute;
+      right: 28px;
+      bottom: 19px;
+      display: flex;
+      gap: 10px;
+      transform: rotate(-3deg);
+    }
+    .car {
+      width: 34px;
+      height: 15px;
+      background: white;
+      border-radius: 10px 10px 4px 4px;
+      box-shadow: 0 5px 0 rgba(0,0,0,.28);
+    }
+    .car:nth-child(2) { background: var(--orange); transform: translateY(-10px) scale(.9); }
+    .car:nth-child(3) { background: #222; transform: translateY(-18px) scale(.78); }
+    h1 {
+      position: relative;
+      z-index: 1;
+      margin: 24px 0 0;
+      font-size: 42px;
+      line-height: .98;
+      letter-spacing: 0;
+      max-width: 310px;
+    }
+    .year { color: var(--orange); }
+  </style>
+</head>
+<body>
+  <main class="reel" aria-label="Korea Grand Tour 15 second storyboard preview">
+    <section class="frame">
+      <div class="time">0-3s</div><div class="accent"></div><div class="road"></div><div class="cars"><i class="car"></i><i class="car"></i><i class="car"></i></div>
+      <h1>One road.</h1>
+    </section>
+    <section class="frame">
+      <div class="time">3-7s</div><div class="accent"></div><div class="road"></div><div class="cars"><i class="car"></i><i class="car"></i><i class="car"></i></div>
+      <h1>Four days across Korea.</h1>
+    </section>
+    <section class="frame">
+      <div class="time">7-12s</div><div class="accent"></div><div class="road"></div><div class="cars"><i class="car"></i><i class="car"></i><i class="car"></i></div>
+      <h1>Cars, friends, memories.</h1>
+    </section>
+    <section class="frame">
+      <div class="time">12-15s</div><div class="accent"></div><div class="road"></div><div class="cars"><i class="car"></i><i class="car"></i><i class="car"></i></div>
+      <h1>Korea Grand Tour <span class="year">2026</span></h1>
+    </section>
+  </main>
+</body>
+</html>

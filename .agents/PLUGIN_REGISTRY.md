@@ -16,7 +16,7 @@ Planning only. Do not build or connect plugins without approval.
 | GitHub | Private repo, issues, version safety | Git safety, project manager | repo read/write | accidental private commit | local Git only |
 | Local privacy scanner | Pre-commit data checks | privacy, Git safety | local file metadata/read | false positives/negatives | manual review |
 | Documents export | Agreements, decks, PDFs | participant, sponsor, legal | local/Drive docs | signed/private docs | local-only export |
-| HyperFrames | Animate static objects/photos, create motion/video from text, captions, reels/story motion | visual producer | local video project/render access | rights/privacy/public risk | storyboard/brief in export folder |
+| HyperFrames | Default KGT video tool; animate static objects/photos, create motion/video from text, captions, reels/story motion | visual producer | local video project/render access | rights/privacy/public risk | storyboard/brief in export folder |
 | CapCut / DaVinci Resolve / Premiere | Optional manual polish for reels, cuts, subtitles, color, music timing | visual producer | local media edit access | rights/privacy/public risk | HyperFrames + Canva export |
 | Media production | Video/image generation and edits | visual producer | asset read/write | rights/privacy/public risk | briefs/prompts in export folder |
 

@@ -73,12 +73,16 @@ Marketing/Social Media/Instagram/Stories - Reels/
 06_SPONSORS_PARTNERS/decks/pitch_deck/Visuals/*.mp4
 06_SPONSORS_PARTNERS/decks/pitch_deck/Visuals/*.mov
 06_SPONSORS_PARTNERS/decks/pitch_deck/Visuals/*.MOV
+!10_ASSETS/exports/**/*.mp4
+!10_ASSETS/exports/**/*.webm
+10_ASSETS/exports/**/raw/
 
 # Local generated/cache files
 __pycache__/
 *.pyc
 *.tmp
 ~$*
+.local_tools/
 node_modules/
 .next/
 dist/

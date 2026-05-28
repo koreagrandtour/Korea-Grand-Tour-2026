@@ -12,6 +12,8 @@ BLOCK_TERMS = (
 WARN_TERMS = ("agreement", "phone", "email", "private_conversation", "plate_number", "license_plate")
 RAW_EXTS = {".mp4", ".mov", ".avi", ".m4v", ".wav", ".aifc", ".cr2", ".zip"}
 PRIVATE_PREFIXES = ("05_PARTICIPANTS_LOCAL_ONLY/private/",)
+FINAL_EXPORT_PREFIX = "10_ASSETS/exports/"
+MAX_FINAL_EXPORT_BYTES = 50 * 1024 * 1024
 
 
 def git_lines(args):
@@ -34,9 +36,16 @@ def classify(path: str):
     suffix = Path(path).suffix.lower()
     if any(path.startswith(prefix) for prefix in PRIVATE_PREFIXES):
         return "BLOCK", "participant private folder"
+    if path.startswith(FINAL_EXPORT_PREFIX) and "/raw/" in path:
+        return "BLOCK", "raw export folder"
     if any(term in lower for term in BLOCK_TERMS):
         return "BLOCK", "sensitive filename/path"
     if suffix in RAW_EXTS:
+        if path.startswith(FINAL_EXPORT_PREFIX):
+            size = Path(path).stat().st_size if Path(path).exists() else 0
+            if size <= MAX_FINAL_EXPORT_BYTES:
+                return "OK", "finished export media under size limit"
+            return "BLOCK", "finished export media exceeds size limit"
         return "BLOCK", "raw/heavy media extension"
     if any(term in lower for term in WARN_TERMS):
         return "WARN", "privacy-related filename/path"

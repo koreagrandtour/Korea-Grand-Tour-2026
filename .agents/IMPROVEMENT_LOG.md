@@ -92,6 +92,16 @@ Append after non-trivial work when the system can become faster, safer, cleaner,
 - Urgency: High
 - Requires François approval: Approved by request.
 
+## 2026-05-28 - HyperFrames Default Video Rule
+
+- Task: Make KGT video production practical and consistent.
+- What happened: François requested HyperFrames as the default video creation path when there is no better task-specific method.
+- Issue found: The local Mac had Node but no `npm`/`npx`, and no `ffmpeg`, so HyperFrames CLI rendering was not immediately available.
+- Proposed improvement: Record HyperFrames as the default KGT video tool, install a local `ffmpeg` dependency for rendering, and use a local renderer fallback until the HyperFrames CLI is available.
+- Affected file/skill/plugin: `skills/kgt-visual-deliverable-producer/`, `.agents/PLUGIN_REGISTRY.md`, `.gitignore`
+- Urgency: High
+- Requires François approval: Approved by request.
+
 ## Template
 
 - Date:
