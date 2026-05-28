@@ -6,7 +6,7 @@ Goal: keep skill performance high while reducing token use and mental overhead.
 
 ## Current Recommendation
 
-Keep the 14 skills for now. They are compact and mostly non-overlapping. Do not merge until real use shows repeated confusion.
+Keep 13 active skills for now. `kgt-instagram-content-planner` has been folded into `kgt-visual-deliverable-producer` because social planning and post/reel/story production should happen together for KGT.
 
 ## Why This Is Still Token-Efficient
 
@@ -29,17 +29,17 @@ Keep the 14 skills for now. They are compact and mostly non-overlapping. Do not 
 | `kgt-participant-ops` | Private participant operations | Medium with follow-up copy |
 | `kgt-participant-followup-copy` | Private participant message drafting | Merge candidate if underused |
 | `kgt-bilingual-copy` | EN/KR copy quality | Medium with social/website copy |
-| `kgt-instagram-content-planner` | Social calendar and post planning | Medium with visual producer |
+| `kgt-instagram-content-planner` | Folded into visual producer | Removed as active skill |
 | `kgt-route-planner` | Route/roadbook operations | Low |
 | `kgt-sponsor-followup` | Sponsor outreach and status | Low |
 | `kgt-website-updates` | Website page preparation | Medium with bilingual copy |
-| `kgt-visual-deliverable-producer` | Finished visual/video files | Low; execution-focused |
+| `kgt-visual-deliverable-producer` | Social planning plus finished visual/video files | Higher scope, but important KGT priority |
 
 ## Future Merge Candidates
 
 1. `kgt-participant-followup-copy` into `kgt-participant-ops` if participant messaging is always part of ops.
 2. `kgt-website-updates` into `kgt-bilingual-copy` if website work stays copy-only.
-3. `kgt-instagram-content-planner` into `kgt-visual-deliverable-producer` only if planning and production always happen together.
+3. `kgt-instagram-content-planner` into `kgt-visual-deliverable-producer`: completed.
 
 ## Do Not Merge Yet
 

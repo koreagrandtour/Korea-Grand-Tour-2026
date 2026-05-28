@@ -15,7 +15,7 @@ One job: choose what to read, not do the task.
 
 ## Procedure
 
-1. Identify the task domain: participants, route, website, sponsor, marketing/copy, legal/safety, assets, GitHub, or visual.
+1. Identify the task domain: participants, route, website, sponsor, marketing/copy, social/visual/video, legal/safety, assets, or GitHub.
 2. Select the smallest focused context files.
 3. Add `.agents/KGT_QUALITY_GATE.md` for high-risk or multi-stage work.
 4. Read the full handoff only when the smaller files conflict or are insufficient.
@@ -29,3 +29,5 @@ Full handoff needed: yes/no + reason
 ```
 
 Privacy: do not load participant-private files unless the task requires private participant operations.
+
+Social, Instagram, Reels, Stories, YouTube thumbnails, and visual/video production route to `kgt-visual-deliverable-producer`.

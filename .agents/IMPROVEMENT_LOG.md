@@ -82,6 +82,16 @@ Append after non-trivial work when the system can become faster, safer, cleaner,
 - Urgency: Medium
 - Requires François approval: No; reflects verified access metadata.
 
+## 2026-05-28 - Social Media Skill Merge
+
+- Task: Merge Instagram-related planning into the visual/social deliverable skill.
+- What happened: `kgt-instagram-content-planner` was folded into `kgt-visual-deliverable-producer`.
+- Issue found: KGT social work needs strategy, research, captions, hashtags, music, visuals, and video production in one workflow; separate planning risked duplicated context.
+- Proposed improvement: Use one social/visual producer skill with KGT account review, similar-channel research, Korean/global trend checks, OpenAI image 2.0, Canva editing, and HyperFrames video/motion workflow.
+- Affected file/skill/plugin: `skills/kgt-visual-deliverable-producer/`, `skills/kgt-context-router/`, `.agents/SKILL_CREATION_STATUS.md`, `.agents/PLUGIN_REGISTRY.md`, `.agents/PLUGIN_BACKLOG.md`
+- Urgency: High
+- Requires François approval: Approved by request.
+
 ## Template
 
 - Date:

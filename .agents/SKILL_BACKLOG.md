@@ -52,7 +52,7 @@ Create skills in Phase 2 only after François confirms the folder is ready.
 
 5. `kgt-instagram-content-planner`
    - Build route reveal calendars, captions, Reels ideas, story sequences, and post checklists.
-   - Status: created in Phase 2.
+   - Status: folded into `kgt-visual-deliverable-producer`.
 
 6. `kgt-route-planner`
    - Build route drafts, roadbook content, checkpoint notes, timing windows, and operations warnings.
@@ -71,8 +71,8 @@ Create skills in Phase 2 only after François confirms the folder is ready.
    - Status: created in Phase 2.
 
 10. `kgt-visual-deliverable-producer`
-   - Produce finished graphics/videos/assets with QA, using real KGT assets first.
-   - Status: created in Phase 2.
+   - Produce social plans, captions, hashtags, music notes, finished graphics/videos/assets with QA, using real KGT assets first.
+   - Status: updated in Phase 2.
 
 ## Phase 2 Rule
 

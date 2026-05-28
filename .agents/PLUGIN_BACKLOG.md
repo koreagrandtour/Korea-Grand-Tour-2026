@@ -1,6 +1,6 @@
 # Plugin Backlog
 
-Phase 1 only. Do not build plugins yet.
+Planning only. Do not build or connect plugins without approval.
 
 ## Candidate Plugins / Integrations
 
@@ -20,22 +20,38 @@ Phase 1 only. Do not build plugins yet.
    - Purpose: milestone tracking, briefings, meet-ups, deadlines.
    - Risk: avoid clutter and confirm dates.
 
-5. Canva / Figma
-   - Purpose: car line-up visuals, route reveal graphics, sponsor assets, social templates.
+5. OpenAI image 2.0 / image generation
+   - Purpose: create and edit KGT images for Instagram, YouTube, website, and sponsor materials.
+   - Risk: generated imagery must not imply false event facts, wrong cars, or unapproved participant identity.
+
+6. Canva / Figma
+   - Purpose: add text, icons, layouts, sizing variants, editable templates, sponsor assets, social templates.
    - Risk: visible plates/private data and brand consistency.
 
-6. Website / Weebly workflow
+7. HyperFrames
+   - Purpose: animate static objects/photos, create reels/stories/video from text, add captions and motion.
+   - Risk: music, rights, and private/unapproved assets.
+
+8. Instagram Graph
+   - Purpose: review KGT posts/media/insights and support content planning.
+   - Risk: do not publish or approve content without explicit instruction.
+
+9. Browser / Chrome research
+   - Purpose: research Instagram, YouTube, Reddit, Korean/community trends, hashtags, keywords, and similar accounts.
+   - Risk: trend advice can be noisy; official sources win for platform rules.
+
+10. Website / Weebly workflow
    - Purpose: safer website edits, backups, page audits, Weebly paste exports.
    - Risk: local credentials and accidental live changes.
 
-7. GitHub
+11. GitHub
    - Purpose: private repository, issue tracking, version control.
    - Risk: private data leaks if staged incorrectly.
 
-8. Instagram Graph
-   - Purpose: review posts/media/insights and support content planning.
-   - Risk: do not publish or approve content without explicit instruction.
+12. Optional editing software
+   - Purpose: CapCut, DaVinci Resolve, or Premiere for manual reel polish, subtitles, beat cuts, and color.
+   - Risk: exports must be stored in `10_ASSETS/exports/` and checked before public use.
 
 ## Recommendation
 
-Start with GitHub safety and asset inventory before connecting workflows that can publish, email, or modify live systems.
+For KGT growth work, prioritize OpenAI image generation, Canva, HyperFrames, Instagram Graph, and Browser/Chrome research. Keep GitHub safety and privacy checks before any file is committed or published.

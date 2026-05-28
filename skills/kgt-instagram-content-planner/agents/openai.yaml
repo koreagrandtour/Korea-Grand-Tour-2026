@@ -1,4 +1,0 @@
-interface:
-  display_name: "KGT Instagram Planner"
-  short_description: "Plan KGT Instagram and social content"
-  default_prompt: "Use $kgt-instagram-content-planner to plan this KGT social content."
