@@ -1,0 +1,4 @@
+interface:
+  display_name: "KGT Website Updates"
+  short_description: "Prepare safe KGT website updates"
+  default_prompt: "Use $kgt-website-updates to prepare this KGT website update."

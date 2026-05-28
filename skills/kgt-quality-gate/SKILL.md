@@ -5,7 +5,7 @@ description: Low-token Korea Grand Tour quality gate for self-checking, cross-ch
 
 # KGT Quality Gate
 
-Use this as a small gate, not a long review.
+Use this as a small gate, not a long review. This single skill covers both the old `kgt-cross-checker` and `kgt-skill-improver` roles.
 
 ## Load Order
 

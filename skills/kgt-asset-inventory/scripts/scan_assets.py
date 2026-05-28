@@ -5,7 +5,7 @@ from pathlib import Path
 
 PRIVATE_TERMS = (
     "private", "participant", "payment", "deposit", "receipt", "insurance",
-    "passport", "license", "licence", "agreement", "phone", "email", "kakao",
+    "passport", "license", "licence", "agreement", "phone", "email",
     "bank", "plate_number", "driver_license", "driving_license",
 )
 RAW_EXTS = {".mp4", ".mov", ".avi", ".m4v", ".wav", ".aifc", ".cr2", ".zip"}
@@ -17,10 +17,10 @@ SKIP_DIRS = {".git", "node_modules", "__pycache__", ".cache", ".next", "build", 
 def classify(path: Path, size: int) -> str:
     lower = str(path).lower()
     ext = path.suffix.lower()
-    if any(term in lower for term in PRIVATE_TERMS) or "05_participants_local_only/private" in lower:
-        return "private/local-only"
     if ext in RAW_EXTS or "raw_archive" in lower or size >= 50 * 1024 * 1024:
         return "raw/heavy"
+    if any(term in lower for term in PRIVATE_TERMS) or "05_participants_local_only/private" in lower:
+        return "private/local-only"
     if ext in IMAGE_EXTS and any(part in lower for part in ("website", "social", "lineup", "exports", "route 2025")):
         return "public-ready candidate"
     if ext in DOC_EXTS:

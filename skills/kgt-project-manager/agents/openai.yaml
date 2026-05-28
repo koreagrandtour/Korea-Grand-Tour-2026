@@ -1,0 +1,4 @@
+interface:
+  display_name: "KGT Project Manager"
+  short_description: "Maintain KGT decisions and next actions"
+  default_prompt: "Use $kgt-project-manager to update KGT priorities, decisions, and next actions."

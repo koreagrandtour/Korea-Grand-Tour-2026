@@ -1,0 +1,4 @@
+interface:
+  display_name: "KGT Sponsor Follow-Up"
+  short_description: "Draft and track KGT sponsor follow-ups"
+  default_prompt: "Use $kgt-sponsor-followup to handle this KGT sponsor outreach task."

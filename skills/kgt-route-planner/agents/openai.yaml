@@ -1,0 +1,4 @@
+interface:
+  display_name: "KGT Route Planner"
+  short_description: "Plan KGT routes and roadbook work"
+  default_prompt: "Use $kgt-route-planner to work on this KGT route or roadbook task."

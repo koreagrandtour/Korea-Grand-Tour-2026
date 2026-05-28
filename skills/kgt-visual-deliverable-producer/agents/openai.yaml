@@ -1,0 +1,4 @@
+interface:
+  display_name: "KGT Visual Producer"
+  short_description: "Create finished KGT visual deliverables"
+  default_prompt: "Use $kgt-visual-deliverable-producer to create this KGT visual deliverable."

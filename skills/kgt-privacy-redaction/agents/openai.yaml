@@ -1,0 +1,4 @@
+interface:
+  display_name: "KGT Privacy Redaction"
+  short_description: "Redact KGT docs for safe sharing"
+  default_prompt: "Use $kgt-privacy-redaction to make this KGT material safe to share."

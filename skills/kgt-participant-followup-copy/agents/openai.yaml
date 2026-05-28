@@ -1,0 +1,4 @@
+interface:
+  display_name: "KGT Follow-Up Copy"
+  short_description: "Draft private KGT participant follow-ups"
+  default_prompt: "Use $kgt-participant-followup-copy to draft this KGT participant message."

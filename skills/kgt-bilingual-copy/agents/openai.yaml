@@ -1,0 +1,4 @@
+interface:
+  display_name: "KGT Bilingual Copy"
+  short_description: "Write natural KGT English and Korean copy"
+  default_prompt: "Use $kgt-bilingual-copy to create this KGT English/Korean copy."

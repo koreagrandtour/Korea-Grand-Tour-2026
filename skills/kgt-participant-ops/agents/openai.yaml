@@ -1,0 +1,4 @@
+interface:
+  display_name: "KGT Participant Ops"
+  short_description: "Manage KGT participant operations safely"
+  default_prompt: "Use $kgt-participant-ops to handle this KGT participant operations task."

@@ -91,13 +91,13 @@ AGENTS.md
 
 ## Skills to Create
 
-Create the following skills under `.agents/skills/`:
+Create the following skills under `skills/` and mirror them to `/Users/Francois/.codex/skills/`:
 
 ```text
 kgt-bilingual-copy
 kgt-sponsor-followup
 kgt-participant-ops
-kgt-route-roadbook
+kgt-route-planner
 kgt-website-updates
 kgt-privacy-redaction
 kgt-asset-inventory

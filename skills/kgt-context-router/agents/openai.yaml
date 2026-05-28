@@ -1,0 +1,4 @@
+interface:
+  display_name: "KGT Context Router"
+  short_description: "Route KGT tasks to minimal context"
+  default_prompt: "Use $kgt-context-router to choose the smallest KGT context set for this task."

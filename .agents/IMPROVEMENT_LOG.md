@@ -42,6 +42,26 @@ Append after non-trivial work when the system can become faster, safer, cleaner,
 - Urgency: Medium
 - Requires François approval: No; low-risk tuning to reduce false positives.
 
+## 2026-05-28 - Phase 2 Skill System Completion
+
+- Task: Implement the token-efficient Phase 2 skills plan.
+- What happened: Shared governance files were added, remaining foundation/execution skills were created, and `kgt-quality-gate` remained the single cross-check/improvement skill.
+- Issue found: Older planning text still referenced `.agents/skills/` and separate cross-checker/improver skills.
+- Proposed improvement: Standardize on `skills/` plus global mirror, and record cross-check/improvement as folded into `kgt-quality-gate`.
+- Affected file/skill/plugin: `00_START_HERE/00_START_HERE/KGT_CONTEXT_STRATEGY.md`, `.agents/SKILL_BACKLOG.md`, `skills/kgt-quality-gate/SKILL.md`
+- Urgency: Medium
+- Requires François approval: No; implements approved token-efficient plan.
+
+## 2026-05-28 - Asset Scanner Noise Reduction
+
+- Task: Test Phase 2 helper scripts.
+- What happened: `kgt-asset-inventory` flagged ordinary `KakaoTalk_Photo` exports in raw media as private.
+- Issue found: The generic `kakao` filename rule created noisy false positives.
+- Proposed improvement: Classify raw archive/heavy media before private filename heuristics and remove generic `kakao` matching.
+- Affected file/skill/plugin: `skills/kgt-asset-inventory/scripts/scan_assets.py`
+- Urgency: Medium
+- Requires François approval: No; low-risk false-positive reduction.
+
 ## Template
 
 - Date:
