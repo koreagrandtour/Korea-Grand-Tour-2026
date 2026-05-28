@@ -1,10 +1,21 @@
 # Cross-Check Rules
 
-Before any important, public, sponsor-facing, participant-facing, legal/safety, website, GitHub, or high-risk output, run this cross-check.
+Use the smallest check that fits the risk. Do not reread the full project unless the source of truth is unclear.
+
+## Token Rule
+
+Default to:
+
+1. newest user instruction
+2. relevant context file
+3. source file / live tool readback
+4. full handoff only when blocked
+
+Keep check notes compact: `OK / Fix / Blocked + evidence`.
 
 ## Perspectives
 
-Review from:
+For important, public, sponsor-facing, participant-facing, legal/safety, website, GitHub, or high-risk output, review from:
 
 - project manager
 - marketing / PR
@@ -13,6 +24,8 @@ Review from:
 - privacy
 - KGT brand / tone
 - factual accuracy
+
+For low-risk internal work, use only the relevant perspectives.
 
 ## Checklist
 
@@ -27,6 +40,13 @@ Review from:
 - Keep tone warm, human, direct, premium but not corporate.
 - Confirm Korean copy sounds natural if Korean is used.
 - Confirm output matches the requested channel and audience.
+
+## Required Contract
+
+- Producer self-checks before handoff.
+- Receiver cross-checks inherited facts before reuse.
+- Corrected output is re-checked.
+- High-risk work records evidence in `.agents/workflow_status.md` when a task has multiple stages.
 
 ## Red Flags
 

@@ -22,6 +22,16 @@ Append after non-trivial work when the system can become faster, safer, cleaner,
 - Urgency: Medium
 - Requires François approval: No for documentation; Yes before committing website prototype deletions.
 
+## 2026-05-28 - Low-Token Quality Foundation
+
+- Task: Prepare Phase 2 cross-check and auto-improvement foundation.
+- What happened: Current rules were useful but passive; they did not force self-check, receiver cross-check, evidence, or improvement levels.
+- Issue found: Too much process could increase token cost if every task loads every rule.
+- Proposed improvement: Use risk levels, smallest-context routing, compact handoffs, short evidence lines, and improvement levels.
+- Affected file/skill/plugin: `.agents/CROSS_CHECK_RULES.md`, `.agents/KGT_QUALITY_GATE.md`, `.agents/KGT_IMPROVEMENT_PROTOCOL.md`, future skills
+- Urgency: High
+- Requires François approval: Approved by request.
+
 ## Template
 
 - Date:

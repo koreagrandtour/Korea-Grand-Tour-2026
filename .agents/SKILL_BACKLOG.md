@@ -6,6 +6,10 @@ Create skills in Phase 2 only after François confirms the folder is ready.
 
 ## Foundation Skills
 
+0. `kgt-quality-gate`
+   - Enforce low-token self-check, cross-check, workflow evidence, and improvement scan.
+   - Read `.agents/KGT_QUALITY_GATE.md` first.
+
 1. `kgt-context-router`
    - Route tasks to the smallest necessary context files.
    - Prevent reading the full handoff unnecessarily.
@@ -15,9 +19,11 @@ Create skills in Phase 2 only after François confirms the folder is ready.
 
 3. `kgt-cross-checker`
    - Cross-check public/high-risk outputs for accuracy, privacy, safety/legal risk, tone, and operations feasibility.
+   - Must use risk levels to avoid over-checking low-risk work.
 
 4. `kgt-skill-improver`
    - Record workflow improvements and suggest skill/plugin/context updates after real work.
+   - Must follow `.agents/KGT_IMPROVEMENT_PROTOCOL.md`.
 
 5. `kgt-version-control-safety`
    - Protect private data and heavy assets before Git commits/pushes.
@@ -57,3 +63,5 @@ Create skills in Phase 2 only after François confirms the folder is ready.
 ## Phase 2 Rule
 
 When creating these, use `$skill-creator` and the KGT skill creation method. Every skill needs trigger examples, non-trigger examples, failure modes, privacy rules, cross-check rules, eval prompts, and output contracts.
+
+Keep skills compact. Prefer references to stable `.agents/` rules over copying the same long instructions into every skill.
