@@ -1,6 +1,6 @@
 # Participant Context - Private
 
-Last updated: 2026-05-27
+Last updated: 2026-05-28
 
 Local-only. Do not commit participant details, payment proof, agreement PDFs, phone numbers, emails, plates, insurance, licenses, passports, or private conversations.
 
@@ -65,7 +65,7 @@ Spreadsheet ID:
 16VXP5YBeCo9yiTCfAWUsbVQvQbR5FHT48KLSihDLF50
 ```
 
-Codex access note: on 2026-05-27, the Google Drive connector using `francois.alonso537@gmail.com` returned 403 permission denied. Grant access before Codex reads or writes.
+Codex access note: on 2026-05-28, Google Drive/Sheets metadata and header-row access works. The tracker has tabs `Form Responses 1` and `Deposit`. Do not read private participant rows unless the task requires it.
 
 ## Public Line-Up Rule
 

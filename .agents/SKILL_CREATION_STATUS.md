@@ -2,6 +2,8 @@
 
 Status values: `created`, `updated`, `planned`, `deferred`.
 
+Consolidation note: keep all 14 skills for now. `kgt-participant-followup-copy`, `kgt-website-updates`, and `kgt-instagram-content-planner` are future merge candidates if real usage shows overlap. See `.agents/SKILL_CONSOLIDATION_REVIEW.md`.
+
 | Skill | Status | One job | Trigger examples | Non-triggers | Failure modes | Eval prompt |
 |---|---|---|---|---|---|---|
 | kgt-quality-gate | updated | Cross-check and improvement gate | public post; sponsor deck; GitHub push; legal text; multi-agent handoff | pure brainstorming; tiny typo; unrelated project | over-checking; missing privacy risk; no improvement scan | Use $kgt-quality-gate to review a public KGT Instagram caption before posting. |

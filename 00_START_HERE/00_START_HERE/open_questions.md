@@ -1,6 +1,6 @@
 # Open Questions
 
-Last updated: 2026-05-27
+Last updated: 2026-05-28
 
 Use `OPEN QUESTION` for missing information. Do not fill gaps by guessing.
 
@@ -19,7 +19,6 @@ Use `OPEN QUESTION` for missing information. Do not fill gaps by guessing.
 - OPEN QUESTION: Which pre-RSVPs still need deposit, agreement, car photo, insurance proof, and interview?
 - OPEN QUESTION: What is the final Kakao group structure and join timing?
 - OPEN QUESTION: What participant details may be used in public line-up posts beyond car name/photo?
-- OPEN QUESTION: Google Drive connector currently lacks permission to inspect/write the master participant tracker. Access is needed for connected account `francois.alonso537@gmail.com`.
 
 ## Sponsors
 

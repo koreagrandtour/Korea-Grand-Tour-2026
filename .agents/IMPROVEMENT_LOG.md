@@ -62,6 +62,26 @@ Append after non-trivial work when the system can become faster, safer, cleaner,
 - Urgency: Medium
 - Requires François approval: No; low-risk false-positive reduction.
 
+## 2026-05-28 - Skill Consolidation Review
+
+- Task: Review the 14 KGT skills for token usage and overlap.
+- What happened: Most skills are compact and route to focused context files, but 14 names may feel heavy operationally.
+- Issue found: `kgt-participant-followup-copy`, `kgt-bilingual-copy`, `kgt-instagram-content-planner`, and `kgt-website-updates` all touch copy; `kgt-project-manager` and `kgt-context-router` both guide task startup.
+- Proposed improvement: Keep all 14 for now because their triggers are distinct, but use `kgt-context-router` first for ambiguous tasks. Revisit consolidation after real usage; strongest future merge candidate is `kgt-participant-followup-copy` into `kgt-participant-ops` if it feels too granular.
+- Affected file/skill/plugin: `.agents/SKILL_CONSOLIDATION_REVIEW.md`, `.agents/SKILL_CREATION_STATUS.md`
+- Urgency: Low
+- Requires François approval: Yes before deleting or merging any existing skill.
+
+## 2026-05-28 - Google Sheets Tracker Access Updated
+
+- Task: Re-check Google Drive/Sheets connector access to the participant tracker.
+- What happened: Metadata access now works for spreadsheet `16VXP5YBeCo9yiTCfAWUsbVQvQbR5FHT48KLSihDLF50`.
+- Issue found: Old docs still said Codex lacked permission.
+- Proposed improvement: Update participant context, current state, and open questions to remove the old access blocker while preserving private-row caution.
+- Affected file/skill/plugin: `05_PARTICIPANTS_LOCAL_ONLY/participant_context_private.md`, `00_START_HERE/00_START_HERE/KGT_CURRENT_STATE.md`, `00_START_HERE/00_START_HERE/open_questions.md`
+- Urgency: Medium
+- Requires François approval: No; reflects verified access metadata.
+
 ## Template
 
 - Date:

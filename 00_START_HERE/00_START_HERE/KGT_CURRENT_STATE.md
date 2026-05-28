@@ -2,7 +2,7 @@
 
 Daily working memory for Korea Grand Tour. Keep this short. Full archive/source of truth: `codex_handoff_internal.md`.
 
-Last updated: 2026-05-27
+Last updated: 2026-05-28
 
 ## Confirmed Project Facts
 
@@ -63,7 +63,7 @@ Last updated: 2026-05-27
 - 5 agreements signed
 - 1 car photo received
 
-Participant tracker source of truth: Google Sheet `16VXP5YBeCo9yiTCfAWUsbVQvQbR5FHT48KLSihDLF50`. Connected Google Drive account needs permission before Codex can inspect or write.
+Participant tracker source of truth: Google Sheet `16VXP5YBeCo9yiTCfAWUsbVQvQbR5FHT48KLSihDLF50`. Google Drive/Sheets metadata and header-row access works as of May 28, 2026; tabs visible: `Form Responses 1` and `Deposit`.
 
 Do not add private names, phone numbers, emails, plates, insurance files, agreement PDFs, payment proof, or private conversations here.
 
