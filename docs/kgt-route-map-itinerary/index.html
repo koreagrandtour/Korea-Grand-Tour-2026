@@ -1,41 +1,1063 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>KGT 2026 Route Map Itinerary</title>
-<style>
-:root{--ink:#16211d;--muted:#65726d;--line:#d8e1dc;--paper:#f7f4ec;--panel:#fffdf7;--d1:#bc3d2a;--d2:#1f7a62;--d3:#395aa8;--d4:#c48a1d;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--paper)}a{color:inherit}.shell{min-height:100vh;display:grid;grid-template-columns:minmax(360px,46vw) minmax(420px,1fr)}.left{padding:30px;border-right:1px solid var(--line);background:var(--panel);overflow:auto;max-height:100vh}.right{position:sticky;top:0;height:100vh;padding:24px;display:flex;flex-direction:column;gap:14px}.label{display:inline-flex;align-items:center;min-height:26px;padding:0 10px;border:1px solid #cc4232;color:#9f2e23;background:#fff1ed;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}h1{margin:14px 0 8px;font-size:clamp(34px,5vw,58px);line-height:.94}.intro{margin:0 0 18px;max-width:58ch;color:var(--muted);font-size:16px;line-height:1.55}.warning{margin:18px 0 20px;padding:14px 16px;border:1px solid #e4c668;background:#fff7d6;font-size:14px;line-height:1.45}.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:20px 0}button{appearance:none;border:1px solid var(--line);background:#fff;color:var(--ink);min-height:42px;padding:8px 10px;font:inherit;font-size:13px;font-weight:800;cursor:pointer}button.active{color:#fff;border-color:transparent}button[data-day="1"].active{background:var(--d1)}button[data-day="2"].active{background:var(--d2)}button[data-day="3"].active{background:var(--d3)}button[data-day="4"].active{background:var(--d4)}.story{margin:6px 0 18px;padding:16px;border:1px solid var(--line);background:#f9fbf7}.story h2{margin:0 0 6px;font-size:22px}.story p{margin:0;color:var(--muted);line-height:1.45}.summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:14px}.metric{border:1px solid var(--line);background:#fff;padding:9px 10px}.metric span{display:block;color:var(--muted);font-size:10px;font-weight:850;text-transform:uppercase}.metric strong{display:block;margin-top:2px;font-size:18px}.legs{margin:12px 0 0;padding:0;display:grid;gap:6px;list-style:none;color:#3f4b47;font-size:12px;line-height:1.35}.legs li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;border-top:1px solid var(--line);padding-top:6px}.legs b{font-size:11px;white-space:nowrap}.cards{display:grid;gap:14px}.card{border:1px solid var(--line);background:#fff;padding:14px}.card h3{margin:0 0 2px;font-size:18px}.ko{margin:0 0 10px;color:var(--muted);font-size:13px}.chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}.chip{padding:5px 8px;border:1px solid var(--line);background:#f6f8f4;color:#43504b;font-size:11px;font-weight:800;text-transform:uppercase}.notes{margin:10px 0;color:#3f4b47;font-size:13px;line-height:1.45}.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.link{display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:0 10px;border:1px solid var(--ink);text-decoration:none;font-size:12px;font-weight:850}.link.primary{background:#fee500;border-color:#d6bd00;color:#241f00}.map-panel{position:relative;flex:1;min-height:560px;border:1px solid var(--line);background:linear-gradient(90deg,rgba(22,33,29,.045) 1px,transparent 1px),linear-gradient(0deg,rgba(22,33,29,.045) 1px,transparent 1px),radial-gradient(circle at 58% 26%,#e0ecd9 0 11%,transparent 11.3%),radial-gradient(circle at 47% 60%,#dbe9e6 0 14%,transparent 14.4%),#eef2eb;background-size:44px 44px,44px 44px,100% 100%,100% 100%,100% 100%;overflow:hidden}svg{position:absolute;inset:0;width:100%;height:100%}.map-title{position:absolute;top:18px;left:18px;right:18px;display:flex;justify-content:space-between;gap:12px;align-items:start;z-index:3;pointer-events:none}.map-title strong{display:block;font-size:15px}.map-title span{display:block;margin-top:3px;color:var(--muted);font-size:12px}.legend{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;font-size:11px;font-weight:800;text-transform:uppercase}.legend i{display:inline-block;width:18px;height:3px;margin-right:5px;vertical-align:3px}.marker{position:absolute;z-index:4;width:28px;height:28px;transform:translate(-50%,-50%);border-radius:50%;display:grid;place-items:center;color:#fff;font-size:12px;font-weight:900;border:2px solid #fff;box-shadow:0 6px 16px rgba(0,0,0,.24);text-decoration:none}.marker.dim{opacity:.34}.map-note,.share-note{padding:12px 14px;border:1px solid var(--line);background:#fff;color:var(--muted);font-size:12px;line-height:1.4}@media(max-width:980px){.shell{display:block}.left{max-height:none;border-right:0;border-bottom:1px solid var(--line);padding:20px}.right{position:relative;height:auto;min-height:620px;padding:18px}}@media(max-width:640px){.tabs{grid-template-columns:repeat(2,1fr)}.summary{grid-template-columns:1fr}.map-panel{min-height:480px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KGT 2026 Private Mapped Itinerary</title>
+  <style>
+    :root {
+      --ink: #16211d;
+      --muted: #65726d;
+      --line: #d8e1dc;
+      --paper: #f7f4ec;
+      --panel: #fffdf7;
+      --soft: #e9efe8;
+      --day1: #bc3d2a;
+      --day2: #1f7a62;
+      --day3: #395aa8;
+      --day4: #c48a1d;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    a { color: inherit; }
+
+    .shell {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: minmax(360px, 46vw) minmax(420px, 1fr);
+    }
+
+    .left {
+      padding: 30px;
+      border-right: 1px solid var(--line);
+      background: var(--panel);
+      overflow: auto;
+      max-height: 100vh;
+    }
+
+    .right {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 26px;
+      padding: 0 10px;
+      border: 1px solid #cc4232;
+      color: #9f2e23;
+      background: #fff1ed;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 14px 0 8px;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: .94;
+      letter-spacing: 0;
+    }
+
+    .intro {
+      margin: 0 0 18px;
+      max-width: 58ch;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .warning {
+      margin: 18px 0 20px;
+      padding: 14px 16px;
+      border: 1px solid #e4c668;
+      background: #fff7d6;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin: 20px 0;
+    }
+
+    button {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      color: var(--ink);
+      min-height: 42px;
+      padding: 8px 10px;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    button.active {
+      color: white;
+      border-color: transparent;
+    }
+
+    button[data-day="1"].active { background: var(--day1); }
+    button[data-day="2"].active { background: var(--day2); }
+    button[data-day="3"].active { background: var(--day3); }
+    button[data-day="4"].active { background: var(--day4); }
+
+    .story {
+      margin: 6px 0 18px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      background: #f9fbf7;
+    }
+
+    .story h2 {
+      margin: 0 0 6px;
+      font-size: 22px;
+      letter-spacing: 0;
+    }
+
+    .story p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .kakao-summary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      background: #ffffff;
+      padding: 9px 10px;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 2px;
+      font-size: 18px;
+      line-height: 1.1;
+    }
+
+    .leg-list {
+      margin: 12px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 6px;
+      list-style: none;
+      color: #3f4b47;
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .leg-list li {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      border-top: 1px solid var(--line);
+      padding-top: 6px;
+    }
+
+    .leg-list b {
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .cards {
+      display: grid;
+      gap: 14px;
+    }
+
+    .card {
+      display: grid;
+      grid-template-columns: 154px minmax(0, 1fr);
+      border: 1px solid var(--line);
+      background: #ffffff;
+      overflow: hidden;
+    }
+
+    .photo {
+      position: relative;
+      min-height: 174px;
+      background: #dfe7e1;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .fallback-copy {
+      position: absolute;
+      inset: 0;
+      display: none;
+      place-items: center;
+      padding: 18px;
+      text-align: center;
+      color: #ffffff;
+      background: linear-gradient(135deg, rgba(22,33,29,.78), rgba(31,122,98,.62));
+      font-weight: 850;
+      line-height: 1.25;
+    }
+
+    .photo.image-missing .fallback-copy {
+      display: grid;
+    }
+
+    .seq {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: white;
+      font-size: 13px;
+      font-weight: 900;
+      box-shadow: 0 5px 14px rgba(0,0,0,.2);
+    }
+
+    .card-body {
+      padding: 14px;
+      min-width: 0;
+    }
+
+    .card h3 {
+      margin: 0 0 2px;
+      font-size: 18px;
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    .ko {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 10px 0;
+    }
+
+    .chip {
+      padding: 5px 8px;
+      border: 1px solid var(--line);
+      background: #f6f8f4;
+      color: #43504b;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .notes {
+      margin: 10px 0;
+      color: #3f4b47;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 32px;
+      padding: 0 10px;
+      border: 1px solid var(--ink);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .link.primary {
+      background: #fee500;
+      border-color: #d6bd00;
+      color: #241f00;
+    }
+
+    .source {
+      border-color: var(--line);
+      color: var(--muted);
+    }
+
+    .map-panel {
+      position: relative;
+      flex: .82;
+      min-height: 430px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(22,33,29,.045) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(22,33,29,.045) 1px, transparent 1px),
+        radial-gradient(circle at 58% 26%, #e0ecd9 0 11%, transparent 11.3%),
+        radial-gradient(circle at 47% 60%, #dbe9e6 0 14%, transparent 14.4%),
+        #eef2eb;
+      background-size: 44px 44px, 44px 44px, 100% 100%, 100% 100%, 100% 100%;
+      overflow: hidden;
+    }
+
+    .kakao-live-card {
+      border: 1px solid var(--line);
+      background: #ffffff;
+      padding: 10px;
+    }
+
+    .kakao-live-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .kakao-live-head strong {
+      font-size: 14px;
+    }
+
+    .kakao-live-head span {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.35;
+      text-align: right;
+    }
+
+    .kakao-map {
+      height: 300px;
+      border: 1px solid var(--line);
+      background: #edf1ea;
+    }
+
+    .kakao-map-status {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .map-title {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      right: 18px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .map-title strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .map-title span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .legend i {
+      display: inline-block;
+      width: 18px;
+      height: 3px;
+      margin-right: 5px;
+      vertical-align: 3px;
+    }
+
+    .marker {
+      position: absolute;
+      z-index: 4;
+      width: 28px;
+      height: 28px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 12px;
+      font-weight: 900;
+      border: 2px solid white;
+      box-shadow: 0 6px 16px rgba(0,0,0,.24);
+      text-decoration: none;
+    }
+
+    .marker.optional {
+      background-image: repeating-linear-gradient(45deg, rgba(255,255,255,.28) 0 4px, transparent 4px 8px);
+    }
+
+    .marker.dim {
+      opacity: .34;
+    }
+
+    .map-note {
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .route-image-card {
+      border: 1px solid var(--line);
+      background: #ffffff;
+      padding: 10px;
+    }
+
+    .route-image-card img {
+      display: block;
+      width: 100%;
+      max-height: 38vh;
+      object-fit: contain;
+      background: #edf1ea;
+    }
+
+    .route-image-card p {
+      margin: 8px 2px 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    @media (max-width: 980px) {
+      .shell { display: block; }
+      .left {
+        max-height: none;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+        padding: 20px;
+      }
+      .right {
+        position: relative;
+        height: auto;
+        min-height: 620px;
+        padding: 18px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .tabs { grid-template-columns: repeat(2, 1fr); }
+      .card { grid-template-columns: 1fr; }
+      .photo { min-height: 220px; }
+      .right { min-height: 560px; }
+      .map-panel { min-height: 430px; }
+      .kakao-summary { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-<main class="shell"><section class="left"><span class="label">Private Internal Route Draft</span><h1>KGT 2026 Mapped Itinerary</h1><p class="intro">Share-safe planning board for the inland-first Korea Grand Tour route. Uses official Kakao arrival/place links; no local API, Kakao SDK, or Naver dependency.</p><div class="warning"><strong>Validation warning:</strong> Kakao distances and durations use checkpoint routing estimates. Exact roads, parking lots, closures, hotels, restaurants, and convoy flow still require final map checks and direct calls.</div><nav class="tabs" aria-label="Day selector"><button class="active" data-day="1">Day 1<br>Seoul → Jeonju</button><button data-day="2">Day 2<br>Jeonju → Ulsan</button><button data-day="3">Day 3<br>Ulsan → Inje</button><button data-day="4">Day 4<br>Inje → Yangyang</button></nav><div class="story" id="story"></div><div class="cards" id="cards"></div></section><section class="right" aria-label="Route map"><div class="share-note"><strong>Share-safe version.</strong> The checkpoint overlay and official Kakao links work from static hosting. Live Kakao tiles are intentionally disabled to avoid key/domain restrictions.</div><div class="map-panel" id="map"><div class="map-title"><div><strong>Route Shape</strong><span>Planning overlay with Kakao arrival links</span></div><div class="legend"><span><i style="background:var(--d1)"></i>D1</span><span><i style="background:var(--d2)"></i>D2</span><span><i style="background:var(--d3)"></i>D3</span><span><i style="background:var(--d4)"></i>D4</span></div></div><svg id="routeSvg" role="img" aria-label="Simplified Korea Grand Tour route lines"></svg></div><div class="map-note">Markers open Kakao arrival links in a new tab. Overlay lines show route story, not final roadbook navigation.</div></section></main>
-<script>
-const days={1:{title:'Day 1 - Inland Baekje Opening',story:'Leave Seoul, reset in inland Gongju, continue the Baekje story through Buyeo, then arrive in Jeonju.',color:'#bc3d2a'},2:{title:'Day 2 - Winding Roads, Bamboo, Cheongdo',story:'Use the roads east of Jeonju, cross Wanju/Jinan/Yongdamho, drop into Damyang, then lock Cheongdo/Daegu before Ulsan.',color:'#1f7a62'},3:{title:'Day 3 - Ulsan Back To Deep Inland',story:'Leave Ulsan quickly after the industrial/heritage frame, then climb through Cheongsong, Taebaek, Jeongseon, and into Inje.',color:'#395aa8'},4:{title:'Day 4 - Speed, River, Coast',story:'Track-day adrenaline, Gangwon river roads, mountain-to-sea transition, and an emotional Yangyang finish.',color:'#c48a1d'}};
-const totals={1:{km:243.2,time:'3h 07m',legs:3},2:{km:528.8,time:'8h 25m',legs:6},3:{km:453.8,time:'7h 03m',legs:4},4:{km:81.2,time:'1h 24m',legs:2}};
-const legs=[['1','Seoul City Hall','Gongju Gongsanseong',136.7,'1h 32m'],['1','Gongju Gongsanseong','Buyeo Gungnamji',33.0,'0h 35m'],['1','Buyeo Gungnamji','Jeonju Lahan Hotel',73.5,'1h 00m'],['2','Jeonju Lahan Hotel','Wanju Wibong Falls',25.3,'0h 42m'],['2','Wanju Wibong Falls','Yongdamho / Maisan',41.6,'0h 57m'],['2','Yongdamho / Maisan','Damyang Juknokwon',123.5,'1h 51m'],['2','Damyang Juknokwon','Daegu Palgongsan',211.8,'2h 32m'],['2','Daegu Palgongsan','Cheongdo Unmunsa',75.8,'1h 25m'],['2','Cheongdo Unmunsa','Ulsan Lotte Hotel',50.8,'0h 58m'],['3','Ulsan Lotte Hotel','Cheongsong Songso Gotaek',161.2,'1h 56m'],['3','Cheongsong Songso Gotaek','Taebaek Station',118.5,'2h 02m'],['3','Taebaek Station','Jeongseon Arirang Market',49.5,'0h 57m'],['3','Jeongseon Arirang Market','Inje Speedium',124.6,'2h 08m'],['4','Inje Speedium','Baekdam Valley',44.1,'0h 44m'],['4','Baekdam Valley','Naksan Beach',37.1,'0h 40m']];
-const stops=[
-{d:1,s:1,en:'Seoul Departure',ko:'서울 출발',place:'서울특별시청',url:'http://place.map.kakao.com/8430129',lat:37.566824,lng:126.978652,type:'Rest/logistics',hidden:'obvious',park:'needs call',status:'private',notes:'Clean start, briefing, first convoy discipline. Exact departure lot remains private.'},
-{d:1,s:2,en:'Gongju Inland Baekje Stop',ko:'공주 내륙 백제 스톱',place:'공산성',url:'http://place.map.kakao.com/11377223',lat:36.463241,lng:127.126297,type:'Visit / short stop',hidden:'local-known',park:'needs check',status:'reveal-later',notes:'Inland, historic, and connects naturally into Buyeo.'},
-{d:1,s:3,en:'Buyeo Baekje Heritage / Lotus',ko:'부여 백제 유산 / 연꽃',place:'궁남지',url:'http://place.map.kakao.com/8196486',lat:36.269630,lng:126.912313,type:'Visit',hidden:'local-known',park:'needs call',status:'reveal-later',notes:'Primary Baekje cultural and lotus-food anchor.'},
-{d:1,s:4,en:'Seongheungsanseong Viewpoint',ko:'성흥산성 전망 스톱',place:'부여 가림성',url:'http://place.map.kakao.com/1696392355',lat:36.197690,lng:126.899638,type:'Short stop / photo',hidden:'niche',park:'risky',status:'reveal-later',notes:'Conditional fortress/viewpoint stop; parking and walk time need checking.',optional:true},
-{d:1,s:5,en:'Jeonju Lahan / Hanok Area Arrival',ko:'전주 라한호텔 / 한옥마을권',place:'라한호텔 전주',url:'http://place.map.kakao.com/1627212089',lat:35.817032,lng:127.154066,type:'Rest/logistics',hidden:'obvious',park:'needs call',status:'private',notes:'Premium cultural-position hotel candidate. Parking call required.'},
-{d:1,s:6,en:'Seohakdong / Hanbyeokdang Night Texture',ko:'서학동 / 한벽당',place:'한벽당',url:'http://place.map.kakao.com/8131389',lat:35.811929,lng:127.160832,type:'Food/activity',hidden:'niche-local',park:'risky',status:'private',notes:'Moves Jeonju beyond generic Hanok Village.'},
-{d:2,s:1,en:'Wanju / Jinan East-Of-Jeonju Roads',ko:'완주 / 진안 전주 동쪽 와인딩',place:'위봉폭포',url:'http://place.map.kakao.com/26979507',lat:35.909640,lng:127.262007,type:'Drive moment',hidden:'niche',park:'needs check',status:'private',notes:'Locks the winding-road character east of Jeonju.'},
-{d:2,s:2,en:'Yongdamho / Maisan Highland Frame',ko:'용담호 / 마이산 하이랜드',place:'용담호',url:'http://place.map.kakao.com/15146571',lat:35.881145,lng:127.472235,type:'Drive / viewpoint',hidden:'niche',park:'needs check',status:'private',notes:'Lake-road and highland scenery before Damyang.'},
-{d:2,s:3,en:'Damyang Bamboo / Hidden Garden',ko:'담양 죽녹원 / 소쇄원 방향',place:'죽녹원',url:'http://place.map.kakao.com/8070994',lat:35.327837,lng:126.985931,type:'Visit',hidden:'obvious-local plus niche option',park:'needs check',status:'reveal-later',notes:'Confirmed bamboo direction; Soswaewon/Myeongokheon remain timing choices.'},
-{d:2,s:4,en:'Daegu Palgongsan Inland Climb',ko:'대구 팔공산 내륙 클라임',place:'팔공산케이블카',url:'http://place.map.kakao.com/315072668',lat:35.990886,lng:128.694834,type:'Drive / cafe stop',hidden:'local-known',park:'needs call',status:'reveal-later',notes:'Routable Daegu/Palgongsan point before Cheongdo.'},
-{d:2,s:5,en:'Cheongdo Unmunsa / Fruit Road',ko:'청도 운문사 / 복숭아 로드',place:'운문사',url:'http://place.map.kakao.com/8031932',lat:35.661253,lng:128.960304,type:'Activity / drive moment',hidden:'niche',park:'needs call',status:'reveal-later',notes:'Locked Cheongdo moment: temple/valley road and fruit/cafe direction.'},
-{d:2,s:6,en:'Ulsan Hotel Arrival',ko:'울산 호텔 도착',place:'롯데호텔 울산',url:'http://place.map.kakao.com/8352252',lat:35.538792,lng:129.338049,type:'Rest/logistics',hidden:'obvious',park:'needs call',status:'private',notes:'Premium/practical Ulsan base. Parking and room block require call.'},
-{d:3,s:1,en:'Ulsan Industrial / Bangudae Frame',ko:'울산 산업 / 반구대 프레임',place:'울산 대곡리반구대암각화',url:'http://place.map.kakao.com/11816400',lat:35.603795,lng:129.177921,type:'Visit',hidden:'premium-hidden',park:'needs check',status:'reveal-later',notes:'Ulsan industrial identity plus prehistoric heritage frame.'},
-{d:3,s:2,en:'Cheongsong Inland Stop',ko:'청송 내륙 스톱',place:'송소고택',url:'http://place.map.kakao.com/27149596',lat:36.436239,lng:129.026406,type:'Visit / short stop',hidden:'premium-hidden',park:'needs check',status:'reveal-later',notes:'Inland city stop after Ulsan; old-house culture and mountain mood.'},
-{d:3,s:3,en:'Taebaek Mountain City',ko:'태백 산악 도시',place:'태백역',url:'http://place.map.kakao.com/8110640',lat:37.176145,lng:128.984161,type:'Drive / short stop',hidden:'niche',park:'needs check',status:'private',notes:'Mountain-city waypoint; Manhangjae/Hambaeksan only if safe.'},
-{d:3,s:4,en:'Jeongseon High-Mountain Road',ko:'정선 하이마운틴 로드',place:'정선아리랑시장',url:'http://place.map.kakao.com/26884701',lat:37.380388,lng:128.665217,type:'Drive moment',hidden:'niche',park:'needs check',status:'private',notes:'Logical mountain stop between Taebaek and Inje.'},
-{d:3,s:5,en:'Inje Speedium Hotel / Condo',ko:'인제스피디움 호텔 / 콘도',place:'인제스피디움 피트니스클럽',url:'http://place.map.kakao.com/19883903',lat:38.001099,lng:128.295069,type:'Rest/logistics',hidden:'local-known',park:'needs call',status:'private',notes:'Sleep at the track venue so Day 4 starts controlled.'},
-{d:4,s:1,en:'Inje Speedium Track Morning',ko:'인제스피디움 트랙데이',place:'인제스피디움 서킷',url:'http://place.map.kakao.com/842573258',lat:38.002693,lng:128.295310,type:'Activity',hidden:'local-known',park:'OK pending contract',status:'reveal-later',notes:'Hero activity of the route.'},
-{d:4,s:2,en:'Yongdae Hwangtae / Tofu Lunch',ko:'용대리 황태 / 두부 점심',place:'황태마을',url:'http://place.map.kakao.com/463116643',lat:38.235530,lng:128.361072,type:'Food moment',hidden:'local-known',park:'needs call',status:'private',notes:'Strong Gangwon food identity after track session.'},
-{d:4,s:3,en:'Baekdam / Naerincheon Valley Water',ko:'백담 / 내린천 계곡 물놀이',place:'백담계곡',url:'http://place.map.kakao.com/7892471',lat:38.179295,lng:128.370538,type:'Drive moment',hidden:'niche',park:'needs check',status:'private',notes:'Water/valley recovery after Speedium.'},
-{d:4,s:4,en:'Baekdamsa Quiet Nature Option',ko:'백담사 선택지',place:'백담사',url:'http://place.map.kakao.com/11065471',lat:38.164963,lng:128.373793,type:'Visit / short stop',hidden:'local-known',park:'risky',status:'reveal-later',notes:'Use only if shuttle, heat, and time work.',optional:true},
-{d:4,s:5,en:'Yangyang Coast Finish',ko:'양양 해변 피니시',place:'낙산해수욕장',url:'http://place.map.kakao.com/8229967',lat:38.115871,lng:128.635756,type:'Short stop / finish',hidden:'local-known',park:'needs call',status:'reveal-later',notes:'Mountain-to-sea emotional closure.'}
-];
-const bounds={minLat:35.08,maxLat:38.34,minLng:126.72,maxLng:129.52},storyEl=document.getElementById('story'),cardsEl=document.getElementById('cards'),mapEl=document.getElementById('map'),svgEl=document.getElementById('routeSvg');let activeDay=1;function project(st){return{x:((st.lng-bounds.minLng)/(bounds.maxLng-bounds.minLng))*86+7,y:(1-((st.lat-bounds.minLat)/(bounds.maxLat-bounds.minLat)))*82+9}}function dayStops(day){return stops.filter(st=>st.d===Number(day))}function kakaoArrivalUrl(st){return `https://map.kakao.com/link/to/${encodeURIComponent(st.place)},${st.lat},${st.lng}`}function renderStory(day){const t=totals[day],ls=legs.filter(l=>Number(l[0])===Number(day));storyEl.innerHTML=`<h2>${days[day].title}</h2><p>${days[day].story}</p><div class="summary"><div class="metric"><span>Kakao distance</span><strong>${t.km} km</strong></div><div class="metric"><span>Kakao drive time</span><strong>${t.time}</strong></div><div class="metric"><span>Route legs</span><strong>${t.legs}</strong></div></div><ul class="legs">${ls.map(l=>`<li><span>${l[1]} → ${l[2]}</span><b>${l[3]} km · ${l[4]}</b></li>`).join('')}</ul><p class="notes">Source: Kakao Navi Directions, priority=RECOMMEND. These are checkpoint-to-checkpoint estimates, not final convoy roadbook timings.</p>`}function renderCards(day){cardsEl.innerHTML=dayStops(day).map(st=>`<article class="card"><h3>${st.en}</h3><p class="ko">${st.ko}</p><div class="chips"><span class="chip">Kakao: ${st.place}</span><span class="chip">${st.type}</span><span class="chip">${st.hidden}</span><span class="chip">Parking: ${st.park}</span><span class="chip">${st.status}</span>${st.optional?'<span class="chip">Conditional</span>':''}</div><p class="notes">${st.notes}</p><div class="links"><a class="link primary" href="${kakaoArrivalUrl(st)}" target="_blank" rel="noreferrer">Set as Kakao Arrival</a><a class="link" href="${st.url}" target="_blank" rel="noreferrer">Open Kakao Place</a></div></article>`).join('')}function linePath(arr){return arr.map((st,i)=>{const p=project(st);return`${i?'L':'M'} ${p.x} ${p.y}`}).join(' ')}function renderMap(){svgEl.innerHTML='';document.querySelectorAll('.marker').forEach(m=>m.remove());Object.keys(days).forEach(day=>{const committed=dayStops(day).filter(st=>!st.optional),path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d',linePath(committed));path.setAttribute('fill','none');path.setAttribute('stroke',days[day].color);path.setAttribute('stroke-width',day==activeDay?'1.55':'.95');path.setAttribute('stroke-linecap','round');path.setAttribute('stroke-linejoin','round');path.setAttribute('vector-effect','non-scaling-stroke');path.setAttribute('opacity',day==activeDay?'1':'.28');svgEl.appendChild(path)});stops.forEach(st=>{const p=project(st),m=document.createElement('a');m.className=`marker${st.d==activeDay?'':' dim'}`;m.href=kakaoArrivalUrl(st);m.target='_blank';m.rel='noreferrer';m.title=`${st.en} - set as Kakao arrival`;m.textContent=st.s;m.style.left=`${p.x}%`;m.style.top=`${p.y}%`;m.style.backgroundColor=days[st.d].color;mapEl.appendChild(m)})}function setDay(day){activeDay=Number(day);document.querySelectorAll('button[data-day]').forEach(b=>b.classList.toggle('active',Number(b.dataset.day)===activeDay));renderStory(activeDay);renderCards(activeDay);renderMap()}document.querySelectorAll('button[data-day]').forEach(b=>b.addEventListener('click',()=>setDay(b.dataset.day)));setDay(1);
-</script></body></html>
+  <main class="shell">
+    <section class="left">
+      <span class="label">Private Internal Route Draft</span>
+      <h1>KGT 2026 Mapped Itinerary</h1>
+      <p class="intro">A visual planning board for the Hidden Premium route. Kakao route estimates support distance and duration checks; Kakao links support live place checks.</p>
+      <div class="warning"><strong>Validation warning:</strong> Kakao distances and durations use checkpoint coordinates with RECOMMEND routing. Exact roads, parking lots, closures, hotel blocks, restaurant capacity, and convoy arrival/departure flows still require final map checks and direct calls before roadbook release.</div>
+      <nav class="tabs" aria-label="Day selector">
+        <button class="active" data-day="1">Day 1<br>Seoul → Jeonju</button>
+        <button data-day="2">Day 2<br>Jeonju → Ulsan</button>
+        <button data-day="3">Day 3<br>Ulsan → Inje</button>
+        <button data-day="4">Day 4<br>Inje → Yangyang</button>
+      </nav>
+      <div class="story" id="story"></div>
+      <div class="cards" id="cards"></div>
+    </section>
+    <section class="right" aria-label="Route map">
+      <div class="route-image-card">
+        <img src="kgt-2026-revised-inland-map.png" alt="Korea Grand Tour 2026 revised inland-first route map preview">
+        <p>Generated planning image: Gongju replaces Asan; Cheongdo/Daegu is locked; Day 3 returns inland through Cheongsong, Taebaek, Jeongseon, and Inje.</p>
+      </div>
+      <div class="kakao-live-card">
+        <div class="kakao-live-head">
+          <strong>Kakao Checkpoint Map</strong>
+          <span>Loaded from local KGT map bridge when available</span>
+        </div>
+        <div id="kakaoMap" class="kakao-map" role="img" aria-label="Live Kakao checkpoint map"></div>
+        <p id="kakaoMapStatus" class="kakao-map-status">Loading Kakao map bridge...</p>
+      </div>
+      <div class="map-panel" id="map">
+        <div class="map-title">
+          <div>
+            <strong>Route Shape</strong>
+            <span>Planning overlay with Kakao place links</span>
+          </div>
+          <div class="legend">
+            <span><i style="background:var(--day1)"></i>D1</span>
+            <span><i style="background:var(--day2)"></i>D2</span>
+            <span><i style="background:var(--day3)"></i>D3</span>
+            <span><i style="background:var(--day4)"></i>D4</span>
+          </div>
+        </div>
+        <svg id="routeSvg" role="img" aria-label="Simplified Korea Grand Tour route lines"></svg>
+      </div>
+      <div class="map-note">Markers open map searches in a new tab. Route metrics are live Kakao Navi checkpoint estimates; overlay lines are still planning geometry, not final roadbook navigation.</div>
+    </section>
+  </main>
+
+  <script>
+    const days = {
+      1: {
+        title: "Day 1 - Inland Baekje Opening",
+        story: "Leave Seoul, reset in inland Gongju, continue the Baekje story through Buyeo, then arrive in Jeonju for the first Jeolla night.",
+        color: "#bc3d2a"
+      },
+      2: {
+        title: "Day 2 - Winding Roads, Bamboo, Cheongdo",
+        story: "Use the roads east of Jeonju, cross Wanju/Jinan/Yongdamho, drop into Damyang, then lock Cheongdo/Daegu before Ulsan.",
+        color: "#1f7a62"
+      },
+      3: {
+        title: "Day 3 - Ulsan Back To Deep Inland",
+        story: "Leave Ulsan quickly after the industrial/heritage frame, then climb through Cheongsong, Taebaek, Jeongseon, and into Inje.",
+        color: "#395aa8"
+      },
+      4: {
+        title: "Day 4 - Speed, River, Coast",
+        story: "Track-day adrenaline, Gangwon river roads, mountain-to-sea transition, and an emotional Yangyang finish.",
+        color: "#c48a1d"
+      }
+    };
+
+    const routeMetrics = {
+      source: "Kakao Navi Directions, priority=RECOMMEND",
+      retrievedAt: "2026-05-30 23:57 KST",
+      totals: {
+        1: { distanceKm: 243.2, durationText: "3h 07m", legCount: 3 },
+        2: { distanceKm: 528.8, durationText: "8h 25m", legCount: 6 },
+        3: { distanceKm: 453.8, durationText: "7h 03m", legCount: 4 },
+        4: { distanceKm: 81.2, durationText: "1h 24m", legCount: 2 }
+      },
+      legs: [
+        { day: 1, from: "Seoul City Hall", to: "Gongju Gongsanseong", distanceKm: 136.7, durationText: "1h 32m" },
+        { day: 1, from: "Gongju Gongsanseong", to: "Buyeo Gungnamji", distanceKm: 33.0, durationText: "0h 35m" },
+        { day: 1, from: "Buyeo Gungnamji", to: "Jeonju Lahan Hotel", distanceKm: 73.5, durationText: "1h 00m" },
+        { day: 2, from: "Jeonju Lahan Hotel", to: "Wanju Wibong Falls", distanceKm: 25.3, durationText: "0h 42m" },
+        { day: 2, from: "Wanju Wibong Falls", to: "Yongdamho / Maisan", distanceKm: 41.6, durationText: "0h 57m" },
+        { day: 2, from: "Yongdamho / Maisan", to: "Damyang Juknokwon", distanceKm: 123.5, durationText: "1h 51m" },
+        { day: 2, from: "Damyang Juknokwon", to: "Daegu Palgongsan", distanceKm: 211.8, durationText: "2h 32m" },
+        { day: 2, from: "Daegu Palgongsan", to: "Cheongdo Unmunsa", distanceKm: 75.8, durationText: "1h 25m" },
+        { day: 2, from: "Cheongdo Unmunsa", to: "Ulsan Lotte Hotel", distanceKm: 50.8, durationText: "0h 58m" },
+        { day: 3, from: "Ulsan Lotte Hotel", to: "Cheongsong Songso Gotaek", distanceKm: 161.2, durationText: "1h 56m" },
+        { day: 3, from: "Cheongsong Songso Gotaek", to: "Taebaek Station", distanceKm: 118.5, durationText: "2h 02m" },
+        { day: 3, from: "Taebaek Station", to: "Jeongseon Arirang Market", distanceKm: 49.5, durationText: "0h 57m" },
+        { day: 3, from: "Jeongseon Arirang Market", to: "Inje Speedium", distanceKm: 124.6, durationText: "2h 08m" },
+        { day: 4, from: "Inje Speedium", to: "Baekdam Valley", distanceKm: 44.1, durationText: "0h 44m" },
+        { day: 4, from: "Baekdam Valley", to: "Naksan Beach", distanceKm: 37.1, durationText: "0h 40m" }
+      ]
+    };
+
+    const stops = [
+      {
+        day: 1, sequence: 1, name_en: "Seoul Departure", name_ko: "서울 출발",
+        lat: 37.566824, lng: 126.978652, stop_type: "Rest/logistics", hiddenness: "obvious",
+        convoy_feasibility: "needs final lot", parking_status: "needs call", public_status: "private",
+        kakao_place_name: "서울특별시청", kakao_place_url: "http://place.map.kakao.com/8430129",
+        image_url: "../../2026_lineup/phase_1/Line%20up%20phase%201.png",
+        image_credit: "KGT local reference image", source_url: "../../2026_lineup/phase_1/Line%20up%20phase%201.png",
+        notes: "Clean start, briefing, first convoy discipline. Exact departure lot remains private."
+      },
+      {
+        day: 1, sequence: 2, name_en: "Gongju Inland Baekje Stop", name_ko: "공주 내륙 백제 스톱",
+        lat: 36.463241, lng: 127.126297, stop_type: "Visit / short stop", hiddenness: "local-known",
+        convoy_feasibility: "needs map check", parking_status: "needs check", public_status: "reveal-later",
+        kakao_place_name: "공산성", kakao_place_url: "http://place.map.kakao.com/11377223",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/5/57/Gongsanseong_Fortress_01.jpg",
+        image_credit: "Wikimedia Commons reference image", source_url: "https://commons.wikimedia.org/wiki/Category:Gongsanseong",
+        notes: "Replaces Asan. Inland, historic, and connects naturally into Buyeo rather than feeling like a random countryside reset."
+      },
+      {
+        day: 1, sequence: 3, name_en: "Buyeo Baekje Heritage / Lotus", name_ko: "부여 백제 유산 / 연꽃",
+        lat: 36.269630, lng: 126.912313, stop_type: "Visit", hiddenness: "local-known",
+        convoy_feasibility: "needs map check", parking_status: "needs call", public_status: "reveal-later",
+        kakao_place_name: "궁남지", kakao_place_url: "http://place.map.kakao.com/8196486",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/9/91/Busosanseong_016.jpg",
+        image_credit: "Wikimedia Commons reference image", source_url: "https://commons.wikimedia.org/wiki/Category:Busosanseong",
+        notes: "Primary Baekje cultural and lotus-food anchor. Use Busosanseong/Gungnamji/Naseong logic depending on parking and timing."
+      },
+      {
+        day: 1, sequence: 4, name_en: "Seongheungsanseong Viewpoint", name_ko: "성흥산성 전망 스톱",
+        lat: 36.197690, lng: 126.899638, stop_type: "Short stop / photo", hiddenness: "niche",
+        convoy_feasibility: "risky", parking_status: "risky", public_status: "reveal-later",
+        kakao_place_name: "부여 가림성", kakao_place_url: "http://place.map.kakao.com/1696392355",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/9/91/Busosanseong_016.jpg",
+        image_credit: "Baekje fortress reference image", source_url: "https://ko.wikipedia.org/wiki/%EC%84%B1%ED%9D%A5%EC%82%B0%EC%84%B1",
+        notes: "Emotional fortress/viewpoint stop. Conditional because parking and walk time may not fit 25 cars.",
+        optional: true
+      },
+      {
+        day: 1, sequence: 5, name_en: "Jeonju Lahan / Hanok Area Arrival", name_ko: "전주 라한호텔 / 한옥마을권",
+        lat: 35.817032, lng: 127.154066, stop_type: "Rest/logistics", hiddenness: "obvious",
+        convoy_feasibility: "needs hotel call", parking_status: "needs call", public_status: "private",
+        kakao_place_name: "라한호텔 전주", kakao_place_url: "http://place.map.kakao.com/1627212089",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Jeonju_Hanok_Village_01.jpg",
+        image_credit: "Wikimedia Commons reference image", source_url: "https://commons.wikimedia.org/wiki/Category:Jeonju_Hanok_Village",
+        notes: "Premium cultural-position hotel candidate. Parking call is required before committing."
+      },
+      {
+        day: 1, sequence: 6, name_en: "Seohakdong / Hanbyeokdang Night Texture", name_ko: "서학동 / 한벽당",
+        lat: 35.811929, lng: 127.160832, stop_type: "Food/activity", hiddenness: "niche-local",
+        convoy_feasibility: "mixed", parking_status: "risky", public_status: "private",
+        kakao_place_name: "한벽당", kakao_place_url: "http://place.map.kakao.com/8131389",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/7/71/KOCIS_Jeonju-_Hanbyeokdang_%285724346967%29.jpg",
+        image_credit: "KOCIS / Wikimedia Commons reference image", source_url: "https://commons.wikimedia.org/wiki/Category:Hanbyeokdang",
+        notes: "Moves Jeonju beyond generic Hanok Village into quieter local night culture."
+      },
+      {
+        day: 2, sequence: 1, name_en: "Wanju / Jinan East-Of-Jeonju Roads", name_ko: "완주 / 진안 전주 동쪽 와인딩",
+        lat: 35.909640, lng: 127.262007, stop_type: "Drive moment", hiddenness: "niche",
+        convoy_feasibility: "needs map check", parking_status: "needs check", public_status: "private",
+        kakao_place_name: "위봉폭포", kakao_place_url: "http://place.map.kakao.com/26979507",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/b/be/Wibong_Falls_in_Wanju.jpg",
+        image_credit: "Wikimedia Commons reference image", source_url: "https://commons.wikimedia.org/wiki/File:Wibong_Falls_in_Wanju.jpg",
+        notes: "Locks the winding-road character on the right/east side of Jeonju before the group moves south."
+      },
+      {
+        day: 2, sequence: 2, name_en: "Yongdamho / Maisan Highland Frame", name_ko: "용담호 / 마이산 하이랜드",
+        lat: 35.881145, lng: 127.472235, stop_type: "Drive / viewpoint", hiddenness: "niche",
+        convoy_feasibility: "needs map check", parking_status: "needs check", public_status: "private",
+        kakao_place_name: "용담호", kakao_place_url: "http://place.map.kakao.com/15146571",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/0/05/%EC%9A%A9%EB%8B%B4%ED%98%B8.jpg",
+        image_credit: "Wikimedia Commons reference image", source_url: "https://ko.wikipedia.org/wiki/%EC%9A%A9%EB%8B%B4%EB%8C%90",
+        notes: "Lake-road and highland scenery before Damyang. This is the scenic driving spine of the morning."
+      },
+      {
+        day: 2, sequence: 3, name_en: "Damyang Bamboo / Hidden Garden", name_ko: "담양 죽녹원 / 소쇄원 방향",
+        lat: 35.327837, lng: 126.985931, stop_type: "Visit", hiddenness: "obvious-local plus niche option",
+        convoy_feasibility: "likely OK", parking_status: "needs check", public_status: "reveal-later",
+        kakao_place_name: "죽녹원", kakao_place_url: "http://place.map.kakao.com/8070994",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/8/8b/Juknokwon.jpg",
+        image_credit: "Wikimedia Commons reference image", source_url: "https://commons.wikimedia.org/wiki/Category:Juknokwon",
+        notes: "Confirmed bamboo direction, upgraded with Soswaewon/Myeongokheon choice if timing works."
+      },
+      {
+        day: 2, sequence: 4, name_en: "Daegu Palgongsan Inland Climb", name_ko: "대구 팔공산 내륙 클라임",
+        lat: 35.990886, lng: 128.694834, stop_type: "Drive / cafe stop", hiddenness: "local-known",
+        convoy_feasibility: "needs check", parking_status: "needs call", public_status: "reveal-later",
+        kakao_place_name: "팔공산케이블카", kakao_place_url: "http://place.map.kakao.com/315072668",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/a/a8/Unmunsa_01.jpg",
+        image_credit: "Reference image for southeast inland mountain culture", source_url: "https://ko.wikipedia.org/wiki/%ED%8C%94%EA%B3%B5%EC%82%B0",
+        notes: "Splits the locked Cheongdo/Daegu section into routable Kakao points. Use as a road/cafe reset before Cheongdo."
+      },
+      {
+        day: 2, sequence: 5, name_en: "Cheongdo Unmunsa / Fruit Road", name_ko: "청도 운문사 / 복숭아 로드",
+        lat: 35.661253, lng: 128.960304, stop_type: "Activity / drive moment", hiddenness: "niche",
+        convoy_feasibility: "needs check", parking_status: "needs call", public_status: "reveal-later",
+        kakao_place_name: "운문사", kakao_place_url: "http://place.map.kakao.com/8031932",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/a/a8/Unmunsa_01.jpg",
+        image_credit: "Wikimedia Commons reference image, if available", source_url: "https://ko.wikipedia.org/wiki/%EC%9A%B4%EB%AC%B8%EC%82%AC",
+        notes: "Locked Cheongdo moment: temple/valley road, fruit/cafe direction, then short transfer into Ulsan."
+      },
+      {
+        day: 2, sequence: 6, name_en: "Ulsan Hotel Arrival", name_ko: "울산 호텔 도착",
+        lat: 35.538792, lng: 129.338049, stop_type: "Rest/logistics", hiddenness: "obvious",
+        convoy_feasibility: "needs hotel call", parking_status: "needs call", public_status: "private",
+        kakao_place_name: "롯데호텔 울산", kakao_place_url: "http://place.map.kakao.com/8352252",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/b/b9/Ulsan_skyline.jpg",
+        image_credit: "Wikimedia Commons reference image", source_url: "https://commons.wikimedia.org/wiki/Category:Ulsan",
+        notes: "Premium/practical Ulsan base. Lotte Hotel vs Lotte City depends on parking and room block."
+      },
+      {
+        day: 3, sequence: 1, name_en: "Ulsan Industrial / Bangudae Frame", name_ko: "울산 산업 / 반구대 프레임",
+        lat: 35.603795, lng: 129.177921, stop_type: "Visit", hiddenness: "premium-hidden",
+        convoy_feasibility: "needs parking/time check", parking_status: "needs check", public_status: "reveal-later",
+        kakao_place_name: "울산 대곡리반구대암각화", kakao_place_url: "http://place.map.kakao.com/11816400",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/d/d8/Bangudae_Petroglyphs.jpg",
+        image_credit: "Wikimedia Commons reference image, if available", source_url: "https://commons.wikimedia.org/wiki/Category:Bangudae_Petroglyphs",
+        notes: "Keep Ulsan concise: industrial identity plus Bangudae/Eonyang frame, then leave quickly for the inland route."
+      },
+      {
+        day: 3, sequence: 2, name_en: "Cheongsong Inland Stop", name_ko: "청송 내륙 스톱",
+        lat: 36.436239, lng: 129.026406, stop_type: "Visit / short stop", hiddenness: "premium-hidden",
+        convoy_feasibility: "needs check", parking_status: "needs check", public_status: "reveal-later",
+        kakao_place_name: "송소고택", kakao_place_url: "http://place.map.kakao.com/27149596",
+        image_url: "https://img.atlasobscura.com/V5eD1lgkQ1FAXAGPL-L0W-fB6cqcbUzMhJKoNjoASWU/rt:fit/w:1200/q:80/sm:1/scp:1/ar:1/aHR0cHM6Ly9hdGxhcy1kZXYuczMuYW1hem9uYXdzLmNvbS91cGxvYWRzL3BsYWNlX2ltYWdlcy80N2E5ZTIxYi04ODI5LTQzZjQtYWE1Yi1hMzgwMmQ1MmFjNzQzNTNmZDExMDc1MzM5OGNjNjhfNzEycHgtUmVmbGVjdGlvbl8oNzA4MzYzOTcpLmpwZWc.jpg",
+        image_credit: "Atlas Obscura reference image", source_url: "https://www.atlasobscura.com/places/jusanji-pond",
+        notes: "Recommended inland city stop after Ulsan. Kakao route uses Songso Gotaek because Jusanji's reservoir coordinate was not routable."
+      },
+      {
+        day: 3, sequence: 3, name_en: "Taebaek Mountain City", name_ko: "태백 산악 도시",
+        lat: 37.176145, lng: 128.984161, stop_type: "Drive / short stop", hiddenness: "niche",
+        convoy_feasibility: "needs map check", parking_status: "needs check", public_status: "private",
+        kakao_place_name: "태백역", kakao_place_url: "http://place.map.kakao.com/8110640",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/8/87/Taebaek_Mountains.jpg",
+        image_credit: "Wikimedia Commons reference image", source_url: "https://commons.wikimedia.org/wiki/Category:Taebaek_Mountains",
+        notes: "Mountain-city waypoint. Use Manhangjae/Hambaeksan only if weather, daylight, and convoy flow are safe."
+      },
+      {
+        day: 3, sequence: 4, name_en: "Jeongseon High-Mountain Road", name_ko: "정선 하이마운틴 로드",
+        lat: 37.380388, lng: 128.665217, stop_type: "Drive moment", hiddenness: "niche",
+        convoy_feasibility: "needs map/weather check", parking_status: "needs check", public_status: "private",
+        kakao_place_name: "정선아리랑시장", kakao_place_url: "http://place.map.kakao.com/26884701",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/4/48/Jeongseon_Auraji.jpg",
+        image_credit: "Wikimedia Commons reference image", source_url: "https://commons.wikimedia.org/wiki/Category:Jeongseon_County",
+        notes: "This resolves the 'Jeongju' request as Jeongseon, the logical mountain stop between Taebaek and Inje."
+      },
+      {
+        day: 3, sequence: 5, name_en: "Inje Speedium Hotel / Condo", name_ko: "인제스피디움 호텔 / 콘도",
+        lat: 38.001099, lng: 128.295069, stop_type: "Rest/logistics", hiddenness: "local-known",
+        convoy_feasibility: "needs booking call", parking_status: "needs call", public_status: "private",
+        kakao_place_name: "인제스피디움 피트니스클럽", kakao_place_url: "http://place.map.kakao.com/19883903",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/3/35/%EC%9D%B8%EC%A0%9C%EC%8A%A4%ED%94%BC%EB%94%94%EC%9B%80_%EC%A0%84%EA%B2%BD%28%EC%95%BC%EA%B2%BD%29.jpg",
+        image_credit: "Wikimedia Commons reference image, if available", source_url: "https://www.speedium.co.kr/company_eng/content/01_01.jsp",
+        notes: "Sleep at the track venue so Day 4 starts fresh and controlled."
+      },
+      {
+        day: 4, sequence: 1, name_en: "Inje Speedium Track Morning", name_ko: "인제스피디움 트랙데이",
+        lat: 38.002693, lng: 128.295310, stop_type: "Activity", hiddenness: "local-known",
+        convoy_feasibility: "needs contract", parking_status: "OK pending contract", public_status: "reveal-later",
+        kakao_place_name: "인제스피디움 서킷", kakao_place_url: "http://place.map.kakao.com/842573258",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/6/64/Korea_Speed_Festival_at_Inje_Speedium.jpg",
+        image_credit: "Wikimedia Commons reference image, if available", source_url: "https://www.speedium.co.kr/company_eng/content/01_01.jsp",
+        notes: "Hero activity of the route. Road pace afterward should be conservative."
+      },
+      {
+        day: 4, sequence: 2, name_en: "Yongdae Hwangtae / Tofu Lunch", name_ko: "용대리 황태 / 두부 점심",
+        lat: 38.235530, lng: 128.361072, stop_type: "Food moment", hiddenness: "local-known",
+        convoy_feasibility: "needs call", parking_status: "needs call", public_status: "private",
+        kakao_place_name: "황태마을", kakao_place_url: "http://place.map.kakao.com/463116643",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/9/98/Hwangtae_gui.jpg",
+        image_credit: "Wikimedia Commons reference image, if available", source_url: "https://ko.wikipedia.org/wiki/%ED%99%A9%ED%83%9C",
+        notes: "Strong Gangwon food identity after the track session."
+      },
+      {
+        day: 4, sequence: 3, name_en: "Baekdam / Naerincheon Valley Water", name_ko: "백담 / 내린천 계곡 물놀이",
+        lat: 38.179295, lng: 128.370538, stop_type: "Drive moment", hiddenness: "niche",
+        convoy_feasibility: "needs map safety check", parking_status: "needs check", public_status: "private",
+        kakao_place_name: "백담계곡", kakao_place_url: "http://place.map.kakao.com/7892471",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/e/ea/Naerincheon.jpg",
+        image_credit: "Wikimedia Commons reference image, if available", source_url: "https://ko.wikipedia.org/wiki/%EB%82%B4%EB%A6%B0%EC%B2%9C",
+        notes: "Water/valley recovery after Speedium. Keep speeds conservative after track driving."
+      },
+      {
+        day: 4, sequence: 4, name_en: "Baekdamsa Quiet Nature Option", name_ko: "백담사 선택지",
+        lat: 38.164963, lng: 128.373793, stop_type: "Visit / short stop", hiddenness: "local-known",
+        convoy_feasibility: "needs shuttle/parking check", parking_status: "risky", public_status: "reveal-later",
+        kakao_place_name: "백담사", kakao_place_url: "http://place.map.kakao.com/11065471",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/c/c7/Baekdamsa_Temple.jpg",
+        image_credit: "Wikimedia Commons reference image, if available", source_url: "https://commons.wikimedia.org/wiki/Category:Baekdamsa",
+        notes: "Spiritual Gangwon stop, but use only if shuttle, heat, and time work.",
+        optional: true
+      },
+      {
+        day: 4, sequence: 5, name_en: "Yangyang Coast Finish", name_ko: "양양 해변 피니시",
+        lat: 38.115871, lng: 128.635756, stop_type: "Short stop / finish", hiddenness: "local-known",
+        convoy_feasibility: "needs venue approval", parking_status: "needs call", public_status: "reveal-later",
+        kakao_place_name: "낙산해수욕장", kakao_place_url: "http://place.map.kakao.com/8229967",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/3/37/Naksan_Beach%2C_Yangyang.jpg",
+        image_credit: "Wikimedia Commons reference image", source_url: "https://commons.wikimedia.org/wiki/Category:Beaches_of_Yangyang_County",
+        notes: "Mountain-to-sea emotional closure. Public car meet requires separate approval."
+      }
+    ];
+
+    const bounds = {
+      minLat: 35.08,
+      maxLat: 38.34,
+      minLng: 126.72,
+      maxLng: 129.52
+    };
+
+    const storyEl = document.getElementById("story");
+    const cardsEl = document.getElementById("cards");
+    const mapEl = document.getElementById("map");
+    const svgEl = document.getElementById("routeSvg");
+    const kakaoMapEl = document.getElementById("kakaoMap");
+    const kakaoMapStatusEl = document.getElementById("kakaoMapStatus");
+    let activeDay = 1;
+
+    function project(stop) {
+      const x = ((stop.lng - bounds.minLng) / (bounds.maxLng - bounds.minLng)) * 86 + 7;
+      const y = (1 - ((stop.lat - bounds.minLat) / (bounds.maxLat - bounds.minLat))) * 82 + 9;
+      return { x, y };
+    }
+
+    function dayStops(day) {
+      return stops.filter(stop => stop.day === Number(day));
+    }
+
+    function renderStory(day) {
+      const total = routeMetrics.totals[day];
+      const legs = routeMetrics.legs.filter(leg => leg.day === Number(day));
+      storyEl.innerHTML = `
+        <h2>${days[day].title}</h2>
+        <p>${days[day].story}</p>
+        <div class="kakao-summary" aria-label="Kakao route summary">
+          <div class="metric"><span>Kakao distance</span><strong>${total.distanceKm} km</strong></div>
+          <div class="metric"><span>Kakao drive time</span><strong>${total.durationText}</strong></div>
+          <div class="metric"><span>Route legs</span><strong>${total.legCount}</strong></div>
+        </div>
+        <ul class="leg-list">
+          ${legs.map(leg => `<li><span>${leg.from} → ${leg.to}</span><b>${leg.distanceKm} km · ${leg.durationText}</b></li>`).join("")}
+        </ul>
+        <p class="notes">Source: ${routeMetrics.source}, pulled ${routeMetrics.retrievedAt}. These are checkpoint-to-checkpoint estimates, not final convoy roadbook timings.</p>
+      `;
+    }
+
+    function kakaoMapUrl(stop) {
+      const label = encodeURIComponent(stop.kakao_place_name || stop.name_ko || stop.name_en);
+      return `https://map.kakao.com/link/map/${label},${stop.lat},${stop.lng}`;
+    }
+
+    function kakaoArrivalUrl(stop) {
+      const label = encodeURIComponent(stop.kakao_place_name || stop.name_ko || stop.name_en);
+      return `https://map.kakao.com/link/to/${label},${stop.lat},${stop.lng}`;
+    }
+
+    function renderCards(day) {
+      cardsEl.innerHTML = dayStops(day).map(stop => `
+        <article class="card">
+          <div class="photo">
+            <img src="${stop.image_url}" alt="${stop.name_en}" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('image-missing')">
+            <span class="fallback-copy">${stop.name_en}<br>source photo link attached</span>
+            <span class="seq" style="background:${days[stop.day].color}">${stop.sequence}</span>
+          </div>
+          <div class="card-body">
+            <h3>${stop.name_en}</h3>
+            <p class="ko">${stop.name_ko}</p>
+            <div class="chips">
+              <span class="chip">Kakao: ${stop.kakao_place_name}</span>
+              <span class="chip">${stop.stop_type}</span>
+              <span class="chip">${stop.hiddenness}</span>
+              <span class="chip">Parking: ${stop.parking_status}</span>
+              <span class="chip">${stop.public_status}</span>
+              ${stop.optional ? '<span class="chip">Conditional</span>' : ''}
+            </div>
+            <p class="notes">${stop.notes}</p>
+            <div class="links">
+              <a class="link primary" href="${kakaoArrivalUrl(stop)}" target="_blank" rel="noreferrer">Set as Kakao Arrival</a>
+              <a class="link" href="${stop.kakao_place_url}" target="_blank" rel="noreferrer">Open Kakao Place</a>
+              <a class="link source" href="${stop.source_url}" target="_blank" rel="noreferrer">${stop.image_credit}</a>
+            </div>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function linePath(stopsForDay) {
+      return stopsForDay.map((stop, index) => {
+        const p = project(stop);
+        return `${index === 0 ? "M" : "L"} ${p.x} ${p.y}`;
+      }).join(" ");
+    }
+
+    function renderMap() {
+      svgEl.innerHTML = "";
+      document.querySelectorAll(".marker").forEach(marker => marker.remove());
+
+      Object.keys(days).forEach(day => {
+        const committed = dayStops(day).filter(stop => !stop.optional);
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute("d", linePath(committed));
+        path.setAttribute("fill", "none");
+        path.setAttribute("stroke", days[day].color);
+        path.setAttribute("stroke-width", day == activeDay ? "1.55" : ".95");
+        path.setAttribute("stroke-linecap", "round");
+        path.setAttribute("stroke-linejoin", "round");
+        path.setAttribute("vector-effect", "non-scaling-stroke");
+        path.setAttribute("opacity", day == activeDay ? "1" : ".28");
+        svgEl.appendChild(path);
+
+        dayStops(day).filter(stop => stop.optional).forEach(stop => {
+          const base = committed.reduce((nearest, candidate) => {
+            const a = Math.abs(candidate.lat - stop.lat) + Math.abs(candidate.lng - stop.lng);
+            const b = Math.abs(nearest.lat - stop.lat) + Math.abs(nearest.lng - stop.lng);
+            return a < b ? candidate : nearest;
+          }, committed[0]);
+          const p1 = project(base);
+          const p2 = project(stop);
+          const opt = document.createElementNS("http://www.w3.org/2000/svg", "path");
+          opt.setAttribute("d", `M ${p1.x} ${p1.y} L ${p2.x} ${p2.y}`);
+          opt.setAttribute("fill", "none");
+          opt.setAttribute("stroke", days[day].color);
+          opt.setAttribute("stroke-width", "1");
+          opt.setAttribute("stroke-linecap", "round");
+          opt.setAttribute("stroke-dasharray", "4 3");
+          opt.setAttribute("vector-effect", "non-scaling-stroke");
+          opt.setAttribute("opacity", day == activeDay ? ".82" : ".18");
+          svgEl.appendChild(opt);
+        });
+      });
+
+      stops.forEach(stop => {
+        const p = project(stop);
+        const marker = document.createElement("a");
+        marker.className = `marker${stop.optional ? " optional" : ""}${stop.day == activeDay ? "" : " dim"}`;
+        marker.href = kakaoArrivalUrl(stop);
+        marker.target = "_blank";
+        marker.rel = "noreferrer";
+        marker.title = `${stop.name_en} - set as Kakao arrival`;
+        marker.textContent = stop.sequence;
+        marker.style.left = `${p.x}%`;
+        marker.style.top = `${p.y}%`;
+        marker.style.backgroundColor = days[stop.day].color;
+        mapEl.appendChild(marker);
+      });
+    }
+
+    function setDay(day) {
+      activeDay = Number(day);
+      document.querySelectorAll("button[data-day]").forEach(button => {
+        button.classList.toggle("active", Number(button.dataset.day) === activeDay);
+      });
+      renderStory(activeDay);
+      renderCards(activeDay);
+      renderMap();
+    }
+
+    document.querySelectorAll("button[data-day]").forEach(button => {
+      button.addEventListener("click", () => setDay(button.dataset.day));
+    });
+
+    function mapApiClientConfigUrls() {
+      const urls = [];
+      const explicitBase = window.KGT_MAP_API_BASE;
+      if (explicitBase) urls.push(`${explicitBase.replace(/\/$/, "")}/map/client-config`);
+      if (location.protocol === "http:" || location.protocol === "https:") urls.push("/api/map/client-config");
+      if (location.hostname === "localhost" || location.hostname === "127.0.0.1") urls.push("http://localhost:8787/map/client-config");
+      return [...new Set(urls)];
+    }
+
+    async function fetchMapClientConfig() {
+      const errors = [];
+      for (const url of mapApiClientConfigUrls()) {
+        try {
+          const response = await fetch(url, { cache: "no-store" });
+          if (!response.ok) throw new Error(`${url} returned ${response.status}`);
+          return await response.json();
+        } catch (error) {
+          errors.push(error.message);
+        }
+      }
+      throw new Error(errors[0] || "Kakao map API bridge is not configured");
+    }
+
+    async function loadKakaoCheckpointMap() {
+      try {
+        const config = await fetchMapClientConfig();
+        if (!config.kakaoJavascriptKey) throw new Error("Kakao JavaScript key is not configured");
+        await loadKakaoSdk(config.kakaoJavascriptKey);
+        window.kakao.maps.load(() => drawKakaoCheckpointMap());
+      } catch (error) {
+        kakaoMapStatusEl.textContent = `${error.message}. The Kakao links and route image still work; deploy /api/map/client-config or start the local KGT API bridge to load live Kakao tiles here.`;
+      }
+    }
+
+    function loadKakaoSdk(key) {
+      return new Promise((resolve, reject) => {
+        if (window.kakao?.maps) return resolve();
+        const script = document.createElement("script");
+        script.src = `https://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=${encodeURIComponent(key)}`;
+        script.onload = resolve;
+        script.onerror = () => reject(new Error("Kakao Maps SDK failed to load"));
+        document.head.appendChild(script);
+      });
+    }
+
+    function drawKakaoCheckpointMap() {
+      const kakao = window.kakao;
+      const committedStops = stops.filter(stop => !stop.optional);
+      const map = new kakao.maps.Map(kakaoMapEl, {
+        center: new kakao.maps.LatLng(36.72, 128.12),
+        level: 13
+      });
+
+      Object.keys(days).forEach(day => {
+        const dayPoints = committedStops
+          .filter(stop => stop.day === Number(day))
+          .map(stop => new kakao.maps.LatLng(stop.lat, stop.lng));
+        if (dayPoints.length > 1) {
+          new kakao.maps.Polyline({
+            map,
+            path: dayPoints,
+            strokeWeight: 5,
+            strokeColor: days[day].color,
+            strokeOpacity: 0.86,
+            strokeStyle: "solid"
+          });
+        }
+      });
+
+      committedStops.forEach(stop => {
+        const marker = new kakao.maps.Marker({
+          map,
+          position: new kakao.maps.LatLng(stop.lat, stop.lng),
+          title: stop.name_en
+        });
+        const info = new kakao.maps.InfoWindow({
+          content: `<div style="padding:6px 8px;font-size:12px;white-space:nowrap">${stop.sequence}. ${stop.name_en}</div>`
+        });
+        kakao.maps.event.addListener(marker, "click", () => {
+          window.open(kakaoMapUrl(stop), "_blank", "noopener,noreferrer");
+        });
+        kakao.maps.event.addListener(marker, "mouseover", () => info.open(map, marker));
+        kakao.maps.event.addListener(marker, "mouseout", () => info.close());
+      });
+
+      kakaoMapStatusEl.textContent = "Live Kakao map loaded from the local KGT map bridge. Marker clicks open Kakao Map.";
+    }
+
+    setDay(1);
+    loadKakaoCheckpointMap();
+  </script>
+</body>
+</html>
