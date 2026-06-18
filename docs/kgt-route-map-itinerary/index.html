@@ -435,7 +435,7 @@
     }
 
     .kakao-map {
-      height: 300px;
+      min-height: 440px;
       border: 1px solid var(--line);
       background: #edf1ea;
     }
@@ -445,6 +445,37 @@
       color: var(--muted);
       font-size: 12px;
       line-height: 1.35;
+    }
+
+    .kakao-key-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .kakao-key-row[hidden] {
+      display: none;
+    }
+
+    .kakao-key-row input {
+      min-height: 34px;
+      border: 1px solid var(--line);
+      padding: 0 10px;
+      font: inherit;
+      font-size: 12px;
+    }
+
+    .kakao-key-row button {
+      min-height: 34px;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: #fff;
+      padding: 0 12px;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 850;
+      cursor: pointer;
     }
 
     svg {
@@ -601,10 +632,15 @@
       </div>
       <div class="kakao-live-card">
         <div class="kakao-live-head">
-          <strong>Share-Safe Kakao Links</strong>
-          <span>No local API or Kakao JavaScript key required</span>
+          <strong>Live Kakao Route Map</strong>
+          <span>Pan, zoom, and click pins for details</span>
         </div>
-        <p class="kakao-map-status">This public/shareable version uses the route image, checkpoint overlay, and official Kakao arrival/place links. Live Kakao map tiles are disabled so the page works from any static host.</p>
+        <div id="kakaoMap" class="kakao-map" role="img" aria-label="Live Kakao checkpoint map"></div>
+        <p id="kakaoMapStatus" class="kakao-map-status">Loading Kakao map...</p>
+        <div id="kakaoKeyRow" class="kakao-key-row" hidden>
+          <input id="kakaoKeyInput" type="password" autocomplete="off" placeholder="Paste Kakao JavaScript key for this browser">
+          <button id="kakaoKeyButton" type="button">Load Map</button>
+        </div>
       </div>
       <div class="map-panel" id="map">
         <div class="map-title">
@@ -1040,7 +1076,16 @@
     const cardsEl = document.getElementById("cards");
     const mapEl = document.getElementById("map");
     const svgEl = document.getElementById("routeSvg");
+    const kakaoMapEl = document.getElementById("kakaoMap");
+    const kakaoMapStatusEl = document.getElementById("kakaoMapStatus");
+    const kakaoKeyRowEl = document.getElementById("kakaoKeyRow");
+    const kakaoKeyInputEl = document.getElementById("kakaoKeyInput");
+    const kakaoKeyButtonEl = document.getElementById("kakaoKeyButton");
     let activeDay = 1;
+    let kakaoMapInstance = null;
+    let kakaoInfoWindow = null;
+    let kakaoPolylines = [];
+    let kakaoMarkers = [];
 
     function project(stop) {
       const x = ((stop.lng - bounds.minLng) / (bounds.maxLng - bounds.minLng)) * 86 + 7;
@@ -1228,6 +1273,154 @@
       });
     }
 
+    function getKakaoJavascriptKey() {
+      const params = new URLSearchParams(window.location.search);
+      const fromQuery = params.get("kakao_js_key");
+      if (fromQuery) {
+        try { localStorage.setItem("kgtKakaoJavascriptKey", fromQuery); } catch (_) {}
+        return fromQuery;
+      }
+      if (window.KAKAO_JAVASCRIPT_KEY) return window.KAKAO_JAVASCRIPT_KEY;
+      try { return localStorage.getItem("kgtKakaoJavascriptKey"); } catch (_) { return null; }
+    }
+
+    function loadOptionalKakaoConfig() {
+      return new Promise(resolve => {
+        if (window.KAKAO_JAVASCRIPT_KEY) return resolve();
+        const script = document.createElement("script");
+        script.src = "kakao-config.js";
+        script.async = true;
+        script.onload = resolve;
+        script.onerror = resolve;
+        document.head.appendChild(script);
+      });
+    }
+
+    function loadKakaoSdk(key) {
+      return new Promise((resolve, reject) => {
+        if (window.kakao?.maps) return resolve();
+        const script = document.createElement("script");
+        script.src = `https://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=${encodeURIComponent(key)}`;
+        script.async = true;
+        script.onload = resolve;
+        script.onerror = () => reject(new Error("Kakao Maps SDK could not be loaded. Check the JavaScript key and registered domain."));
+        document.head.appendChild(script);
+      });
+    }
+
+    function clearKakaoMap() {
+      kakaoPolylines.forEach(line => line.setMap(null));
+      kakaoMarkers.forEach(({ marker }) => marker.setMap(null));
+      kakaoPolylines = [];
+      kakaoMarkers = [];
+      if (kakaoInfoWindow) kakaoInfoWindow.close();
+    }
+
+    function markerImageFor(day, active) {
+      const color = days[day].color.replace("#", "%23");
+      const opacity = active ? "1" : ".42";
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="34" height="42" viewBox="0 0 34 42"><path d="M17 41s14-13.5 14-25A14 14 0 1 0 3 16c0 11.5 14 25 14 25z" fill="${color}" fill-opacity="${opacity}" stroke="white" stroke-width="3"/><circle cx="17" cy="16" r="6" fill="white" fill-opacity=".95"/></svg>`;
+      const kakao = window.kakao;
+      return new kakao.maps.MarkerImage(
+        `data:image/svg+xml;charset=UTF-8,${svg}`,
+        new kakao.maps.Size(34, 42),
+        { offset: new kakao.maps.Point(17, 40) }
+      );
+    }
+
+    function drawKakaoMap() {
+      const kakao = window.kakao;
+      if (!kakao?.maps || !kakaoMapEl) return;
+      if (!kakaoMapInstance) {
+        kakaoMapInstance = new kakao.maps.Map(kakaoMapEl, {
+          center: new kakao.maps.LatLng(36.72, 128.12),
+          level: 12,
+          draggable: true,
+          scrollwheel: true
+        });
+        kakaoMapInstance.addControl(new kakao.maps.MapTypeControl(), kakao.maps.ControlPosition.TOPRIGHT);
+        kakaoMapInstance.addControl(new kakao.maps.ZoomControl(), kakao.maps.ControlPosition.RIGHT);
+        kakaoInfoWindow = new kakao.maps.InfoWindow({ removable: true });
+      }
+
+      clearKakaoMap();
+      const bounds = new kakao.maps.LatLngBounds();
+
+      Object.keys(days).forEach(day => {
+        const committed = dayStops(day).filter(stop => !stop.optional);
+        const path = committed.map(stop => {
+          const point = new kakao.maps.LatLng(stop.lat, stop.lng);
+          bounds.extend(point);
+          return point;
+        });
+        if (path.length > 1) {
+          kakaoPolylines.push(new kakao.maps.Polyline({
+            map: kakaoMapInstance,
+            path,
+            strokeWeight: Number(day) === activeDay ? 5 : 3,
+            strokeColor: days[day].color,
+            strokeOpacity: Number(day) === activeDay ? .95 : .32,
+            strokeStyle: "solid"
+          }));
+        }
+      });
+
+      stops.forEach(stop => {
+        const position = new kakao.maps.LatLng(stop.lat, stop.lng);
+        bounds.extend(position);
+        const marker = new kakao.maps.Marker({
+          map: kakaoMapInstance,
+          position,
+          image: markerImageFor(stop.day, stop.day === activeDay),
+          clickable: true,
+          title: stop.name_en
+        });
+        kakaoMarkers.push({ marker, stop });
+        kakao.maps.event.addListener(marker, "click", () => {
+          activeDay = stop.day;
+          document.querySelectorAll("button[data-day]").forEach(button => {
+            button.classList.toggle("active", Number(button.dataset.day) === activeDay);
+          });
+          renderStory(activeDay);
+          renderCards(activeDay);
+          renderMap();
+          drawKakaoMap();
+          kakaoMapInstance.panTo(position);
+          kakaoInfoWindow.setContent(`
+            <div style="min-width:220px;padding:10px 12px;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.35">
+              <strong style="display:block;margin-bottom:4px">${stop.name_en}</strong>
+              <span style="display:block;color:#54615b;font-size:12px">${stop.name_ko}</span>
+              <span style="display:block;margin-top:6px;font-size:12px">Day ${stop.day} · Stop ${stop.sequence} · ${stop.stop_type}</span>
+              <a href="${kakaoArrivalUrl(stop)}" target="_blank" rel="noreferrer" style="display:inline-block;margin-top:8px;color:#1f5f8f;font-weight:700">Move there in Kakao Map</a>
+            </div>
+          `);
+          kakaoInfoWindow.open(kakaoMapInstance, marker);
+        });
+      });
+
+      kakaoMapInstance.setBounds(bounds, 42, 42, 42, 42);
+      kakaoMapStatusEl.textContent = "Kakao map loaded. Zoom, pan, and click a pin to inspect or open navigation.";
+      kakaoKeyRowEl.hidden = true;
+    }
+
+    async function initKakaoMap() {
+      try {
+        await loadOptionalKakaoConfig();
+        const key = getKakaoJavascriptKey();
+        if (!key) {
+          kakaoMapStatusEl.textContent = "Paste a Kakao JavaScript key to load live Kakao tiles here. The static route overlay below still works.";
+          kakaoKeyRowEl.hidden = false;
+          return;
+        }
+        kakaoMapStatusEl.textContent = "Loading Kakao map tiles...";
+        await loadKakaoSdk(key);
+        window.kakao.maps.load(drawKakaoMap);
+      } catch (error) {
+        kakaoMapStatusEl.textContent = `${error.message} The static route overlay below still works.`;
+        kakaoKeyRowEl.hidden = false;
+      }
+    }
+
     function setDay(day) {
       activeDay = Number(day);
       document.querySelectorAll("button[data-day]").forEach(button => {
@@ -1236,13 +1429,23 @@
       renderStory(activeDay);
       renderCards(activeDay);
       renderMap();
+      if (kakaoMapInstance) drawKakaoMap();
     }
 
     document.querySelectorAll("button[data-day]").forEach(button => {
       button.addEventListener("click", () => setDay(button.dataset.day));
     });
 
+    kakaoKeyButtonEl?.addEventListener("click", () => {
+      const key = kakaoKeyInputEl.value.trim();
+      if (!key) return;
+      try { localStorage.setItem("kgtKakaoJavascriptKey", key); } catch (_) {}
+      kakaoKeyInputEl.value = "";
+      initKakaoMap();
+    });
+
     setDay(1);
+    initKakaoMap();
   </script>
 </body>
 </html>
