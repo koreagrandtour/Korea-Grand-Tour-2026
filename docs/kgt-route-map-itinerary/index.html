@@ -1092,6 +1092,7 @@
     const kakaoKeyRowEl = document.getElementById("kakaoKeyRow");
     const kakaoKeyInputEl = document.getElementById("kakaoKeyInput");
     const kakaoKeyButtonEl = document.getElementById("kakaoKeyButton");
+    const DEFAULT_KAKAO_JAVASCRIPT_KEY = "fd286a5032839a83ebfc08e8f5aa69db";
     let activeDay = 1;
     let kakaoMapInstance = null;
     let kakaoInfoWindow = null;
@@ -1292,7 +1293,11 @@
         return fromQuery;
       }
       if (window.KAKAO_JAVASCRIPT_KEY) return window.KAKAO_JAVASCRIPT_KEY;
-      try { return localStorage.getItem("kgtKakaoJavascriptKey"); } catch (_) { return null; }
+      try {
+        const storedKey = localStorage.getItem("kgtKakaoJavascriptKey");
+        if (storedKey) return storedKey;
+      } catch (_) {}
+      return DEFAULT_KAKAO_JAVASCRIPT_KEY;
     }
 
     function loadOptionalKakaoConfig() {
