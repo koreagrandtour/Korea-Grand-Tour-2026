@@ -630,7 +630,7 @@
       <span class="label">Private Internal Route Draft</span>
       <h1>KGT 2026 Mapped Itinerary</h1>
       <p class="intro">A visual planning board for the Hidden Premium route. Kakao route estimates support distance and duration checks; Kakao links support live place checks.</p>
-      <div class="warning"><strong>Validation warning:</strong> Kakao distances and durations use checkpoint coordinates with RECOMMEND routing. Exact roads, parking lots, closures, hotel blocks, restaurant capacity, and convoy arrival/departure flows still require final map checks and direct calls before roadbook release.</div>
+      <div class="warning"><strong>Validation warning:</strong> Road geometry was generated locally from Kakao Mobility REST routing and embedded without exposing the REST key. Exact roads, parking lots, closures, hotel blocks, restaurant capacity, and convoy arrival/departure flows still require final map checks and direct calls before roadbook release.</div>
       <nav class="tabs" aria-label="Day selector">
         <button class="active" data-day="1">Day 1<br>Seoul → Jinan → Jeonju</button>
         <button data-day="2">Day 2<br>Jeonju → Ulsan</button>
@@ -701,7 +701,7 @@
     };
 
     const routeMetrics = {
-      source: "Kakao Navi road-geometry checkpoint estimates, recalculated for the July draft route",
+      source: "Kakao Mobility REST v1/directions road geometry generated locally; REST key is not exposed in this public page",
       retrievedAt: "Updated 2026-07-13 KST",
       totals: {
         1: { distanceKm: 379.9, durationText: "5h 30m", legCount: 8 },
