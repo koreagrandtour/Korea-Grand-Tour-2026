@@ -351,7 +351,7 @@
     pendingMapRefit ||= refit;
     clearTimeout(mapResizeTimer);
     mapResizeTimer = setTimeout(() => {
-      kakao.maps.event.trigger(kakaoMap,'resize');
+      kakaoMap.relayout();
       if (pendingMapRefit) fitMap(activeDay);
       pendingMapRefit = false;
     },110);
