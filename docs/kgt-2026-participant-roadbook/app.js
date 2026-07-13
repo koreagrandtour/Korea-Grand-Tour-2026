@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const DAY_COLORS = {1:'#1476e5', 2:'#f25725', 3:'#292c2f', 4:'#aa9b67'};
+  const DAY_COLORS = {1:'#1476e5', 2:'#f25725', 3:'#2f7d5a', 4:'#aa9b67'};
   const DAYS = [
     {
       day:1,
@@ -92,6 +92,7 @@
 
   const destinationIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m20 4-7 16-4-5-5-4 16-7Z"/><path d="m9 15 4-4"/></svg>';
   const routeIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5"/><path d="M9 5h10v10"/></svg>';
+  const chevronIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
   const escapeHtml = value => String(value || '').replace(/[&<>"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[char]));
   const kakaoDestinationUrl = link => String(link || '')
     .replace('https://place.map.kakao.com/','https://map.kakao.com/link/to/')
@@ -108,16 +109,19 @@
           <p class="day-summary reveal">${escapeHtml(day.summary)}</p>
           <div class="day-stats reveal"><div><small>Distance</small><b>${day.distance} <em>km</em></b></div><div><small>Driving</small><b>${day.drive}</b></div><div><small>Departure</small><b>${day.depart}</b></div><div><small>Arrival</small><b>${day.arrive}</b></div></div>
         </header>
-        <div class="day-route-launch reveal is-loading" data-day-route="${day.day}">
-          <div class="day-route-copy">
-            <small>Kakao Map</small>
-            <strong>Full Day 0${day.day} route</strong>
-            <span data-day-route-summary>Preparing every scheduled waypoint…</span>
-          </div>
+        <details class="day-route-launch reveal is-loading" data-day-route="${day.day}">
+          <summary>
+            <span class="day-route-copy">
+              <small>Kakao Map · A → B</small>
+              <strong>Day 0${day.day} route legs</strong>
+              <span data-day-route-summary>Preparing every consecutive leg…</span>
+            </span>
+            <span class="day-route-toggle"><span>Show legs</span>${chevronIcon}</span>
+          </summary>
           <div class="day-route-actions" data-day-route-actions="${day.day}" aria-live="polite">
             <span class="day-route-preparing">Preparing route…</span>
           </div>
-        </div>
+        </details>
         <ol class="run-sheet">
           ${day.stops.map((stop,index) => `
             <li class="route-stop reveal${stop.pass?' is-pass':''}${stop.end?' is-end':''}" data-day="${day.day}" data-stop="${index}">
@@ -144,27 +148,9 @@
   renderDays();
   renderPartners();
 
-  function kakaoRouteUrl(stops) {
-    if (!Array.isArray(stops) || stops.length < 2 || stops.length > 7) return '';
+  function kakaoLegUrl(from,to) {
     const point = stop => `${Number(stop.lat)},${Number(stop.lng)}`;
-    const query = [`sp=${point(stops[0])}`];
-    stops.slice(1,-1).forEach((stop,index) => query.push(`${index ? `vp${index+1}` : 'vp'}=${point(stop)}`));
-    query.push(`ep=${point(stops.at(-1))}`,'by=car');
-    return `https://m.map.kakao.com/scheme/route?${query.join('&')}`;
-  }
-
-  function kakaoRouteSegments(dayKey,stops) {
-    if (stops.length <= 7) return [{start:0,end:stops.length-1,stops}];
-    const preferredBreak = dayKey === '2' ? 5 : 6;
-    const segments = [];
-    let start = 0;
-    while (stops.length-start > 7) {
-      const end = start === 0 ? Math.min(preferredBreak,start+6) : start+6;
-      segments.push({start,end,stops:stops.slice(start,end+1)});
-      start = end;
-    }
-    segments.push({start,end:stops.length-1,stops:stops.slice(start)});
-    return segments;
+    return `https://m.map.kakao.com/scheme/route?sp=${point(from)}&ep=${point(to)}&by=car`;
   }
 
   function hydrateDayRouteLinks(data) {
@@ -174,17 +160,19 @@
       const actions = panel?.querySelector('[data-day-route-actions]');
       const summary = panel?.querySelector('[data-day-route-summary]');
       if (!panel || !actions || !dayCopy || !Array.isArray(info.stops)) return;
-      const segments = kakaoRouteSegments(dayKey,info.stops);
-      actions.innerHTML = segments.map((segment,index) => {
-        const href = kakaoRouteUrl(segment.stops);
-        const endpoint = dayCopy.stops[segment.end]?.name || segment.stops.at(-1)?.name || 'next stop';
-        const label = segments.length === 1 ? 'Open full route' : `Part ${index+1} · to ${endpoint}`;
-        const waypointCount = Math.max(0,segment.stops.length-2);
-        return `<a class="day-route-action" href="${href}" target="_blank" rel="noopener" data-route-part="${index+1}" data-route-points="${segment.stops.length}" data-route-waypoints="${waypointCount}" aria-label="Open Day ${dayKey} ${segments.length === 1 ? 'full route' : `route part ${index+1}`} in Kakao Map"><span>${escapeHtml(label)}</span><small>${waypointCount} waypoint${waypointCount===1?'':'s'}</small>${routeIcon}</a>`;
+      if (dayCopy.stops.length !== info.stops.length) throw new Error(`Day ${dayKey} route copy and coordinates do not match`);
+      const legs = info.stops.slice(0,-1).map((from,index) => ({
+        from,
+        to:info.stops[index+1],
+        fromName:dayCopy.stops[index].name,
+        toName:dayCopy.stops[index+1].name
+      }));
+      actions.innerHTML = legs.map((leg,index) => {
+        const href = kakaoLegUrl(leg.from,leg.to);
+        const number = String(index+1).padStart(2,'0');
+        return `<a class="day-route-action" href="${href}" target="_blank" rel="noopener" data-route-leg="${index+1}" data-route-from="${escapeHtml(leg.fromName)}" data-route-to="${escapeHtml(leg.toName)}" aria-label="Open Day ${dayKey} leg ${index+1}, ${escapeHtml(leg.fromName)} to ${escapeHtml(leg.toName)}, in Kakao Map"><span class="day-route-leg">Leg ${number}</span><span class="day-route-pair"><span><b>A</b><em>${escapeHtml(leg.fromName)}</em></span><i>→</i><span><b>B</b><em>${escapeHtml(leg.toName)}</em></span></span><small>Open in Kakao Map</small>${routeIcon}</a>`;
       }).join('');
-      summary.textContent = segments.length === 1
-        ? `All ${info.stops.length} route points in one launch.`
-        : `All ${info.stops.length} route points in ${segments.length} connected legs.`;
+      summary.textContent = `${legs.length} A → B legs · all ${info.stops.length} route points included.`;
       panel.classList.remove('is-loading');
     });
   }
@@ -305,13 +293,28 @@
     },620);
   }
 
-  const routeIntroObserver = new IntersectionObserver(entries => {
-    if (!entries.some(entry => entry.isIntersecting)) return;
+  function introduceRoute() {
+    if (routeExperience.classList.contains('is-introduced')) return;
     routeExperience.classList.add('is-introduced');
     routeIntroObserver.disconnect();
+    removeEventListener('scroll',maybeIntroduceRoute);
     playRouteIntro();
+  }
+
+  function maybeIntroduceRoute() {
+    const mapRect = mapPortal.getBoundingClientRect();
+    const routeRect = routeExperience.getBoundingClientRect();
+    const mapIsEntering = mapRect.top < innerHeight*.88 && mapRect.bottom > 0;
+    const mapWasPassed = mapRect.bottom <= 0 && routeRect.bottom > 0;
+    if (mapIsEntering || mapWasPassed) introduceRoute();
+  }
+
+  const routeIntroObserver = new IntersectionObserver(entries => {
+    if (entries.some(entry => entry.isIntersecting)) introduceRoute();
   },{threshold:0,rootMargin:'0px 0px -12% 0px'});
   routeIntroObserver.observe(mapPortal);
+  addEventListener('scroll',maybeIntroduceRoute,{passive:true});
+  requestAnimationFrame(maybeIntroduceRoute);
 
   function loadKakao() {
     return new Promise((resolve,reject) => {
