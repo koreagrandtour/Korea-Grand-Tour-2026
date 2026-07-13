@@ -196,6 +196,7 @@
   updatePack();
 
   const mapShell = document.getElementById('mapShell');
+  const mapPortal = document.getElementById('mapPortal');
   const routeExperience = document.getElementById('route-map');
   const mapTitle = document.getElementById('mapTitle');
   const mapSubtitle = document.getElementById('mapSubtitle');
@@ -216,6 +217,32 @@
   let mapResizeTimer;
   let pendingTappedProgress = null;
   let mapReady = false;
+  let routeIntroPlayed = false;
+  let routeIntroTimer;
+
+  function playRouteIntro() {
+    if (!mapReady || activeDay !== 'all' || routeIntroPlayed || !routeModels['1']?.screen.length) return;
+    routeIntroPlayed = true;
+    if (reducedMotion.matches) {
+      routeProgress = 1;
+      drawRouteScene();
+      return;
+    }
+    routeProgress = 0;
+    drawRouteScene();
+    clearTimeout(routeIntroTimer);
+    routeIntroTimer = setTimeout(() => {
+      if (activeDay === 'all') animateRouteTo(1,1500);
+    },620);
+  }
+
+  const routeIntroObserver = new IntersectionObserver(entries => {
+    if (!entries.some(entry => entry.isIntersecting)) return;
+    routeExperience.classList.add('is-introduced');
+    routeIntroObserver.disconnect();
+    playRouteIntro();
+  },{threshold:0,rootMargin:'0px 0px -12% 0px'});
+  routeIntroObserver.observe(mapPortal);
 
   function loadKakao() {
     return new Promise((resolve,reject) => {
@@ -325,6 +352,7 @@
       });
     });
     drawRouteScene();
+    if (routeExperience.classList.contains('is-introduced')) playRouteIntro();
   }
 
   function traceRoute(points,progress=1) {
@@ -392,10 +420,10 @@
     dayKeys(activeDay).forEach(key => {
       const model = routeModels[key];
       if (!model.screen.length) return;
-      const progressValue = overview ? 1 : routeProgress;
+      const progressValue = routeProgress;
       strokeRoute(model.screen,progressValue,DAY_COLORS[key],overview);
       model.stopScreen.forEach((point,index) => {
-        const completed = overview || model.stopProgress[index] <= progressValue+.001;
+        const completed = model.stopProgress[index] <= progressValue+.001;
         const selected = !overview && activeStop?.day===key && activeStop.index===index;
         routeContext.beginPath();
         routeContext.arc(point.x,point.y,selected?8:overview?5:6,0,Math.PI*2);
@@ -521,6 +549,7 @@
     setActiveDay('all',{progressValue:1,fit:true});
     mapLoading.classList.add('is-loaded');
     syncRouteStory();
+    if (routeExperience.classList.contains('is-introduced')) playRouteIntro();
   }).catch(error => {
     console.warn('KGT map unavailable:',error);
     mapLoading.innerHTML = 'Map unavailable · use the Kakao links in the roadbook';
