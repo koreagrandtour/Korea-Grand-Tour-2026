@@ -301,8 +301,16 @@
     mapActiveStop.innerHTML = `<small>Day ${key} · ${scheduleStop.time}</small><strong>${escapeHtml(scheduleStop.name)}</strong>`;
   }
 
+  function clearScheduleStopSelection() {
+    document.querySelectorAll('.route-stop.is-active,[aria-current="step"]').forEach(stop => {
+      stop.classList.remove('is-active');
+      stop.removeAttribute('aria-current');
+    });
+  }
+
   mapControls.forEach(control => control.addEventListener('click', () => {
     const day = control.dataset.mapDay;
+    clearScheduleStopSelection();
     renderMap(day,true);
     const target = day==='all' ? document.getElementById('route-map') : document.getElementById(`day${day}`);
     target?.scrollIntoView({behavior:reducedMotion.matches?'auto':'smooth',block:'start'});
@@ -335,13 +343,19 @@
       .sort((a,b) => Math.abs(a.boundingClientRect.top-innerHeight*.08)-Math.abs(b.boundingClientRect.top-innerHeight*.08))[0];
     if (!current) return;
     const day = current.target.dataset.day;
-    if (day && activeDay !== day) renderMap(day,false);
+    if (day && activeDay !== day) {
+      clearScheduleStopSelection();
+      renderMap(day,false);
+    }
   }, {threshold:0,rootMargin:'-8% 0px -78%'});
   document.querySelectorAll('.day-chapter').forEach(chapter => chapterObserver.observe(chapter));
 
   const viewObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting && entry.target.dataset.mapView==='all' && activeDay!=='all') renderMap('all',false);
+      if (entry.isIntersecting && entry.target.dataset.mapView==='all' && activeDay!=='all') {
+        clearScheduleStopSelection();
+        renderMap('all',false);
+      }
     });
   }, {threshold:.2});
   document.querySelectorAll('[data-map-view="all"]').forEach(item => viewObserver.observe(item));
