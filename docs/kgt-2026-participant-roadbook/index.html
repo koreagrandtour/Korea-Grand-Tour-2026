@@ -118,7 +118,7 @@
           info.stops.forEach(stop=>{const marker=new kakao.maps.Marker({map,position:new kakao.maps.LatLng(stop.lat,stop.lng),title:`${stop.sequence}. ${stop.name}`});kakao.maps.event.addListener(marker,'click',()=>window.open(`https://map.kakao.com/link/map/${encodeURIComponent(stop.nameKo||stop.name)},${stop.lat},${stop.lng}`,'_blank','noopener'));markers.push(marker);});
         });
         controls.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.mapDay===current)));
-        if(current==='all'){title.textContent='The full journey.';status.textContent='1,427 km · four days';}else{const info=routeData.days[current];title.textContent=`Day ${current} on the road.`;status.textContent=`${info.distanceKm.toFixed(1)} km · ${Math.round(info.durationMinutes/60)}h ${String(info.durationMinutes%60).padStart(2,'0')} driving`;}
+        if(current==='all'){title.textContent='The full journey.';status.textContent='1,427 km · four days';}else{const info=routeData.days[current];title.textContent=`Day ${current} on the road.`;status.textContent=`${info.distanceKm.toFixed(1)} km · ${Math.floor(info.durationMinutes/60)}h ${String(info.durationMinutes%60).padStart(2,'0')} driving`;}
         fit(current);if(userChoice)document.getElementById(`day${current}`)?.scrollIntoView({behavior:reduceMotion.matches?'auto':'smooth',block:'start'});
       }
       function relayout(){if(!map)return;kakao.maps.event.trigger(map,'resize');clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>fit(current),90);}
