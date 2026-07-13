@@ -7,15 +7,15 @@
   <meta name="description" content="The official participant roadbook for Korea Grand Tour 2026: four days from Seoul to Yangyang, with the live Kakao route, schedules, briefing and rally essentials.">
   <meta property="og:title" content="Korea Grand Tour 2026 — Participant Roadbook">
   <meta property="og:description" content="Four days. One Korea. The official participant guide from Seoul to Yangyang.">
-  <meta property="og:image" content="https://koreagrandtour.github.io/Korea-Grand-Tour-2026/docs/kgt-2026-participant-roadbook/assets/hero-road.jpg">
+  <meta property="og:image" content="https://koreagrandtour.github.io/Korea-Grand-Tour-2026/docs/kgt-2026-participant-roadbook/assets/hero-rally-2025.webp">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://dapi.kakao.com">
-  <link rel="preload" href="assets/hero-road.jpg" as="image">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/hero-rally-2025.webp" as="image" type="image/webp">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 rx=%226%22 fill=%22%23060606%22/><path d=%22M7 8h4v7l7-7h5l-8 8 9 8h-6l-7-7v7H7z%22 fill=%22white%22/></svg>">
-  <link rel="stylesheet" href="styles.css?v=20260713-1">
+  <link rel="stylesheet" href="styles.css?v=20260713-2">
   <title>Korea Grand Tour 2026 — Participant Roadbook</title>
 </head>
 <body>
@@ -41,7 +41,7 @@
 
   <main id="main">
     <section class="hero" id="top" aria-labelledby="heroTitle">
-      <div class="hero-media" aria-hidden="true"><img id="heroImage" src="assets/hero-road.jpg" alt=""></div>
+      <div class="hero-media" aria-hidden="true"><img id="heroImage" src="assets/hero-rally-2025.webp" alt=""></div>
       <div class="hero-shade" aria-hidden="true"></div>
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="hero-year" aria-hidden="true">2026</div>
@@ -80,9 +80,15 @@
       <div class="map-portal" id="mapPortal">
         <div class="map-shell" id="mapShell">
           <div class="map-canvas" id="roadbookKakaoMap" role="region" aria-label="Interactive Kakao map showing the four-day Korea Grand Tour route"></div>
-          <div class="map-noise" aria-hidden="true"></div>
+          <div class="route-render" aria-hidden="true">
+            <canvas id="routeCanvas"></canvas>
+            <div class="route-car" id="routeCar">
+              <svg viewBox="0 0 28 48"><path d="M8 2h12l4 10 2 27-4 7H6l-4-7 2-27L8 2Z"/><path d="m8 6-2 9h16l-2-9H8Zm-2 14h16v13H6V20Z"/><circle cx="7" cy="39" r="2"/><circle cx="21" cy="39" r="2"/></svg>
+            </div>
+          </div>
+          <div class="map-vignette" aria-hidden="true"></div>
           <div class="map-hud">
-            <p class="map-kicker">Live Kakao route</p>
+            <p class="map-kicker">Route canvas · Kakao base</p>
             <h2 id="mapTitle">The full journey</h2>
             <p id="mapSubtitle">Seoul → Gongju → Jeonju → Damyang → Busan → Ulsan → Inje → Yangyang</p>
           </div>
@@ -104,12 +110,12 @@
       <div class="journey" id="journey">
         <section class="principles day-copy" id="principles" data-map-view="all">
           <p class="eyebrow reveal">How to use this roadbook</p>
-          <h2 class="reveal">Arrive ready.<br>Drive your drive.</h2>
+          <h2 class="reveal">Everything useful,<br>in one place.</h2>
           <div class="principle-list">
-            <article class="reveal"><b>01</b><div><h3>Fuelled and ready</h3><p>Be at the morning point before departure with your car, crew and navigation prepared.</p></div></article>
-            <article class="reveal"><b>02</b><div><h3>Follow the route</h3><p>Never chase the car ahead. Kakao navigation and safe decisions bring everyone back together.</p></div></article>
-            <article class="reveal"><b>03</b><div><h3>Stay reachable</h3><p>Keep the official group channel available for live timing and regroup instructions.</p></div></article>
-            <article class="reveal"><b>04</b><div><h3>Expect movement</h3><p>Traffic, weather and venue access can move the schedule. Live team direction takes priority.</p></div></article>
+            <article class="reveal"><b>01</b><div><h3>Check the full route</h3><p>See all four days together, or select one day on the map.</p></div></article>
+            <article class="reveal"><b>02</b><div><h3>Find stops easily</h3><p>Tap any stop to reveal its route progress, then open it directly in Kakao Maps.</p></div></article>
+            <article class="reveal"><b>03</b><div><h3>Check where the official briefing takes place</h3><p>Find the date, time and Porsche Studio Cheongdam location below.</p></div></article>
+            <article class="reveal"><b>04</b><div><h3>Must-dos + must-haves before departing</h3><p>Complete the compact checklist and keep it updated on this device.</p></div></article>
           </div>
         </section>
         <div id="dayChapters"></div>
@@ -117,11 +123,11 @@
     </section>
 
     <section class="finish-interlude" aria-label="Tour finish">
-      <img src="assets/finish-sea.jpg" alt="Sunset over the sea">
+      <img src="assets/finish-rally-lineup.webp" alt="Korea Grand Tour cars assembled for the road">
       <div class="finish-shade"></div>
       <div class="finish-copy content-wrap reveal">
         <p class="eyebrow">Day four · the East Sea</p>
-        <blockquote>Cars bring us together.<br><i>The road does the rest.</i></blockquote>
+        <blockquote>Finish by<br><i>the East Sea.</i></blockquote>
         <span>Seoul → Yangyang · 1,427 km</span>
       </div>
     </section>
@@ -156,34 +162,32 @@
     <section class="pack" id="pack">
       <div class="content-wrap">
         <div class="pack-head">
-          <div><p class="eyebrow reveal">Prepare your car and crew</p><h2 class="reveal">Rally-ready checklist.</h2></div>
+          <div><p class="eyebrow reveal">Must-dos + must-haves</p><h2 class="reveal">Before you leave.</h2></div>
           <div class="pack-progress reveal" aria-live="polite"><span id="packCount">0 / 9</span><small>Ready</small><button id="resetPack" type="button">Reset</button></div>
         </div>
         <p class="pack-intro reveal">Tap each item as you prepare. Your progress stays on this device.</p>
         <div class="pack-grid" id="packGrid">
-          <button class="pack-item reveal" type="button" data-pack="navigation"><span class="pack-check"></span><b>Kakao Maps + Kakao Navi</b><p>Updated, signed in and daily locations saved.</p></button>
-          <button class="pack-item reveal" type="button" data-pack="kakaot"><span class="pack-check"></span><b>Kakao T</b><p>Ready for taxi or parking contingencies.</p></button>
-          <button class="pack-item reveal" type="button" data-pack="power"><span class="pack-check"></span><b>Phone, mount + power</b><p>Secure mount, charger, cable and power bank.</p></button>
-          <button class="pack-item reveal" type="button" data-pack="food"><span class="pack-check"></span><b>Food + hydration</b><p>Enough drinks and easy snacks for everyone in the car.</p></button>
-          <button class="pack-item reveal" type="button" data-pack="personal"><span class="pack-check"></span><b>Personal + hotel items</b><p>Medication, sunscreen, rain layer and preferred amenities.</p></button>
-          <button class="pack-item reveal" type="button" data-pack="car"><span class="pack-check"></span><b>Car readiness</b><p>Fuel, tyres, fluids and model-specific essentials checked.</p></button>
-          <button class="pack-item reveal" type="button" data-pack="payment"><span class="pack-check"></span><b>Tolls + payment</b><p>Hi-Pass, Korean payment card and a cash backup.</p></button>
-          <button class="pack-item reveal" type="button" data-pack="comfort"><span class="pack-check"></span><b>Long-day comfort</b><p>Light layer, comfortable shoes and sunglasses.</p></button>
-          <button class="pack-item reveal" type="button" data-pack="comms"><span class="pack-check"></span><b>Team communication</b><p>Official group channel and organiser contacts saved.</p></button>
+          <button class="pack-item reveal" type="button" data-pack="navigation"><span class="pack-check"></span><b>Kakao Maps + Kakao Navi</b><span class="pack-description">Updated, signed in and daily locations saved.</span></button>
+          <button class="pack-item reveal" type="button" data-pack="kakaot"><span class="pack-check"></span><b>Kakao T</b><span class="pack-description">Ready for taxi or parking contingencies.</span></button>
+          <button class="pack-item reveal" type="button" data-pack="power"><span class="pack-check"></span><b>Phone, mount + power</b><span class="pack-description">Secure mount, charger, cable and power bank.</span></button>
+          <button class="pack-item reveal" type="button" data-pack="food"><span class="pack-check"></span><b>Food + hydration</b><span class="pack-description">Enough drinks and easy snacks for everyone in the car.</span></button>
+          <button class="pack-item reveal" type="button" data-pack="personal"><span class="pack-check"></span><b>Personal + hotel items</b><span class="pack-description">Medication, sunscreen, rain layer and preferred amenities.</span></button>
+          <button class="pack-item reveal" type="button" data-pack="car"><span class="pack-check"></span><b>Car readiness</b><span class="pack-description">Fuel, tyres, fluids and model-specific essentials checked.</span></button>
+          <button class="pack-item reveal" type="button" data-pack="payment"><span class="pack-check"></span><b>Tolls + payment</b><span class="pack-description">Hi-Pass, Korean payment card and a cash backup.</span></button>
+          <button class="pack-item reveal" type="button" data-pack="comfort"><span class="pack-check"></span><b>Long-day comfort</b><span class="pack-description">Light layer, comfortable shoes and sunglasses.</span></button>
+          <button class="pack-item reveal" type="button" data-pack="comms"><span class="pack-check"></span><b>Team communication</b><span class="pack-description">Official group channel and organiser contacts saved.</span></button>
         </div>
       </div>
     </section>
 
     <section class="partners" id="partners">
-      <div class="content-wrap partners-head"><p class="eyebrow reveal">2026 partners &amp; contributors</p><h2 class="reveal">The people behind<br>the journey.</h2></div>
-      <div class="partner-wall" aria-label="Korea Grand Tour partners">
-        <span>Porsche Korea</span><span>Porsche Studio Cheongdam</span><span>Ulanzi</span><span>Brandy’s Classic</span><span>Simcar Cafe</span><span>Lotte City Hotel Ulsan</span><span>FORTEC</span><span>Key Ring</span><span>Phone Number Plate</span><span>Tinybot</span>
-      </div>
+      <div class="content-wrap partners-head"><h2 class="reveal">Partners</h2></div>
+      <div class="partner-wall" id="partnerWall" aria-label="Korea Grand Tour partners"></div>
     </section>
 
     <section class="safety" id="essentials">
       <div class="content-wrap safety-grid">
-        <div class="safety-title"><p class="eyebrow reveal">Non-negotiables</p><h2 class="reveal">Look after the road.<br>Look after each other.</h2><p class="reveal">Korea Grand Tour is a touring event. It is not a race.</p></div>
+        <div class="safety-title"><h2 class="reveal">Code of Conduct</h2><p class="reveal">Korea Grand Tour is a touring event. It is not a race.</p></div>
         <div class="safety-rules">
           <article class="reveal"><span>01</span><h3>This is not a race</h3><p>Obey Korean traffic law, posted limits and all team instructions. Never compete for position or arrival time.</p></article>
           <article class="reveal"><span>02</span><h3>Zero alcohol and driving</h3><p>Alcohol and driving are completely incompatible with the event and result in immediate removal.</p></article>
@@ -206,6 +210,6 @@
   </footer>
 
   <noscript><div class="noscript">JavaScript is required for the live route and roadbook schedule. Please enable it or use the printed participant copy.</div></noscript>
-  <script src="app.js?v=20260713-4" defer></script>
+  <script src="app.js?v=20260713-5" defer></script>
 </body>
 </html>

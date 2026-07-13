@@ -9,7 +9,7 @@
       title:'Baekje heritage to Jeonju',
       summary:'From Seoul to the royal history of Gongju and Buyeo, then deeper into the countryside for garden coffee, Yongdamho roads and a quiet hanok arrival.',
       distance:'338.3', drive:'5h 55', depart:'10:00', arrive:'19:20',
-      image:'assets/day-1-heritage.jpg', imageAlt:'Traditional Korean temple architecture beneath a clear sky', imageTag:'History · countryside · lake roads',
+      image:'assets/day-1-culture.webp', imageAlt:'Traditional Korean temple architecture beneath a clear sky', imageTag:'Heritage · countryside · lake roads',
       note:'An easy cultural opening followed by the first long countryside transfer. Keep energy in reserve for Day 2.',
       stops:[
         {time:'10:00',type:'Departure',name:'Seoul Departure',ko:'서울 출발',note:'Final assembly point will be confirmed by the team. Kakao routing allows approximately 2h 20 to Gongju.',link:'https://place.map.kakao.com/8430129'},
@@ -27,7 +27,7 @@
       title:'Bamboo, bends and car culture',
       summary:'Damyang bamboo, Jianjae hairpins, Cafe Motorade and a Daegu car meet—then Cheongdo peaches, a private Busan surprise and a late arrival in Ulsan.',
       distance:'499.8', drive:'7h 42', depart:'09:30', arrive:'21:30',
-      image:'assets/day-2-water.jpg', imageAlt:'Green hills surrounding a calm Korean reservoir', imageTag:'Bamboo · hairpins · car culture',
+      image:'assets/day-2-cars.webp', imageAlt:'Korea Grand Tour cars assembled together', imageTag:'Bamboo · hairpins · car culture',
       note:'The longest activity day. Every dwell is intentionally tight to protect the 21:30 Ulsan arrival. Jianjae is a route moment, never a timed section.',
       stops:[
         {time:'09:30',type:'Departure',name:'Jeonju Departure',ko:'왕의지밀 출발',link:'https://place.map.kakao.com/945236571'},
@@ -47,7 +47,7 @@
       title:'Deep mountain Korea',
       summary:'A long inland climb from Ulsan through Cheongsong, Taebaek and Jeongseon—local food, geological scenery, motorsport heritage and Inje Speedium.',
       distance:'474.4', drive:'7h 30', depart:'09:30', arrive:'19:35',
-      image:'assets/hero-road.jpg', imageAlt:'Cars travelling toward mountains at sunset', imageTag:'Mountain Korea · geology · motorsport',
+      image:'assets/day-3-community.webp', imageAlt:'Korea Grand Tour participants on a forest bridge', imageTag:'Mountain Korea · community · motorsport',
       note:'The highest-fatigue road day. Tell the team early if you are tired. Mountain weather or road conditions may require a live route change.',
       stops:[
         {time:'09:30',type:'Departure',name:'Ulsan Departure',ko:'롯데시티호텔 울산 출발',link:'https://place.map.kakao.com/26632548'},
@@ -64,7 +64,7 @@
       title:'Track to the sea',
       summary:'A controlled morning at Inje Speedium, a hidden local lunch, then Naerincheon and Jochimryeong roads leading to the final gathering at Surfyy Beach.',
       distance:'114.7', drive:'2h 20', depart:'09:00', arrive:'16:50',
-      image:'assets/finish-sea.jpg', imageAlt:'Silhouettes walking beside the sea at sunset', imageTag:'Track · valley roads · East Sea finish',
+      image:'assets/day-4-landscape.webp', imageAlt:'A lake surrounded by green Korean mountains', imageTag:'Track · valley roads · East Sea finish',
       note:'Public roads after the circuit are never an extension of the track. Reset, drive calmly and leave the adrenaline at Speedium.',
       stops:[
         {time:'09:00',type:'Track program',name:'Inje Speedium',ko:'인제스피디움 트랙데이',note:'Follow the track briefing and marshal instructions. Lunch departure 13:40.',link:'https://place.map.kakao.com/25617734'},
@@ -75,6 +75,19 @@
         {time:'16:50',type:'Finish',name:'Surfyy Beach',ko:'서피비치 · 양양',note:'Korea Grand Tour 2026 finish gathering.',link:'https://place.map.kakao.com/26911134',end:true}
       ]
     }
+  ];
+
+  const PARTNERS = [
+    {name:'Porsche Korea',logo:'assets/partners/porsche-wordmark.svg',alt:'Porsche'},
+    {name:'Porsche Studio Cheongdam',logo:'assets/partners/porsche-wordmark.svg',alt:'Porsche'},
+    {name:'Ulanzi',logo:'assets/partners/ulanzi-logo.svg',alt:'Ulanzi',dark:true},
+    {name:'BRANDYCLASSIC',logo:'assets/partners/brandyclassic-mark.webp',alt:'BRANDYCLASSIC monogram',photo:true},
+    {name:'Simcar Cafe',wordmark:'SIMCAR<small>CAFE</small>'},
+    {name:'Lotte City Hotel Ulsan',logo:'assets/partners/lotte-city-hotels-logo.svg',alt:'Lotte City Hotels'},
+    {name:'FORTEC',logo:'assets/partners/fortec-korea-logo.png',alt:'FORTEC Motor Sports Oil',dark:true},
+    {name:'liveyourroute · Key ring',logo:'assets/partners/liveyourroute-logo.jpg',alt:'LYR Live Your Route',photo:true},
+    {name:'AllimMall · Phone number plate',wordmark:'<span lang="ko">알림몰</span><small>ALLIMMALL</small>'},
+    {name:'Tinybot',logo:'assets/partners/tinybot-logo.svg',alt:'Tinybot'}
   ];
 
   const mapIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18-6 3V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg>';
@@ -94,8 +107,10 @@
         <ol class="run-sheet">
           ${day.stops.map((stop,index) => `
             <li class="route-stop reveal${stop.pass?' is-pass':''}${stop.end?' is-end':''}" data-day="${day.day}" data-stop="${index}">
-              <time class="stop-time">${stop.time}</time>
-              <div><span class="stop-type">${escapeHtml(stop.type)}</span><h3 class="stop-name">${escapeHtml(stop.name)}</h3><span class="stop-ko" lang="ko">${escapeHtml(stop.ko)}</span>${stop.note?`<p class="stop-note">${escapeHtml(stop.note)}</p>`:''}</div>
+              <button class="stop-route" type="button" aria-label="Show route progress to ${escapeHtml(stop.name)}">
+                <time class="stop-time">${stop.time}</time>
+                <span class="stop-copy"><span class="stop-type">${escapeHtml(stop.type)}</span><span class="stop-name">${escapeHtml(stop.name)}</span><span class="stop-ko" lang="ko">${escapeHtml(stop.ko)}</span>${stop.note?`<span class="stop-note">${escapeHtml(stop.note)}</span>`:''}</span>
+              </button>
               <a class="stop-map" href="${stop.link}" target="_blank" rel="noopener" aria-label="Open ${escapeHtml(stop.name)} in Kakao Maps">${mapIcon}</a>
             </li>`).join('')}
         </ol>
@@ -103,7 +118,17 @@
       </article>`).join('');
   }
 
+  function renderPartners() {
+    const wall = document.getElementById('partnerWall');
+    wall.innerHTML = PARTNERS.map(partner => `
+      <article class="partner-card${partner.dark?' is-dark':''}${partner.photo?' has-photo':''}">
+        <div class="partner-logo">${partner.logo?`<img src="${partner.logo}" alt="${escapeHtml(partner.alt)}" loading="lazy">`:`<span class="partner-wordmark">${partner.wordmark}</span>`}</div>
+        <h3>${escapeHtml(partner.name)}</h3>
+      </article>`).join('');
+  }
+
   renderDays();
+  renderPartners();
 
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const siteNav = document.getElementById('siteNav');
@@ -124,7 +149,7 @@
         finishImage.style.transform = `translateY(${offset * 28}px) scale(1.04)`;
       }
     }
-    syncMapDock();
+    syncRouteStory();
     scrollTicking = false;
   }
 
@@ -171,49 +196,81 @@
   updatePack();
 
   const mapShell = document.getElementById('mapShell');
-  const mapPortal = document.getElementById('mapPortal');
-  const journey = document.getElementById('journey');
-  const finish = document.querySelector('.finish-interlude');
+  const routeExperience = document.getElementById('route-map');
   const mapTitle = document.getElementById('mapTitle');
   const mapSubtitle = document.getElementById('mapSubtitle');
   const mapMetrics = document.getElementById('mapMetrics');
   const mapActiveStop = document.getElementById('mapActiveStop');
   const mapLoading = document.getElementById('mapLoading');
   const mapControls = [...document.querySelectorAll('.map-controls button')];
+  const routeCanvas = document.getElementById('routeCanvas');
+  const routeContext = routeCanvas.getContext('2d');
+  const routeCar = document.getElementById('routeCar');
   let routeData;
   let kakaoMap;
+  let routeModels = {};
   let activeDay = 'all';
   let activeStop = null;
-  let routeLines = [];
-  let markerOverlays = [];
+  let routeProgress = 1;
   let routeAnimation = 0;
   let mapResizeTimer;
-  let pendingMapRefit = false;
-  let mapDockState = 'static';
+  let pendingTappedProgress = null;
+  let mapReady = false;
 
   function loadKakao() {
     return new Promise((resolve,reject) => {
       if (window.kakao?.maps) { window.kakao.maps.load(resolve); return; }
       const script = document.createElement('script');
       script.src = 'https://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=fd286a5032839a83ebfc08e8f5aa69db';
-      script.onload = () => window.kakao.maps.load(resolve);
+      const timeout = setTimeout(() => reject(new Error('Kakao Maps timed out')),12000);
+      script.onload = () => {
+        if (!window.kakao?.maps?.load) {
+          clearTimeout(timeout);
+          reject(new Error('Kakao Maps failed to initialize'));
+          return;
+        }
+        window.kakao.maps.load(() => { clearTimeout(timeout); resolve(); });
+      };
       script.onerror = reject;
       document.head.appendChild(script);
     });
   }
 
-  function sampledGeometry(points,max=1500) {
-    if (points.length <= max) return points;
-    const step = (points.length - 1) / (max - 1);
-    return Array.from({length:max},(_,index) => points[Math.round(index * step)]);
+  function sampledGeometry(points,max=1400) {
+    const count = Math.min(points.length,max);
+    if (count < 2) return [];
+    const step = (points.length - 1) / (count - 1);
+    return Array.from({length:count},(_,index) => {
+      const sourceIndex = Math.round(index * step);
+      return {lat:points[sourceIndex][0],lng:points[sourceIndex][1],t:sourceIndex/(points.length-1)};
+    });
   }
 
-  function clearMap() {
-    cancelAnimationFrame(routeAnimation);
-    routeLines.forEach(line => line.setMap(null));
-    markerOverlays.forEach(marker => marker.overlay.setMap(null));
-    routeLines = [];
-    markerOverlays = [];
+  function buildRouteModels() {
+    routeModels = {};
+    Object.entries(routeData.days).forEach(([key,info]) => {
+      let cursor = 0;
+      const stopProgress = info.stops.map(stop => {
+        let bestIndex = cursor;
+        let bestDistance = Infinity;
+        for (let index=cursor; index<info.geometry.length; index+=1) {
+          const point = info.geometry[index];
+          const latDistance = point[0]-stop.lat;
+          const lngDistance = (point[1]-stop.lng)*Math.cos(stop.lat*Math.PI/180);
+          const distance = latDistance*latDistance+lngDistance*lngDistance;
+          if (distance < bestDistance) { bestDistance = distance; bestIndex = index; }
+        }
+        cursor = bestIndex;
+        return bestIndex/Math.max(1,info.geometry.length-1);
+      });
+      routeModels[key] = {
+        samples:sampledGeometry(info.geometry,1200),
+        stops:info.stops,
+        stopProgress,
+        screen:[],
+        stopScreen:[]
+      };
+    });
   }
 
   function dayKeys(day) { return day === 'all' ? ['1','2','3','4'] : [String(day)]; }
@@ -232,73 +289,194 @@
     mapMetrics.innerHTML = `<span>${dayCopy.distance} km</span><span>${dayCopy.drive}</span>`;
   }
 
-  function makeMarker(stop,key,index) {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'kgt-marker';
-    button.style.setProperty('--marker-color',DAY_COLORS[key]);
-    button.setAttribute('aria-label',`${index+1}. ${stop.name}`);
-    button.innerHTML = `<span><b>${index+1}</b></span><em class="kgt-marker-label">${escapeHtml(stop.name)}</em>`;
-    button.addEventListener('click', () => window.open(`https://map.kakao.com/link/map/${encodeURIComponent(stop.nameKo || stop.name)},${stop.lat},${stop.lng}`,'_blank','noopener'));
-    const overlay = new kakao.maps.CustomOverlay({position:new kakao.maps.LatLng(stop.lat,stop.lng),content:button,yAnchor:0,zIndex:8});
-    overlay.setMap(kakaoMap);
-    markerOverlays.push({day:String(key),index,element:button,overlay,stop});
-  }
-
   function fitMap(day) {
     if (!kakaoMap || !routeData) return;
     const bounds = new kakao.maps.LatLngBounds();
     dayKeys(day).forEach(key => routeData.days[key].geometry.forEach(point => bounds.extend(new kakao.maps.LatLng(point[0],point[1]))));
-    kakaoMap.setBounds(bounds,70,70,70,70);
+    const side = innerWidth < 720 ? 28 : 54;
+    kakaoMap.setBounds(bounds,116,side,88,side);
   }
 
-  function renderMap(day,animate=true) {
-    if (!kakaoMap || !routeData) return;
-    activeDay = String(day);
-    activeStop = null;
-    clearMap();
-    const keys = dayKeys(activeDay);
-    const animated = [];
-    keys.forEach(key => {
-      const info = routeData.days[key];
-      const geometry = sampledGeometry(info.geometry,activeDay==='all'?900:1700);
-      const path = geometry.map(point => new kakao.maps.LatLng(point[0],point[1]));
-      const outline = new kakao.maps.Polyline({path,strokeWeight:activeDay==='all'?7:11,strokeColor:'#060606',strokeOpacity:.58,strokeStyle:'solid'});
-      outline.setMap(kakaoMap); routeLines.push(outline);
-      const line = new kakao.maps.Polyline({path:animate&&!reducedMotion.matches?path.slice(0,2):path,strokeWeight:activeDay==='all'?4:6,strokeColor:DAY_COLORS[key],strokeOpacity:.92,strokeStyle:'solid'});
-      line.setMap(kakaoMap); routeLines.push(line);
-      if (animate && !reducedMotion.matches) animated.push({line,path});
-      info.stops.forEach((stop,index) => makeMarker(stop,key,index));
+  function resizeRouteCanvas() {
+    const rect = routeCanvas.getBoundingClientRect();
+    const dpr = Math.min(devicePixelRatio || 1,2);
+    const width = Math.max(1,Math.round(rect.width*dpr));
+    const height = Math.max(1,Math.round(rect.height*dpr));
+    if (routeCanvas.width !== width || routeCanvas.height !== height) {
+      routeCanvas.width = width;
+      routeCanvas.height = height;
+    }
+    routeContext.setTransform(dpr,0,0,dpr,0,0);
+    return rect;
+  }
+
+  function refreshRouteProjection() {
+    if (!kakaoMap || !mapReady) return;
+    const projection = kakaoMap.getProjection();
+    dayKeys(activeDay).forEach(key => {
+      const model = routeModels[key];
+      model.screen = model.samples.map(point => {
+        const screen = projection.containerPointFromCoords(new kakao.maps.LatLng(point.lat,point.lng));
+        return {x:screen.x,y:screen.y,t:point.t};
+      });
+      model.stopScreen = model.stops.map(stop => {
+        const screen = projection.containerPointFromCoords(new kakao.maps.LatLng(stop.lat,stop.lng));
+        return {x:screen.x,y:screen.y};
+      });
     });
-    mapControls.forEach(control => control.setAttribute('aria-pressed',String(control.dataset.mapDay===activeDay)));
-    updateMapCopy(activeDay);
-    mapActiveStop.innerHTML = activeDay==='all' ? '<small>Full itinerary</small><strong>28 waypoints across Korea</strong>' : `<small>Day ${activeDay}</small><strong>${DAYS[Number(activeDay)-1].stops.length} route points</strong>`;
-    fitMap(activeDay);
-    if (animated.length) {
-      const started = performance.now();
-      const draw = now => {
-        const raw = Math.min(1,(now-started)/1050);
-        const eased = 1-Math.pow(1-raw,3);
-        animated.forEach(({line,path}) => line.setPath(path.slice(0,Math.max(2,Math.round(path.length*eased)))));
-        if (raw < 1) routeAnimation = requestAnimationFrame(draw);
-      };
-      routeAnimation = requestAnimationFrame(draw);
+    drawRouteScene();
+  }
+
+  function traceRoute(points,progress=1) {
+    if (!points.length) return;
+    routeContext.beginPath();
+    routeContext.moveTo(points[0].x,points[0].y);
+    for (let index=1; index<points.length; index+=1) {
+      const previous = points[index-1];
+      const point = points[index];
+      if (point.t <= progress) {
+        routeContext.lineTo(point.x,point.y);
+        continue;
+      }
+      if (progress > previous.t) {
+        const span = Math.max(.000001,point.t-previous.t);
+        const ratio = Math.max(0,Math.min(1,(progress-previous.t)/span));
+        routeContext.lineTo(previous.x+(point.x-previous.x)*ratio,previous.y+(point.y-previous.y)*ratio);
+      }
+      break;
     }
   }
 
-  function activateStop(day,index) {
+  function pointOnRoute(points,progress) {
+    if (!points.length) return null;
+    for (let index=1; index<points.length; index+=1) {
+      const previous = points[index-1];
+      const point = points[index];
+      if (point.t < progress) continue;
+      const span = Math.max(.000001,point.t-previous.t);
+      const ratio = Math.max(0,Math.min(1,(progress-previous.t)/span));
+      const x = previous.x+(point.x-previous.x)*ratio;
+      const y = previous.y+(point.y-previous.y)*ratio;
+      return {x,y,angle:Math.atan2(point.y-previous.y,point.x-previous.x)*180/Math.PI+90};
+    }
+    const last = points.at(-1);
+    const previous = points.at(-2) || last;
+    return {x:last.x,y:last.y,angle:Math.atan2(last.y-previous.y,last.x-previous.x)*180/Math.PI+90};
+  }
+
+  function strokeRoute(points,progress,color,overview) {
+    if (points.length < 2) return;
+    routeContext.lineJoin = 'round';
+    routeContext.lineCap = 'round';
+    routeContext.setLineDash(overview ? [2,7] : [3,8]);
+    routeContext.lineWidth = overview ? 3 : 4;
+    routeContext.strokeStyle = overview ? 'rgba(18,19,19,.48)' : 'rgba(18,19,19,.42)';
+    traceRoute(points,1);
+    routeContext.stroke();
+    routeContext.setLineDash([]);
+    routeContext.lineWidth = overview ? 8 : 11;
+    routeContext.strokeStyle = 'rgba(6,6,6,.72)';
+    traceRoute(points,progress);
+    routeContext.stroke();
+    routeContext.lineWidth = overview ? 4 : 6;
+    routeContext.strokeStyle = color;
+    traceRoute(points,progress);
+    routeContext.stroke();
+  }
+
+  function drawRouteScene() {
+    if (!mapReady) return;
+    const rect = resizeRouteCanvas();
+    routeContext.clearRect(0,0,rect.width,rect.height);
+    const overview = activeDay === 'all';
+    dayKeys(activeDay).forEach(key => {
+      const model = routeModels[key];
+      if (!model.screen.length) return;
+      const progressValue = overview ? 1 : routeProgress;
+      strokeRoute(model.screen,progressValue,DAY_COLORS[key],overview);
+      model.stopScreen.forEach((point,index) => {
+        const completed = overview || model.stopProgress[index] <= progressValue+.001;
+        const selected = !overview && activeStop?.day===key && activeStop.index===index;
+        routeContext.beginPath();
+        routeContext.arc(point.x,point.y,selected?8:overview?5:6,0,Math.PI*2);
+        routeContext.fillStyle = completed ? DAY_COLORS[key] : '#f7f5ef';
+        routeContext.fill();
+        routeContext.lineWidth = selected?4:2;
+        routeContext.strokeStyle = selected?'#fff':'#171818';
+        routeContext.stroke();
+      });
+    });
+    if (!overview) {
+      const carPosition = pointOnRoute(routeModels[activeDay].screen,routeProgress);
+      if (carPosition) {
+        routeCar.hidden = false;
+        routeCar.style.transform = `translate3d(${carPosition.x-14}px,${carPosition.y-24}px,0) rotate(${carPosition.angle}deg)`;
+      }
+    } else {
+      routeCar.hidden = true;
+    }
+    routeExperience.dataset.activeDay = activeDay;
+    routeExperience.dataset.activeStop = activeStop ? String(activeStop.index) : '';
+    routeExperience.dataset.routeProgress = routeProgress.toFixed(3);
+  }
+
+  function setActiveDay(day,{progressValue,fit=true}={}) {
+    if (!kakaoMap || !routeData) return;
+    cancelAnimationFrame(routeAnimation);
+    activeDay = String(day);
+    activeStop = null;
+    routeProgress = progressValue ?? (activeDay==='all'?1:0);
+    mapControls.forEach(control => control.setAttribute('aria-pressed',String(control.dataset.mapDay===activeDay)));
+    updateMapCopy(activeDay);
+    mapActiveStop.innerHTML = activeDay==='all' ? '<small>Full itinerary</small><strong>28 waypoints across Korea</strong>' : `<small>Day ${activeDay}</small><strong>${DAYS[Number(activeDay)-1].stops.length} route points</strong>`;
+    routeContext.clearRect(0,0,routeCanvas.width,routeCanvas.height);
+    if (fit) fitMap(activeDay); else refreshRouteProjection();
+  }
+
+  function animateRouteTo(target,duration=780) {
+    cancelAnimationFrame(routeAnimation);
+    const safeTarget = Math.max(0,Math.min(1,target));
+    if (reducedMotion.matches) {
+      routeProgress = safeTarget;
+      drawRouteScene();
+      return;
+    }
+    const start = routeProgress;
+    const started = performance.now();
+    const frame = now => {
+      const raw = Math.min(1,(now-started)/duration);
+      const eased = 1-Math.pow(1-raw,3);
+      routeProgress = start+(safeTarget-start)*eased;
+      drawRouteScene();
+      if (raw < 1) routeAnimation = requestAnimationFrame(frame);
+    };
+    routeAnimation = requestAnimationFrame(frame);
+  }
+
+  function setStopSelection(day,index) {
     const key = String(day);
+    if (activeStop?.day===key && activeStop.index===index) return;
     document.querySelectorAll('.route-stop').forEach(stop => {
       const active = stop.dataset.day===key && Number(stop.dataset.stop)===index;
       stop.classList.toggle('is-active',active);
       active ? stop.setAttribute('aria-current','step') : stop.removeAttribute('aria-current');
     });
-    if (!kakaoMap || !routeData) return;
-    if (activeDay !== key) renderMap(key,false);
     activeStop = {day:key,index};
-    markerOverlays.forEach(marker => marker.element.classList.toggle('is-active',marker.day===key && marker.index===index));
     const scheduleStop = DAYS[Number(key)-1].stops[index];
     mapActiveStop.innerHTML = `<small>Day ${key} · ${scheduleStop.time}</small><strong>${escapeHtml(scheduleStop.name)}</strong>`;
+  }
+
+  function activateStop(day,index,{animate=true}={}) {
+    const key = String(day);
+    if (!kakaoMap || !routeData) return;
+    const target = routeModels[key].stopProgress[index];
+    if (activeDay !== key) {
+      setActiveDay(key,{progressValue:0,fit:true});
+      pendingTappedProgress = {target,animate};
+    } else {
+      animate ? animateRouteTo(target) : (routeProgress=target,drawRouteScene());
+    }
+    setStopSelection(key,index);
   }
 
   function clearScheduleStopSelection() {
@@ -311,9 +489,14 @@
   mapControls.forEach(control => control.addEventListener('click', () => {
     const day = control.dataset.mapDay;
     clearScheduleStopSelection();
-    renderMap(day,true);
+    setActiveDay(day,{progressValue:1,fit:true});
     const target = day==='all' ? document.getElementById('route-map') : document.getElementById(`day${day}`);
     target?.scrollIntoView({behavior:reducedMotion.matches?'auto':'smooth',block:'start'});
+  }));
+
+  document.querySelectorAll('.stop-route').forEach(button => button.addEventListener('click', () => {
+    const stop = button.closest('.route-stop');
+    activateStop(stop.dataset.day,Number(stop.dataset.stop),{animate:true});
   }));
 
   Promise.all([
@@ -321,109 +504,91 @@
     loadKakao()
   ]).then(([data]) => {
     routeData = data;
-    kakaoMap = new kakao.maps.Map(document.getElementById('roadbookKakaoMap'),{center:new kakao.maps.LatLng(36.25,127.75),level:12});
-    kakaoMap.addControl(new kakao.maps.ZoomControl(),kakao.maps.ControlPosition.RIGHT);
-    renderMap('all',true);
+    buildRouteModels();
+    kakaoMap = new kakao.maps.Map(document.getElementById('roadbookKakaoMap'),{center:new kakao.maps.LatLng(36.25,127.75),level:12,draggable:false,scrollwheel:false,disableDoubleClickZoom:true});
+    kakaoMap.setDraggable(false);
+    kakaoMap.setZoomable(false);
+    kakaoMap.setKeyboardShortcuts(false);
+    kakao.maps.event.addListener(kakaoMap,'idle',() => {
+      refreshRouteProjection();
+      if (pendingTappedProgress) {
+        const pending = pendingTappedProgress;
+        pendingTappedProgress = null;
+        pending.animate ? animateRouteTo(pending.target) : (routeProgress=pending.target,drawRouteScene());
+      }
+    });
+    mapReady = true;
+    setActiveDay('all',{progressValue:1,fit:true});
     mapLoading.classList.add('is-loaded');
-    syncMapDock();
+    syncRouteStory();
   }).catch(error => {
     console.warn('KGT map unavailable:',error);
     mapLoading.innerHTML = 'Map unavailable · use the Kakao links in the roadbook';
   });
 
-  const stopObserver = new IntersectionObserver(entries => {
-    const visible = entries.filter(entry => entry.isIntersecting).sort((a,b) => Math.abs(a.boundingClientRect.top-innerHeight*.45)-Math.abs(b.boundingClientRect.top-innerHeight*.45));
-    if (visible[0]) activateStop(visible[0].target.dataset.day,Number(visible[0].target.dataset.stop));
-  }, {threshold:.15,rootMargin:'-30% 0px -48%'});
-  document.querySelectorAll('.route-stop').forEach(stop => stopObserver.observe(stop));
-
-  const chapterObserver = new IntersectionObserver(entries => {
-    const current = entries
-      .filter(entry => entry.isIntersecting)
-      .sort((a,b) => Math.abs(a.boundingClientRect.top-innerHeight*.08)-Math.abs(b.boundingClientRect.top-innerHeight*.08))[0];
-    if (!current) return;
-    const day = current.target.dataset.day;
-    if (day && activeDay !== day) {
-      clearScheduleStopSelection();
-      renderMap(day,false);
-    }
-  }, {threshold:0,rootMargin:'-8% 0px -78%'});
-  document.querySelectorAll('.day-chapter').forEach(chapter => chapterObserver.observe(chapter));
-
-  const viewObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && entry.target.dataset.mapView==='all' && activeDay!=='all') {
-        clearScheduleStopSelection();
-        renderMap('all',false);
-      }
+  function syncRouteStory() {
+    if (!mapReady || !routeData) return;
+    const routeRect = routeExperience.getBoundingClientRect();
+    if (routeRect.top > innerHeight*.72 || routeRect.bottom < innerHeight*.18) return;
+    const anchor = innerHeight*(innerWidth < 1050 ? .78 : .5);
+    const chapters = [...document.querySelectorAll('.day-chapter')];
+    const chapter = chapters.find(item => {
+      const rect = item.getBoundingClientRect();
+      return rect.top <= anchor && rect.bottom > anchor;
     });
-  }, {threshold:.2});
-  document.querySelectorAll('[data-map-view="all"]').forEach(item => viewObserver.observe(item));
+    if (!chapter) {
+      const first = chapters[0]?.getBoundingClientRect();
+      if (first && first.top > anchor && activeDay !== 'all') {
+        clearScheduleStopSelection();
+        setActiveDay('all',{progressValue:1,fit:true});
+      }
+      return;
+    }
+    const key = chapter.dataset.day;
+    if (activeDay !== key) {
+      clearScheduleStopSelection();
+      setActiveDay(key,{progressValue:0,fit:true});
+    }
+    const stops = [...chapter.querySelectorAll('.route-stop')];
+    if (!stops.length) return;
+    const centers = stops.map(stop => {
+      const rect = stop.getBoundingClientRect();
+      return rect.top+rect.height/2;
+    });
+    const model = routeModels[key];
+    let target = 0;
+    if (anchor >= centers.at(-1)) {
+      target = 1;
+    } else if (anchor > centers[0]) {
+      for (let index=1; index<centers.length; index+=1) {
+        if (anchor > centers[index]) continue;
+        const ratio = (anchor-centers[index-1])/Math.max(1,centers[index]-centers[index-1]);
+        target = model.stopProgress[index-1]+(model.stopProgress[index]-model.stopProgress[index-1])*ratio;
+        break;
+      }
+    }
+    cancelAnimationFrame(routeAnimation);
+    routeProgress = Math.max(0,Math.min(1,target));
+    const nearest = centers.reduce((best,center,index) => Math.abs(center-anchor)<best.distance?{index,distance:Math.abs(center-anchor)}:best,{index:0,distance:Infinity});
+    if (nearest.distance < innerHeight*.24) setStopSelection(key,nearest.index);
+    else {
+      activeStop = null;
+      clearScheduleStopSelection();
+      mapActiveStop.innerHTML = `<small>Day ${key}</small><strong>${DAYS[Number(key)-1].stops.length} route points</strong>`;
+    }
+    drawRouteScene();
+  }
 
-  function relayoutMap(refit=true) {
+  const mapResizeObserver = new ResizeObserver(() => {
     if (!kakaoMap) return;
-    pendingMapRefit ||= refit;
     clearTimeout(mapResizeTimer);
     mapResizeTimer = setTimeout(() => {
       kakaoMap.relayout();
-      if (pendingMapRefit) fitMap(activeDay);
-      pendingMapRefit = false;
-    },110);
-  }
+      fitMap(activeDay);
+    },100);
+  });
+  mapResizeObserver.observe(mapShell);
 
-  function setMapDockState(next) {
-    if (mapDockState === next) return;
-    mapDockState = next;
-    relayoutMap(true);
-  }
-
-  function syncMapDock() {
-    if (innerWidth < 1050 || reducedMotion.matches) {
-      document.body.classList.remove('map-docked');
-      mapShell.classList.remove('is-fixed','is-hidden');
-      mapShell.removeAttribute('style');
-      setMapDockState('static');
-      return;
-    }
-    const nav = 84;
-    const y = scrollY;
-    const start = mapPortal.getBoundingClientRect().top+y-nav;
-    const dockStart = start+innerHeight*.08;
-    const dockEnd = start+innerHeight*.72;
-    const end = finish.getBoundingClientRect().top+y-innerHeight*.88;
-    if (y < start) {
-      document.body.classList.remove('map-docked');
-      mapShell.classList.remove('is-fixed','is-hidden');
-      mapShell.removeAttribute('style');
-      setMapDockState('static');
-      return;
-    }
-    if (y >= end) {
-      document.body.classList.remove('map-docked');
-      mapShell.classList.add('is-fixed','is-hidden');
-      setMapDockState('hidden');
-      return;
-    }
-    const p = Math.max(0,Math.min(1,(y-dockStart)/(dockEnd-dockStart)));
-    const gutter = Math.max(22,(innerWidth-1240)/2);
-    const startWidth = innerWidth-gutter*2;
-    const endWidth = Math.min(innerWidth*.43,600);
-    const width = startWidth+(endWidth-startWidth)*p;
-    const startHeight = innerHeight-nav-30;
-    const endHeight = innerHeight-nav-28;
-    const height = startHeight+(endHeight-startHeight)*p;
-    mapShell.classList.add('is-fixed');
-    mapShell.classList.remove('is-hidden');
-    mapShell.style.width = `${width}px`;
-    mapShell.style.height = `${height}px`;
-    mapShell.style.right = `${gutter}px`;
-    mapShell.style.borderRadius = `${22*p}px`;
-    document.body.classList.toggle('map-docked',p>.76);
-    setMapDockState(p>.98?'docked':'morphing');
-    relayoutMap(false);
-  }
-
-  addEventListener('resize', () => { syncMapDock(); relayoutMap(true); }, {passive:true});
-  reducedMotion.addEventListener?.('change', () => { syncMapDock(); updateScrollEffects(); });
+  reducedMotion.addEventListener?.('change', () => { updateScrollEffects(); drawRouteScene(); });
   updateScrollEffects();
 })();
