@@ -90,8 +90,12 @@
     {name:'Tinybot',logo:'assets/partners/tinybot-logo.svg',alt:'Tinybot'}
   ];
 
-  const mapIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18-6 3V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg>';
+  const destinationIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m20 4-7 16-4-5-5-4 16-7Z"/><path d="m9 15 4-4"/></svg>';
+  const routeIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5"/><path d="M9 5h10v10"/></svg>';
   const escapeHtml = value => String(value || '').replace(/[&<>"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[char]));
+  const kakaoDestinationUrl = link => String(link || '')
+    .replace('https://place.map.kakao.com/','https://map.kakao.com/link/to/')
+    .replace('/link/map/','/link/to/');
 
   function renderDays() {
     const root = document.getElementById('dayChapters');
@@ -104,6 +108,16 @@
           <p class="day-summary reveal">${escapeHtml(day.summary)}</p>
           <div class="day-stats reveal"><div><small>Distance</small><b>${day.distance} <em>km</em></b></div><div><small>Driving</small><b>${day.drive}</b></div><div><small>Departure</small><b>${day.depart}</b></div><div><small>Arrival</small><b>${day.arrive}</b></div></div>
         </header>
+        <div class="day-route-launch reveal is-loading" data-day-route="${day.day}">
+          <div class="day-route-copy">
+            <small>Kakao Map</small>
+            <strong>Full Day 0${day.day} route</strong>
+            <span data-day-route-summary>Preparing every scheduled waypoint…</span>
+          </div>
+          <div class="day-route-actions" data-day-route-actions="${day.day}" aria-live="polite">
+            <span class="day-route-preparing">Preparing route…</span>
+          </div>
+        </div>
         <ol class="run-sheet">
           ${day.stops.map((stop,index) => `
             <li class="route-stop reveal${stop.pass?' is-pass':''}${stop.end?' is-end':''}" data-day="${day.day}" data-stop="${index}">
@@ -111,7 +125,7 @@
                 <time class="stop-time">${stop.time}</time>
                 <span class="stop-copy"><span class="stop-type">${escapeHtml(stop.type)}</span><span class="stop-name">${escapeHtml(stop.name)}</span><span class="stop-ko" lang="ko">${escapeHtml(stop.ko)}</span>${stop.note?`<span class="stop-note">${escapeHtml(stop.note)}</span>`:''}</span>
               </button>
-              <a class="stop-map" href="${stop.link}" target="_blank" rel="noopener" aria-label="Open ${escapeHtml(stop.name)} in Kakao Maps">${mapIcon}</a>
+              <a class="stop-map" href="${kakaoDestinationUrl(stop.link)}" target="_blank" rel="noopener" title="Set as destination" aria-label="Set ${escapeHtml(stop.name)} as destination in Kakao Map">${destinationIcon}</a>
             </li>`).join('')}
         </ol>
         <p class="day-note reveal"><b>Day character:</b> ${escapeHtml(day.note)}</p>
@@ -129,6 +143,61 @@
 
   renderDays();
   renderPartners();
+
+  function kakaoRouteUrl(stops) {
+    if (!Array.isArray(stops) || stops.length < 2 || stops.length > 7) return '';
+    const point = stop => `${Number(stop.lat)},${Number(stop.lng)}`;
+    const query = [`sp=${point(stops[0])}`];
+    stops.slice(1,-1).forEach((stop,index) => query.push(`${index ? `vp${index+1}` : 'vp'}=${point(stop)}`));
+    query.push(`ep=${point(stops.at(-1))}`,'by=car');
+    return `https://m.map.kakao.com/scheme/route?${query.join('&')}`;
+  }
+
+  function kakaoRouteSegments(dayKey,stops) {
+    if (stops.length <= 7) return [{start:0,end:stops.length-1,stops}];
+    const preferredBreak = dayKey === '2' ? 5 : 6;
+    const segments = [];
+    let start = 0;
+    while (stops.length-start > 7) {
+      const end = start === 0 ? Math.min(preferredBreak,start+6) : start+6;
+      segments.push({start,end,stops:stops.slice(start,end+1)});
+      start = end;
+    }
+    segments.push({start,end:stops.length-1,stops:stops.slice(start)});
+    return segments;
+  }
+
+  function hydrateDayRouteLinks(data) {
+    Object.entries(data.days || {}).forEach(([dayKey,info]) => {
+      const dayCopy = DAYS[Number(dayKey)-1];
+      const panel = document.querySelector(`[data-day-route="${dayKey}"]`);
+      const actions = panel?.querySelector('[data-day-route-actions]');
+      const summary = panel?.querySelector('[data-day-route-summary]');
+      if (!panel || !actions || !dayCopy || !Array.isArray(info.stops)) return;
+      const segments = kakaoRouteSegments(dayKey,info.stops);
+      actions.innerHTML = segments.map((segment,index) => {
+        const href = kakaoRouteUrl(segment.stops);
+        const endpoint = dayCopy.stops[segment.end]?.name || segment.stops.at(-1)?.name || 'next stop';
+        const label = segments.length === 1 ? 'Open full route' : `Part ${index+1} · to ${endpoint}`;
+        const waypointCount = Math.max(0,segment.stops.length-2);
+        return `<a class="day-route-action" href="${href}" target="_blank" rel="noopener" data-route-part="${index+1}" data-route-points="${segment.stops.length}" data-route-waypoints="${waypointCount}" aria-label="Open Day ${dayKey} ${segments.length === 1 ? 'full route' : `route part ${index+1}`} in Kakao Map"><span>${escapeHtml(label)}</span><small>${waypointCount} waypoint${waypointCount===1?'':'s'}</small>${routeIcon}</a>`;
+      }).join('');
+      summary.textContent = segments.length === 1
+        ? `All ${info.stops.length} route points in one launch.`
+        : `All ${info.stops.length} route points in ${segments.length} connected legs.`;
+      panel.classList.remove('is-loading');
+    });
+  }
+
+  function markDayRoutesUnavailable() {
+    document.querySelectorAll('[data-day-route]').forEach(panel => {
+      const summary = panel.querySelector('[data-day-route-summary]');
+      const actions = panel.querySelector('[data-day-route-actions]');
+      if (summary) summary.textContent = 'Use the individual destination buttons below.';
+      if (actions) actions.innerHTML = '<span class="day-route-preparing">Route unavailable</span>';
+      panel.classList.remove('is-loading');
+    });
+  }
 
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const siteNav = document.getElementById('siteNav');
@@ -527,8 +596,20 @@
     activateStop(stop.dataset.day,Number(stop.dataset.stop),{animate:true});
   }));
 
+  const routeDataPromise = fetch('route-data.json')
+    .then(response => { if (!response.ok) throw new Error('Route data unavailable'); return response.json(); })
+    .then(data => {
+      routeData = data;
+      hydrateDayRouteLinks(data);
+      return data;
+    })
+    .catch(error => {
+      markDayRoutesUnavailable();
+      throw error;
+    });
+
   Promise.all([
-    fetch('route-data.json').then(response => { if (!response.ok) throw new Error('Route data unavailable'); return response.json(); }),
+    routeDataPromise,
     loadKakao()
   ]).then(([data]) => {
     routeData = data;
