@@ -53,7 +53,7 @@ button{color:inherit}
 .manifesto{position:relative;padding:145px 0 125px;background:var(--paper);overflow:hidden}.manifesto-track{position:absolute;top:24px;left:0;white-space:nowrap;font-size:82px;line-height:1;font-weight:900;letter-spacing:-.06em;color:#00000008;animation:marquee 35s linear infinite}.manifesto-track span{display:block}
 .manifesto-grid{position:relative;display:grid;grid-template-columns:180px minmax(0,1fr) 330px;gap:45px;align-items:start}.eyebrow{color:var(--blue)}.manifesto h2{font-size:clamp(41px,5.7vw,78px);line-height:.98;letter-spacing:-.06em;margin:0;font-weight:800}.manifesto h2 i{font-style:normal;color:var(--orange)}.manifesto-copy{align-self:end}.manifesto-copy p{margin:0 0 28px;color:#555;font-size:15px}.manifesto-copy a{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid;padding-bottom:7px}.manifesto-copy a span{color:var(--orange);margin-left:8px}
 
-.route-experience{position:relative;display:grid;grid-template-columns:minmax(0,1fr) clamp(400px,32vw,560px);align-items:start;background:var(--paper)}
+.route-experience{position:relative;display:grid;grid-template-columns:minmax(0,1fr) clamp(400px,32vw,560px);align-items:start;background:var(--paper);overflow-x:clip}
 .map-portal{grid-column:2;grid-row:1;position:sticky;top:var(--nav-h);height:calc(100svh - var(--nav-h));min-height:0;overflow:hidden;background:#e8e6df;border-left:1px solid #d1cec5;z-index:30}
 .route-awaiting-intro .map-portal{clip-path:inset(0 0 0 100%);transform:translate3d(72px,0,0)}
 .route-awaiting-intro.is-introduced .map-portal{clip-path:inset(0);transform:none;transition:clip-path 1.08s cubic-bezier(.16,.78,.18,1),transform 1.08s cubic-bezier(.16,.78,.18,1)}
