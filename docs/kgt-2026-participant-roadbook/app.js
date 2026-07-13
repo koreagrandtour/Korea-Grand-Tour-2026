@@ -329,6 +329,16 @@
   }, {threshold:.15,rootMargin:'-30% 0px -48%'});
   document.querySelectorAll('.route-stop').forEach(stop => stopObserver.observe(stop));
 
+  const chapterObserver = new IntersectionObserver(entries => {
+    const current = entries
+      .filter(entry => entry.isIntersecting)
+      .sort((a,b) => Math.abs(a.boundingClientRect.top-innerHeight*.08)-Math.abs(b.boundingClientRect.top-innerHeight*.08))[0];
+    if (!current) return;
+    const day = current.target.dataset.day;
+    if (day && activeDay !== day) renderMap(day,false);
+  }, {threshold:0,rootMargin:'-8% 0px -78%'});
+  document.querySelectorAll('.day-chapter').forEach(chapter => chapterObserver.observe(chapter));
+
   const viewObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting && entry.target.dataset.mapView==='all' && activeDay!=='all') renderMap('all',false);
