@@ -633,7 +633,7 @@
     routeAnimation = requestAnimationFrame(frame);
   }
 
-  function setStopSelection(day,index) {
+  function setStopSelection(day,index,{fit=true}={}) {
     const key = String(day);
     if (activeStop?.day===key && activeStop.index===index) return;
     document.querySelectorAll('.route-stop').forEach(stop => {
@@ -644,7 +644,7 @@
     activeStop = {day:key,index};
     const scheduleStop = DAYS[Number(key)-1].stops[index];
     mapActiveStop.innerHTML = `<small>Day ${key} · ${scheduleStop.time}</small><strong>${escapeHtml(scheduleStop.name)}</strong>`;
-    fitCheckpointSegment(key,index);
+    if (fit) fitCheckpointSegment(key,index);
   }
 
   function activateStop(day,index,{animate=true}={}) {
@@ -766,12 +766,14 @@
     cancelAnimationFrame(routeAnimation);
     routeProgress = Math.max(0,Math.min(1,target));
     const nearest = centers.reduce((best,center,index) => Math.abs(center-anchor)<best.distance?{index,distance:Math.abs(center-anchor)}:best,{index:0,distance:Infinity});
-    if (nearest.distance < innerHeight*.24) setStopSelection(key,nearest.index);
+    if (nearest.distance < innerHeight*.24) setStopSelection(key,nearest.index,{fit:false});
     else {
       activeStop = null;
       clearScheduleStopSelection();
       mapActiveStop.innerHTML = `<small>Day ${key}</small><strong>${DAYS[Number(key)-1].stops.length} route points</strong>`;
     }
+    const segmentIndex = Math.max(0,Math.min(stops.length-2,model.stopProgress.findLastIndex(progress => progress <= routeProgress)));
+    fitCheckpointSegment(key,segmentIndex);
     drawRouteScene();
   }
 
