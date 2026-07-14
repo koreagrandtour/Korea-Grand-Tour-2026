@@ -710,7 +710,7 @@
         const pending = pendingTappedProgress;
         pendingTappedProgress = null;
         pending.animate ? animateRouteTo(pending.target) : (routeProgress=pending.target,drawRouteScene());
-      }
+      } else drawRouteScene();
     });
     mapReady = true;
     setActiveDay('all',{progressValue:1,fit:true});
