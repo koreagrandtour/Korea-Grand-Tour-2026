@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Korea Grand Tour//Participant Roadbook 2026//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:kgt-2026-official-briefing@koreagrandtour.com
+DTSTAMP:20260714T000000Z
+DTSTART;TZID=Asia/Seoul:20260801T150000
+DTEND;TZID=Asia/Seoul:20260801T160000
+SUMMARY:Korea Grand Tour 2026 - Official Participant Briefing
+LOCATION:Porsche Studio Cheongdam\, Cheongdam Square G 1F\, 420 Dosan-daero\, Gangnam-gu\, Seoul
+DESCRIPTION:Official participant briefing and welcome kit handover for Korea Grand Tour 2026.
+URL:https://koreagrandtour.github.io/Korea-Grand-Tour-2026/docs/kgt-2026-participant-roadbook/
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

@@ -15,7 +15,7 @@
   <link rel="preload" href="assets/hero-rally-2025.webp" as="image" type="image/webp">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 rx=%226%22 fill=%22%23060606%22/><path d=%22M7 8h4v7l7-7h5l-8 8 9 8h-6l-7-7v7H7z%22 fill=%22white%22/></svg>">
-  <link rel="stylesheet" href="styles.css?v=20260713-8">
+  <link rel="stylesheet" href="styles.css?v=20260714-1">
   <title>Korea Grand Tour 2026 — Participant Roadbook</title>
 </head>
 <body>
@@ -143,9 +143,15 @@
           <div class="briefing-when reveal">
             <div><small>Date</small><strong>Saturday<br>1 August</strong></div>
             <div><small>Time</small><strong>3:00 PM</strong></div>
-            <div><small>Venue</small><strong>Porsche Studio<br>Cheongdam</strong></div>
+            <div><small>Venue</small><strong>Porsche Studio<br>Cheongdam</strong><span class="briefing-address">420 Dosan-daero · Cheongdam Square G 1F</span></div>
           </div>
-          <a class="primary-link reveal" href="https://place.map.kakao.com/93449083" target="_blank" rel="noopener">Open in Kakao Maps <span>↗</span></a>
+          <div class="briefing-actions reveal">
+            <a class="primary-link" href="https://map.kakao.com/link/to/93449083" target="_blank" rel="noopener">Open in Kakao Maps <span>↗</span></a>
+            <div class="calendar-add" aria-label="Add official briefing to calendar">
+              <span>Add to calendar</span>
+              <div><a href="#" data-calendar="google" target="_blank" rel="noopener">Google</a><a href="#" data-calendar="outlook" target="_blank" rel="noopener">Outlook</a><a href="briefing.ics" download>Apple</a></div>
+            </div>
+          </div>
         </div>
         <article class="kit-card reveal">
           <div class="kit-number">WELCOME / 26</div>
@@ -157,7 +163,20 @@
           <div class="kit-special"><b>PRE-RSVP</b><span>Your kit includes a special extra.</span></div>
         </article>
       </div>
-      <div class="kit-marquee" aria-hidden="true"><span>T-SHIRT · CAP · KEY RING · NUMBER PLATE · OCTANE BOOSTER · STICKERS ·</span></div>
+      <svg class="lineup-symbols" aria-hidden="true">
+        <symbol id="porsche-718" viewBox="0 0 120 48"><path d="M7 33h10l8-9 17-6h21l15 6 20 3 10 7v5H7z"/><path d="M31 24h42M17 33h91"/><circle cx="31" cy="38" r="7"/><circle cx="91" cy="38" r="7"/></symbol>
+        <symbol id="porsche-911" viewBox="0 0 120 48"><path d="M7 33h9l9-10c6-7 15-10 28-10 15 0 25 4 33 12l13 2 10 7v5H7z"/><path d="M32 21h38l13 7M17 33h92"/><circle cx="31" cy="38" r="7"/><circle cx="92" cy="38" r="7"/></symbol>
+        <symbol id="porsche-taycan" viewBox="0 0 120 48"><path d="M6 33h11l10-10 18-7h28l16 9 13 2 11 7v5H6z"/><path d="M34 22h48M58 17v16M17 33h96"/><circle cx="30" cy="38" r="7"/><circle cx="94" cy="38" r="7"/></symbol>
+        <symbol id="porsche-panamera" viewBox="0 0 120 48"><path d="M6 33h10l10-11 18-7h32l17 11 11 2 10 6v5H6z"/><path d="M34 21h48l10 7M62 16v17M16 33h98"/><circle cx="30" cy="38" r="7"/><circle cx="95" cy="38" r="7"/></symbol>
+        <symbol id="porsche-macan" viewBox="0 0 120 48"><path d="M6 33h9l8-14 16-7h38l18 13 10 2 9 7v5H6z"/><path d="M32 18h49l12 9M60 13v20M15 33h99"/><circle cx="30" cy="38" r="8"/><circle cx="95" cy="38" r="8"/></symbol>
+        <symbol id="porsche-cayenne" viewBox="0 0 120 48"><path d="M5 33h10l7-16 15-7h42l18 14 9 3 9 7v5H5z"/><path d="M31 16h52l12 11M62 11v22M15 33h100"/><circle cx="30" cy="38" r="8"/><circle cx="97" cy="38" r="8"/></symbol>
+      </svg>
+      <div class="porsche-lineup" aria-label="Porsche model lineup in motion">
+        <div class="porsche-lineup-track">
+          <div class="porsche-lineup-set"><span class="lineup-car" aria-label="Porsche 718"><svg><use href="#porsche-718"/></svg></span><span class="lineup-car" aria-label="Porsche 911"><svg><use href="#porsche-911"/></svg></span><span class="lineup-car" aria-label="Porsche Taycan"><svg><use href="#porsche-taycan"/></svg></span><span class="lineup-car" aria-label="Porsche Panamera"><svg><use href="#porsche-panamera"/></svg></span><span class="lineup-car" aria-label="Porsche Macan"><svg><use href="#porsche-macan"/></svg></span><span class="lineup-car" aria-label="Porsche Cayenne"><svg><use href="#porsche-cayenne"/></svg></span></div>
+          <div class="porsche-lineup-set" aria-hidden="true"><span class="lineup-car"><svg><use href="#porsche-718"/></svg></span><span class="lineup-car"><svg><use href="#porsche-911"/></svg></span><span class="lineup-car"><svg><use href="#porsche-taycan"/></svg></span><span class="lineup-car"><svg><use href="#porsche-panamera"/></svg></span><span class="lineup-car"><svg><use href="#porsche-macan"/></svg></span><span class="lineup-car"><svg><use href="#porsche-cayenne"/></svg></span></div>
+        </div>
+      </div>
     </section>
 
     <section class="pack" id="pack">
@@ -211,6 +230,6 @@
   </footer>
 
   <noscript><div class="noscript">JavaScript is required for the live route and roadbook schedule. Please enable it or use the printed participant copy.</div></noscript>
-  <script src="app.js?v=20260713-9" defer></script>
+  <script src="app.js?v=20260714-1" defer></script>
 </body>
 </html>

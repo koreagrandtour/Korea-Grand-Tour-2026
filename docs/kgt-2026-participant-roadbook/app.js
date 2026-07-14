@@ -2,6 +2,12 @@
   'use strict';
 
   const DAY_COLORS = {1:'#1476e5', 2:'#f25725', 3:'#2f7d5a', 4:'#aa9b67'};
+  const KAKAO_ROUTE_NAMES = {
+    1:['서울특별시청','공주 무령왕릉과 왕릉원','솔내음','정림사지박물관','아빠의대지엄마의정원','K-water 용담댐 물문화관','왕의지밀'],
+    2:['왕의지밀','죽녹원','남도예담','지안재','카페모토라드 합천점','덤덤커피바','청도농원','스포원파크 주차장','롯데시티호텔 울산'],
+    3:['롯데시티호텔 울산','불로촌식당','구문소','태백스피드웨이','화암동굴','인제스피디움 호텔'],
+    4:['인제스피디움 호텔','옛날원대막국수','인제스피디움 호텔','내린천래프팅협동조합','조침령 새터','서피비치']
+  };
   const DAYS = [
     {
       day:1,
@@ -92,36 +98,37 @@
 
   const destinationIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m20 4-7 16-4-5-5-4 16-7Z"/><path d="m9 15 4-4"/></svg>';
   const routeIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5"/><path d="M9 5h10v10"/></svg>';
-  const chevronIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
   const escapeHtml = value => String(value || '').replace(/[&<>"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[char]));
-  const kakaoDestinationUrl = link => String(link || '')
-    .replace('https://place.map.kakao.com/','https://map.kakao.com/link/to/')
-    .replace('/link/map/','/link/to/');
+  const kakaoDestinationUrl = (link,placeName) => {
+    const value = String(link || '');
+    const placeId = value.match(/place\.map\.kakao\.com\/(\d+)/)?.[1];
+    if (placeId) return `https://map.kakao.com/link/to/${placeId}`;
+    const coordinate = value.match(/\/link\/(?:map|to)\/[^,]*,(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/);
+    if (coordinate) return `https://map.kakao.com/link/to/${encodeURIComponent(placeName)},${coordinate[1]},${coordinate[2]}`;
+    return value.replace('/link/map/','/link/to/');
+  };
 
   function renderDays() {
     const root = document.getElementById('dayChapters');
     root.innerHTML = DAYS.map(day => `
       <article class="day-chapter" id="day${day.day}" data-day="${day.day}" data-map-view="${day.day}">
         <div class="day-image reveal"><img src="${day.image}" alt="${escapeHtml(day.imageAlt)}" loading="lazy"><span class="day-image-tag">${escapeHtml(day.imageTag)}</span><span class="day-image-number">0${day.day}</span></div>
+        <div class="day-route-launch reveal is-loading" data-day-route="${day.day}">
+          <div class="day-route-copy">
+            <small>Kakao Map · named places</small>
+            <strong>Day 0${day.day} route</strong>
+            <span data-day-route-summary>Preparing the complete day route…</span>
+          </div>
+          <div class="day-route-actions" data-day-route-actions="${day.day}" aria-live="polite">
+            <span class="day-route-preparing">Preparing route…</span>
+          </div>
+        </div>
         <header>
           <span class="day-label">Day 0${day.day} · ${escapeHtml(day.date)}</span>
           <h2 class="reveal">${escapeHtml(day.title)}</h2>
           <p class="day-summary reveal">${escapeHtml(day.summary)}</p>
           <div class="day-stats reveal"><div><small>Distance</small><b>${day.distance} <em>km</em></b></div><div><small>Driving</small><b>${day.drive}</b></div><div><small>Departure</small><b>${day.depart}</b></div><div><small>Arrival</small><b>${day.arrive}</b></div></div>
         </header>
-        <details class="day-route-launch reveal is-loading" data-day-route="${day.day}">
-          <summary>
-            <span class="day-route-copy">
-              <small>Kakao Map · A → B</small>
-              <strong>Day 0${day.day} route legs</strong>
-              <span data-day-route-summary>Preparing every consecutive leg…</span>
-            </span>
-            <span class="day-route-toggle"><span>Show legs</span>${chevronIcon}</span>
-          </summary>
-          <div class="day-route-actions" data-day-route-actions="${day.day}" aria-live="polite">
-            <span class="day-route-preparing">Preparing route…</span>
-          </div>
-        </details>
         <ol class="run-sheet">
           ${day.stops.map((stop,index) => `
             <li class="route-stop reveal${stop.pass?' is-pass':''}${stop.end?' is-end':''}" data-day="${day.day}" data-stop="${index}">
@@ -129,7 +136,7 @@
                 <time class="stop-time">${stop.time}</time>
                 <span class="stop-copy"><span class="stop-type">${escapeHtml(stop.type)}</span><span class="stop-name">${escapeHtml(stop.name)}</span><span class="stop-ko" lang="ko">${escapeHtml(stop.ko)}</span>${stop.note?`<span class="stop-note">${escapeHtml(stop.note)}</span>`:''}</span>
               </button>
-              <a class="stop-map" href="${kakaoDestinationUrl(stop.link)}" target="_blank" rel="noopener" title="Set as destination" aria-label="Set ${escapeHtml(stop.name)} as destination in Kakao Map">${destinationIcon}</a>
+              <a class="stop-map" href="${kakaoDestinationUrl(stop.link,KAKAO_ROUTE_NAMES[day.day][index])}" target="_blank" rel="noopener" title="Set as destination" aria-label="Set ${escapeHtml(KAKAO_ROUTE_NAMES[day.day][index])} as destination in Kakao Map">${destinationIcon}</a>
             </li>`).join('')}
         </ol>
         <p class="day-note reveal"><b>Day character:</b> ${escapeHtml(day.note)}</p>
@@ -148,9 +155,34 @@
   renderDays();
   renderPartners();
 
-  function kakaoLegUrl(from,to) {
-    const point = stop => `${Number(stop.lat)},${Number(stop.lng)}`;
-    return `https://m.map.kakao.com/scheme/route?sp=${point(from)}&ep=${point(to)}&by=car`;
+  function setupCalendarLinks() {
+    const title = 'Korea Grand Tour 2026 — Official Participant Briefing';
+    const location = 'Porsche Studio Cheongdam, Cheongdam Square G 1F, 420 Dosan-daero, Gangnam-gu, Seoul';
+    const details = 'Official participant briefing and welcome kit handover for Korea Grand Tour 2026.';
+    const google = new URL('https://calendar.google.com/calendar/render');
+    google.search = new URLSearchParams({action:'TEMPLATE',text:title,dates:'20260801T150000/20260801T160000',details,location,ctz:'Asia/Seoul'});
+    const outlook = new URL('https://outlook.live.com/calendar/0/deeplink/compose');
+    outlook.search = new URLSearchParams({path:'/calendar/action/compose',rru:'addevent',subject:title,startdt:'2026-08-01T15:00:00+09:00',enddt:'2026-08-01T16:00:00+09:00',body:details,location});
+    document.querySelector('[data-calendar="google"]')?.setAttribute('href',google.href);
+    document.querySelector('[data-calendar="outlook"]')?.setAttribute('href',outlook.href);
+  }
+
+  setupCalendarLinks();
+
+  function kakaoNamedRouteUrl(stops,names) {
+    const points = stops.map((stop,index) => `${encodeURIComponent(names[index])},${Number(stop.lat)},${Number(stop.lng)}`);
+    return `https://map.kakao.com/link/by/car/${points.join('/')}`;
+  }
+
+  function buildDayRouteParts(stops,names) {
+    if (stops.length <= 7) return [{start:0,end:stops.length-1,stops,names}];
+    const split = Math.ceil((stops.length-1)/2);
+    const parts = [
+      {start:0,end:split,stops:stops.slice(0,split+1),names:names.slice(0,split+1)},
+      {start:split,end:stops.length-1,stops:stops.slice(split),names:names.slice(split)}
+    ];
+    if (parts.some(part => part.stops.length > 7)) throw new Error('Kakao route exceeds the five-waypoint limit');
+    return parts;
   }
 
   function hydrateDayRouteLinks(data) {
@@ -161,18 +193,20 @@
       const summary = panel?.querySelector('[data-day-route-summary]');
       if (!panel || !actions || !dayCopy || !Array.isArray(info.stops)) return;
       if (dayCopy.stops.length !== info.stops.length) throw new Error(`Day ${dayKey} route copy and coordinates do not match`);
-      const legs = info.stops.slice(0,-1).map((from,index) => ({
-        from,
-        to:info.stops[index+1],
-        fromName:dayCopy.stops[index].name,
-        toName:dayCopy.stops[index+1].name
-      }));
-      actions.innerHTML = legs.map((leg,index) => {
-        const href = kakaoLegUrl(leg.from,leg.to);
-        const number = String(index+1).padStart(2,'0');
-        return `<a class="day-route-action" href="${href}" target="_blank" rel="noopener" data-route-leg="${index+1}" data-route-from="${escapeHtml(leg.fromName)}" data-route-to="${escapeHtml(leg.toName)}" aria-label="Open Day ${dayKey} leg ${index+1}, ${escapeHtml(leg.fromName)} to ${escapeHtml(leg.toName)}, in Kakao Map"><span class="day-route-leg">Leg ${number}</span><span class="day-route-pair"><span><b>A</b><em>${escapeHtml(leg.fromName)}</em></span><i>→</i><span><b>B</b><em>${escapeHtml(leg.toName)}</em></span></span><small>Open in Kakao Map</small>${routeIcon}</a>`;
+      const placeNames = KAKAO_ROUTE_NAMES[dayKey];
+      if (!placeNames || placeNames.length !== info.stops.length) throw new Error(`Day ${dayKey} Kakao place names do not match`);
+      const parts = buildDayRouteParts(info.stops,placeNames);
+      actions.innerHTML = parts.map((part,index) => {
+        const href = kakaoNamedRouteUrl(part.stops,part.names);
+        const label = parts.length === 1 ? 'Open full day route' : `Open route ${String.fromCharCode(65+index)}`;
+        const from = dayCopy.stops[part.start].name;
+        const to = dayCopy.stops[part.end].name;
+        const waypointCount = Math.max(0,part.stops.length-2);
+        return `<a class="day-route-action" href="${href}" target="_blank" rel="noopener" data-route-part="${index+1}" data-route-points="${part.stops.length}" data-route-waypoints="${waypointCount}" data-route-start="${escapeHtml(part.names[0])}" data-route-end="${escapeHtml(part.names.at(-1))}" aria-label="${escapeHtml(label)}, ${escapeHtml(from)} to ${escapeHtml(to)}, in Kakao Map"><span class="day-route-leg">${escapeHtml(label)}</span><strong>${escapeHtml(from)} <i>→</i> ${escapeHtml(to)}</strong><small>${part.stops.length} named places · ${waypointCount} waypoint${waypointCount===1?'':'s'}</small>${routeIcon}</a>`;
       }).join('');
-      summary.textContent = `${legs.length} A → B legs · all ${info.stops.length} route points included.`;
+      summary.textContent = parts.length === 1
+        ? `All ${info.stops.length} places in one Kakao route.`
+        : `All ${info.stops.length} places in routes A + B, split at ${dayCopy.stops[parts[0].end].name}.`;
       panel.classList.remove('is-loading');
     });
   }
@@ -220,7 +254,7 @@
   document.getElementById('printRoadbook').addEventListener('click', () => print());
   document.querySelector('[data-scroll-top]').addEventListener('click', () => scrollTo({top:0,behavior:reducedMotion.matches?'auto':'smooth'}));
 
-  document.querySelectorAll('.manifesto-track span,.kit-marquee span').forEach(item => { item.textContent += ` ${item.textContent}`; });
+  document.querySelectorAll('.manifesto-track span').forEach(item => { item.textContent += ` ${item.textContent}`; });
 
   const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -276,13 +310,25 @@
   let mapReady = false;
   let routeIntroPlayed = false;
   let routeIntroTimer;
+  let routeStoryUnlockTimer;
+  let routeStoryLocked = false;
+  let focusedSegmentKey = '';
+
+  function unlockRouteStory({sync=true}={}) {
+    clearTimeout(routeStoryUnlockTimer);
+    routeStoryLocked = false;
+    if (sync) syncRouteStory();
+  }
 
   function playRouteIntro() {
     if (!mapReady || activeDay !== 'all' || routeIntroPlayed || !routeModels['1']?.screen.length) return;
     routeIntroPlayed = true;
+    routeStoryLocked = true;
+    focusedSegmentKey = '';
     if (reducedMotion.matches) {
       routeProgress = 1;
       drawRouteScene();
+      routeStoryUnlockTimer = setTimeout(unlockRouteStory,800);
       return;
     }
     routeProgress = 0;
@@ -290,6 +336,7 @@
     clearTimeout(routeIntroTimer);
     routeIntroTimer = setTimeout(() => {
       if (activeDay === 'all') animateRouteTo(1,1500);
+      routeStoryUnlockTimer = setTimeout(unlockRouteStory,1550);
     },620);
   }
 
@@ -390,10 +437,37 @@
 
   function fitMap(day) {
     if (!kakaoMap || !routeData) return;
+    focusedSegmentKey = '';
     const bounds = new kakao.maps.LatLngBounds();
     dayKeys(day).forEach(key => routeData.days[key].geometry.forEach(point => bounds.extend(new kakao.maps.LatLng(point[0],point[1]))));
     const side = innerWidth < 720 ? 28 : 54;
     kakaoMap.setBounds(bounds,116,side,88,side);
+  }
+
+  function fitCheckpointSegment(day,index) {
+    if (!kakaoMap || !routeData || day === 'all') return;
+    const key = String(day);
+    const info = routeData.days[key];
+    const model = routeModels[key];
+    if (!info || info.stops.length < 2 || !model) return;
+    const startIndex = Math.max(0,Math.min(index,info.stops.length-2));
+    const focusKey = `${key}:${startIndex}`;
+    if (focusedSegmentKey === focusKey) return;
+    focusedSegmentKey = focusKey;
+    const bounds = new kakao.maps.LatLngBounds();
+    const startProgress = model.stopProgress[startIndex];
+    const endProgress = model.stopProgress[startIndex+1];
+    const firstGeometry = Math.max(0,Math.floor(startProgress*(info.geometry.length-1)));
+    const lastGeometry = Math.min(info.geometry.length-1,Math.ceil(endProgress*(info.geometry.length-1)));
+    const step = Math.max(1,Math.ceil((lastGeometry-firstGeometry)/180));
+    for (let geometryIndex=firstGeometry; geometryIndex<=lastGeometry; geometryIndex+=step) {
+      const point = info.geometry[geometryIndex];
+      bounds.extend(new kakao.maps.LatLng(point[0],point[1]));
+    }
+    [info.stops[startIndex],info.stops[startIndex+1]].forEach(stop => bounds.extend(new kakao.maps.LatLng(stop.lat,stop.lng)));
+    const side = innerWidth < 720 ? 34 : 66;
+    kakaoMap.setBounds(bounds,124,side,104,side);
+    if (kakaoMap.getLevel() < 5) kakaoMap.setLevel(5);
   }
 
   function resizeRouteCanvas() {
@@ -464,6 +538,11 @@
     return {x:last.x,y:last.y,angle:Math.atan2(last.y-previous.y,last.x-previous.x)*180/Math.PI+90};
   }
 
+  function sixDirectionAngle(angle) {
+    const step = 360/6;
+    return Math.round(angle/step)*step;
+  }
+
   function strokeRoute(points,progress,color,overview) {
     if (points.length < 2) return;
     routeContext.lineJoin = 'round';
@@ -510,7 +589,7 @@
       const carPosition = pointOnRoute(routeModels[activeDay].screen,routeProgress);
       if (carPosition) {
         routeCar.hidden = false;
-        routeCar.style.transform = `translate3d(${carPosition.x-14}px,${carPosition.y-24}px,0) rotate(${carPosition.angle}deg)`;
+        routeCar.style.transform = `translate3d(${carPosition.x-14}px,${carPosition.y-24}px,0) rotate(${sixDirectionAngle(carPosition.angle)}deg)`;
       }
     } else {
       routeCar.hidden = true;
@@ -525,6 +604,7 @@
     cancelAnimationFrame(routeAnimation);
     activeDay = String(day);
     activeStop = null;
+    focusedSegmentKey = '';
     routeProgress = progressValue ?? (activeDay==='all'?1:0);
     mapControls.forEach(control => control.setAttribute('aria-pressed',String(control.dataset.mapDay===activeDay)));
     updateMapCopy(activeDay);
@@ -564,11 +644,13 @@
     activeStop = {day:key,index};
     const scheduleStop = DAYS[Number(key)-1].stops[index];
     mapActiveStop.innerHTML = `<small>Day ${key} · ${scheduleStop.time}</small><strong>${escapeHtml(scheduleStop.name)}</strong>`;
+    fitCheckpointSegment(key,index);
   }
 
   function activateStop(day,index,{animate=true}={}) {
     const key = String(day);
     if (!kakaoMap || !routeData) return;
+    unlockRouteStory({sync:false});
     const target = routeModels[key].stopProgress[index];
     if (activeDay !== key) {
       setActiveDay(key,{progressValue:0,fit:true});
@@ -588,6 +670,7 @@
 
   mapControls.forEach(control => control.addEventListener('click', () => {
     const day = control.dataset.mapDay;
+    unlockRouteStory({sync:false});
     clearScheduleStopSelection();
     setActiveDay(day,{progressValue:1,fit:true});
     const target = day==='all' ? document.getElementById('route-map') : document.getElementById(`day${day}`);
@@ -632,15 +715,15 @@
     mapReady = true;
     setActiveDay('all',{progressValue:1,fit:true});
     mapLoading.classList.add('is-loaded');
-    syncRouteStory();
     if (routeExperience.classList.contains('is-introduced')) playRouteIntro();
+    else syncRouteStory();
   }).catch(error => {
     console.warn('KGT map unavailable:',error);
     mapLoading.innerHTML = 'Map unavailable · use the Kakao links in the roadbook';
   });
 
   function syncRouteStory() {
-    if (!mapReady || !routeData) return;
+    if (!mapReady || !routeData || routeStoryLocked) return;
     const routeRect = routeExperience.getBoundingClientRect();
     if (routeRect.top > innerHeight*.72 || routeRect.bottom < innerHeight*.18) return;
     const anchor = innerHeight*(innerWidth < 1050 ? .78 : .5);
