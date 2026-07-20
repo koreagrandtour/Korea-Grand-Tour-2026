@@ -622,7 +622,7 @@
     unlockRouteStory({sync:false});
     const target = routeModels[key].stopProgress[index];
     if (activeDay !== key) {
-      setActiveDay(key,{progressValue:0,fit:true});
+      setActiveDay(key,{progressValue:0,fit:false});
       pendingTappedProgress = {target,animate};
     } else {
       animate ? animateRouteTo(target) : (routeProgress=target,drawRouteScene());
@@ -641,7 +641,7 @@
     const day = control.dataset.mapDay;
     unlockRouteStory({sync:false});
     clearScheduleStopSelection();
-    setActiveDay(day,{progressValue:1,fit:true});
+    setActiveDay(day,{progressValue:1,fit:false});
     const target = day==='all' ? document.getElementById('route-map') : document.getElementById(`day${day}`);
     target?.scrollIntoView({behavior:reducedMotion.matches?'auto':'smooth',block:'start'});
   }));
@@ -705,14 +705,14 @@
       const first = chapters[0]?.getBoundingClientRect();
       if (first && first.top > anchor && activeDay !== 'all') {
         clearScheduleStopSelection();
-        setActiveDay('all',{progressValue:1,fit:true});
+        setActiveDay('all',{progressValue:1,fit:false});
       }
       return;
     }
     const key = chapter.dataset.day;
     if (activeDay !== key) {
       clearScheduleStopSelection();
-      setActiveDay(key,{progressValue:0,fit:true});
+      setActiveDay(key,{progressValue:0,fit:false});
     }
     const stops = [...chapter.querySelectorAll('.route-stop')];
     if (!stops.length) return;
@@ -749,7 +749,7 @@
     clearTimeout(mapResizeTimer);
     mapResizeTimer = setTimeout(() => {
       kakaoMap.relayout();
-      fitMap(activeDay);
+      fitMap('all');
     },100);
   });
   mapResizeObserver.observe(mapShell);
