@@ -312,7 +312,6 @@
   let routeIntroTimer;
   let routeStoryUnlockTimer;
   let routeStoryLocked = false;
-  let focusedSegmentKey = '';
 
   function unlockRouteStory({sync=true}={}) {
     clearTimeout(routeStoryUnlockTimer);
@@ -324,7 +323,6 @@
     if (!mapReady || activeDay !== 'all' || routeIntroPlayed || !routeModels['1']?.screen.length) return;
     routeIntroPlayed = true;
     routeStoryLocked = true;
-    focusedSegmentKey = '';
     if (reducedMotion.matches) {
       routeProgress = 1;
       drawRouteScene();
@@ -437,37 +435,10 @@
 
   function fitMap(day) {
     if (!kakaoMap || !routeData) return;
-    focusedSegmentKey = '';
     const bounds = new kakao.maps.LatLngBounds();
     dayKeys(day).forEach(key => routeData.days[key].geometry.forEach(point => bounds.extend(new kakao.maps.LatLng(point[0],point[1]))));
     const side = innerWidth < 720 ? 28 : 54;
     kakaoMap.setBounds(bounds,116,side,88,side);
-  }
-
-  function fitCheckpointSegment(day,index) {
-    if (!kakaoMap || !routeData || day === 'all') return;
-    const key = String(day);
-    const info = routeData.days[key];
-    const model = routeModels[key];
-    if (!info || info.stops.length < 2 || !model) return;
-    const startIndex = Math.max(0,Math.min(index,info.stops.length-2));
-    const focusKey = `${key}:${startIndex}`;
-    if (focusedSegmentKey === focusKey) return;
-    focusedSegmentKey = focusKey;
-    const bounds = new kakao.maps.LatLngBounds();
-    const startProgress = model.stopProgress[startIndex];
-    const endProgress = model.stopProgress[startIndex+1];
-    const firstGeometry = Math.max(0,Math.floor(startProgress*(info.geometry.length-1)));
-    const lastGeometry = Math.min(info.geometry.length-1,Math.ceil(endProgress*(info.geometry.length-1)));
-    const step = Math.max(1,Math.ceil((lastGeometry-firstGeometry)/180));
-    for (let geometryIndex=firstGeometry; geometryIndex<=lastGeometry; geometryIndex+=step) {
-      const point = info.geometry[geometryIndex];
-      bounds.extend(new kakao.maps.LatLng(point[0],point[1]));
-    }
-    [info.stops[startIndex],info.stops[startIndex+1]].forEach(stop => bounds.extend(new kakao.maps.LatLng(stop.lat,stop.lng)));
-    const side = innerWidth < 720 ? 34 : 66;
-    kakaoMap.setBounds(bounds,124,side,104,side);
-    if (kakaoMap.getLevel() < 5) kakaoMap.setLevel(5);
   }
 
   function resizeRouteCanvas() {
@@ -604,7 +575,6 @@
     cancelAnimationFrame(routeAnimation);
     activeDay = String(day);
     activeStop = null;
-    focusedSegmentKey = '';
     routeProgress = progressValue ?? (activeDay==='all'?1:0);
     mapControls.forEach(control => control.setAttribute('aria-pressed',String(control.dataset.mapDay===activeDay)));
     updateMapCopy(activeDay);
@@ -633,7 +603,7 @@
     routeAnimation = requestAnimationFrame(frame);
   }
 
-  function setStopSelection(day,index,{fit=true}={}) {
+  function setStopSelection(day,index) {
     const key = String(day);
     if (activeStop?.day===key && activeStop.index===index) return;
     document.querySelectorAll('.route-stop').forEach(stop => {
@@ -644,7 +614,6 @@
     activeStop = {day:key,index};
     const scheduleStop = DAYS[Number(key)-1].stops[index];
     mapActiveStop.innerHTML = `<small>Day ${key} · ${scheduleStop.time}</small><strong>${escapeHtml(scheduleStop.name)}</strong>`;
-    if (fit) fitCheckpointSegment(key,index);
   }
 
   function activateStop(day,index,{animate=true}={}) {
@@ -766,14 +735,12 @@
     cancelAnimationFrame(routeAnimation);
     routeProgress = Math.max(0,Math.min(1,target));
     const nearest = centers.reduce((best,center,index) => Math.abs(center-anchor)<best.distance?{index,distance:Math.abs(center-anchor)}:best,{index:0,distance:Infinity});
-    if (nearest.distance < innerHeight*.24) setStopSelection(key,nearest.index,{fit:false});
+    if (nearest.distance < innerHeight*.24) setStopSelection(key,nearest.index);
     else {
       activeStop = null;
       clearScheduleStopSelection();
       mapActiveStop.innerHTML = `<small>Day ${key}</small><strong>${DAYS[Number(key)-1].stops.length} route points</strong>`;
     }
-    const segmentIndex = Math.max(0,Math.min(stops.length-2,model.stopProgress.findLastIndex(progress => progress <= routeProgress)));
-    fitCheckpointSegment(key,segmentIndex);
     drawRouteScene();
   }
 
