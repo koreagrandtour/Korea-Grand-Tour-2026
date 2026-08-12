@@ -3,7 +3,7 @@
 
   const DAY_COLORS = {1:'#1476e5', 2:'#f25725', 3:'#2f7d5a', 4:'#aa9b67'};
   const KAKAO_ROUTE_NAMES = {
-    1:['서울특별시청','솔내음','공주 무령왕릉과 왕릉원','정림사지박물관','아빠의대지엄마의정원','K-water 용담댐 물문화관','왕의지밀'],
+    1:['서울특별시청','솔내음','정림사지박물관','공주 무령왕릉과 왕릉원','아빠의대지엄마의정원','K-water 용담댐 물문화관','왕의지밀'],
     2:['왕의지밀','죽녹원','남도예담','지안재','카페모토라드 합천점','덤덤커피바','청도농원','스포원파크 주차장','롯데시티호텔 울산'],
     3:['롯데시티호텔 울산','불로촌식당','구문소','태백스피드웨이','화암동굴','인제스피디움 호텔'],
     4:['인제스피디움 호텔','옛날원대막국수','인제스피디움 호텔','내린천래프팅협동조합','조침령 새터','서피비치']
@@ -14,17 +14,17 @@
       date:'Friday · 14 August',
       title:'Baekje heritage to Jeonju',
       summary:'From Seoul to the royal history of Gongju and Buyeo, then deeper into the countryside for garden coffee, Yongdamho roads and a quiet hanok arrival.',
-      distance:'408.7', drive:'6h 37', depart:'10:00', arrive:'20:10',
+      distance:'370.3', drive:'6h 01', depart:'10:00', arrive:'19:25',
       image:'assets/day-1-culture.webp', imageAlt:'Traditional Korean temple architecture beneath a clear sky', imageTag:'Heritage · countryside · lake roads',
       note:'An easy cultural opening followed by the first long countryside transfer. Keep energy in reserve for Day 2.',
       stops:[
-        {time:'10:00',type:'Departure',name:'Seoul Departure',ko:'서울 출발',note:'Final assembly point will be confirmed by the team. Kakao routing allows approximately 2h 35 to Solnaeum.',link:'https://place.map.kakao.com/8430129'},
-        {time:'12:35',type:'Lunch · 1h 15',name:'Solnaeum',ko:'솔내음 · 연잎밥 / 연잎떡갈비정식',note:'Lunch is now the first stop. Departure 13:50.',link:'https://place.map.kakao.com/7962042'},
-        {time:'14:25',type:'Heritage · 40 min',name:'Muryeong Royal Tomb',ko:'공주 무령왕릉과 왕릉원',note:'Departure 15:05.',link:'https://place.map.kakao.com/2056894818'},
-        {time:'15:40',type:'Heritage · 40 min',name:'Jeongnimsaji',ko:'부여 정림사지',note:'Departure 16:20.',link:'https://place.map.kakao.com/10720129'},
-        {time:'18:10',type:'Coffee · 30 min',name:'Garden Coffee Stop',ko:'아빠의대지 엄마의정원',note:'Countryside garden and open views. Departure 18:40.',link:'https://place.map.kakao.com/14297484'},
-        {time:'18:55',type:'Viewpoint · 15 min',name:'Yongdamho Viewpoint',ko:'용담댐 물문화관',note:'Short regroup before the final run to Jeonju. Departure 19:10.',link:'https://place.map.kakao.com/26520060'},
-        {time:'20:10',type:'Overnight',name:'Wangyijimil',ko:'왕의지밀 · 전주',note:'Day 2 departure: 09:30.',link:'https://place.map.kakao.com/945236571',end:true}
+        {time:'10:00',type:'Departure',name:'Seoul Departure',ko:'서울 출발',note:'Final assembly point will be confirmed by the team. Kakao routing allows approximately 2h 45 to Solnaeum.',link:'https://place.map.kakao.com/8430129'},
+        {time:'12:45',type:'Lunch · 1h 15',name:'Solnaeum',ko:'솔내음 · 연잎밥 / 연잎떡갈비정식',note:'Lunch is the first stop. Departure 14:00.',link:'https://place.map.kakao.com/7962042'},
+        {time:'14:05',type:'Heritage · 40 min',name:'Jeongnimsaji',ko:'부여 정림사지',note:'Departure 14:45.',link:'https://place.map.kakao.com/10720129'},
+        {time:'15:20',type:'Heritage · 40 min',name:'Muryeong Royal Tomb',ko:'공주 무령왕릉과 왕릉원',note:'Departure 16:00.',link:'https://place.map.kakao.com/2056894818'},
+        {time:'17:30',type:'Coffee · 30 min',name:'Garden Coffee Stop',ko:'아빠의대지 엄마의정원',note:'Countryside garden and open views. Departure 18:00.',link:'https://place.map.kakao.com/14297484'},
+        {time:'18:15',type:'Viewpoint · 15 min',name:'Yongdamho Viewpoint',ko:'용담댐 물문화관',note:'Short regroup before the final run to Jeonju. Departure 18:30.',link:'https://place.map.kakao.com/26520060'},
+        {time:'19:25',type:'Overnight',name:'Wangyijimil',ko:'왕의지밀 · 전주',note:'Day 2 departure: 09:30.',link:'https://place.map.kakao.com/945236571',end:true}
       ]
     },
     {
@@ -423,7 +423,7 @@
     if (day === 'all') {
       mapTitle.textContent = 'The full journey';
       mapSubtitle.textContent = 'Seoul → Gongju → Jeonju → Damyang → Busan → Ulsan → Inje → Yangyang';
-      mapMetrics.innerHTML = '<span>1,498 km</span><span>4 days</span>';
+      mapMetrics.innerHTML = '<span>1,459 km</span><span>4 days</span>';
       if (!activeStop) mapActiveStop.innerHTML = '<small>Full itinerary</small><strong>28 waypoints across Korea</strong>';
       return;
     }
@@ -651,7 +651,7 @@
     activateStop(stop.dataset.day,Number(stop.dataset.stop),{animate:true});
   }));
 
-  const routeDataPromise = fetch('route-data.json?v=20260812-1')
+  const routeDataPromise = fetch('route-data.json?v=20260812-2')
     .then(response => { if (!response.ok) throw new Error('Route data unavailable'); return response.json(); })
     .then(data => {
       routeData = data;
