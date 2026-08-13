@@ -3,48 +3,47 @@
 
   const DAY_COLORS = {1:'#1476e5', 2:'#f25725', 3:'#2f7d5a', 4:'#aa9b67'};
   const KAKAO_ROUTE_NAMES = {
-    1:['서울특별시청','솔내음','정림사지박물관','공주 무령왕릉과 왕릉원','아빠의대지엄마의정원','K-water 용담댐 물문화관','왕의지밀'],
-    2:['왕의지밀','죽녹원','남도예담','지안재','카페모토라드 합천점','덤덤커피바','청도농원','스포원파크 주차장','롯데시티호텔 울산'],
-    3:['롯데시티호텔 울산','불로촌식당','구문소','태백스피드웨이','화암동굴','인제스피디움 호텔'],
-    4:['인제스피디움 호텔','옛날원대막국수','인제스피디움 호텔','내린천래프팅협동조합','조침령 새터','서피비치']
+    1:['포르쉐스튜디오 청담','솔내음','정림사지박물관','공주 무령왕릉과 왕릉원','K-water 용담댐 물문화관','왕의지밀'],
+    2:['왕의지밀','죽녹원 후문주차장','죽녹원첫집','지안재','카페모토라드 합천점','덤덤커피바','SC복숭아체험농원','신카','롯데시티호텔 울산'],
+    3:['롯데시티호텔 울산','가든세계평화','구문소','태백스피드웨이','화암동굴','인제스피디움 호텔'],
+    4:['인제스피디움 호텔','옛날원대막국수','인제스피디움 호텔','조침령 새터','서피비치']
   };
   const DAYS = [
     {
       day:1,
       date:'Friday · 14 August',
       title:'Baekje heritage to Jeonju',
-      summary:'From Seoul to the royal history of Gongju and Buyeo, then deeper into the countryside for garden coffee, Yongdamho roads and a quiet hanok arrival.',
-      distance:'370.3', drive:'6h 01', depart:'10:00', arrive:'19:25',
+      summary:'From Porsche Studio Cheongdam to a time-critical Buyeo lunch, Baekje heritage, Yongdamho roads and a quiet hanok arrival in Jeonju.',
+      distance:'375.0', drive:'5h 34', depart:'10:15', arrive:'18:39',
       image:'assets/day-1-culture.webp', imageAlt:'Traditional Korean temple architecture beneath a clear sky', imageTag:'Heritage · countryside · lake roads',
       note:'An easy cultural opening followed by the first long countryside transfer. Keep energy in reserve for Day 2.',
       stops:[
-        {time:'10:00',type:'Departure',name:'Seoul Departure',ko:'서울 출발',note:'Final assembly point will be confirmed by the team. Kakao routing allows approximately 2h 45 to Solnaeum.',link:'https://place.map.kakao.com/8430129'},
-        {time:'12:45',type:'Lunch · 1h 15',name:'Solnaeum',ko:'솔내음 · 연잎밥 / 연잎떡갈비정식',note:'Lunch is the first stop. Departure 14:00.',link:'https://place.map.kakao.com/7962042'},
-        {time:'14:05',type:'Heritage · 40 min',name:'Jeongnimsaji',ko:'부여 정림사지',note:'Departure 14:45.',link:'https://place.map.kakao.com/10720129'},
-        {time:'15:20',type:'Heritage · 40 min',name:'Muryeong Royal Tomb',ko:'공주 무령왕릉과 왕릉원',note:'Departure 16:00.',link:'https://place.map.kakao.com/2056894818'},
-        {time:'17:30',type:'Coffee · 30 min',name:'Garden Coffee Stop',ko:'아빠의대지 엄마의정원',note:'Countryside garden and open views. Departure 18:00.',link:'https://place.map.kakao.com/14297484'},
-        {time:'18:15',type:'Viewpoint · 15 min',name:'Yongdamho Viewpoint',ko:'용담댐 물문화관',note:'Short regroup before the final run to Jeonju. Departure 18:30.',link:'https://place.map.kakao.com/26520060'},
-        {time:'19:25',type:'Overnight',name:'Wangyijimil',ko:'왕의지밀 · 전주',note:'Day 2 departure: 09:30.',link:'https://place.map.kakao.com/945236571',end:true}
+        {time:'10:15',type:'Departure',name:'Porsche Studio Cheongdam',ko:'포르쉐스튜디오 청담',note:'Depart promptly. Kakao future routing estimates arrival at Solnaeum at 12:43.',link:'https://place.map.kakao.com/93449083'},
+        {time:'12:43',type:'Lunch · arrive by 12:45',name:'Solnaeum',ko:'솔내음 · 연잎밥 / 연잎떡갈비정식',note:'Hard latest arrival: 12:45. Departure 13:58 after 1h 15.',link:'https://place.map.kakao.com/7962042'},
+        {time:'14:02',type:'Heritage · 40 min',name:'Jeongnimsaji',ko:'부여 정림사지',note:'Departure 14:42.',link:'https://place.map.kakao.com/10720129'},
+        {time:'15:15',type:'Heritage · 40 min',name:'Muryeong Royal Tomb',ko:'공주 무령왕릉과 왕릉원',note:'Departure 15:55.',link:'https://place.map.kakao.com/2056894818'},
+        {time:'17:27',type:'Viewpoint · 15 min',name:'Yongdamho Viewpoint',ko:'용담댐 물문화관',note:'Short regroup before the final run to Jeonju. Departure 17:42.',link:'https://place.map.kakao.com/26520060'},
+        {time:'18:39',type:'Overnight',name:'Wangyijimil',ko:'왕의지밀 · 전주',note:'Day 2 departure: 09:30.',link:'https://place.map.kakao.com/945236571',end:true}
       ]
     },
     {
       day:2,
       date:'Saturday · 15 August',
       title:'Bamboo, bends and car culture',
-      summary:'Damyang bamboo, Jianjae hairpins, Cafe Motorade and a Daegu car meet—then Cheongdo peaches, a private Busan surprise and a late arrival in Ulsan.',
-      distance:'499.8', drive:'7h 42', depart:'09:30', arrive:'21:30',
+      summary:'Damyang bamboo and lunch, Jianjae hairpins, Cafe Motorade and a Daegu car meet—then SC peaches, Shinka in Busan and a late arrival in Ulsan.',
+      distance:'510.7', drive:'7h 59', depart:'09:30', arrive:'21:39',
       image:'assets/day-2-cars.webp', imageAlt:'Korea Grand Tour cars assembled together', imageTag:'Bamboo · hairpins · car culture',
-      note:'The longest activity day. Every dwell is intentionally tight to protect the 21:30 Ulsan arrival. Jianjae is a route moment, never a timed section.',
+      note:'The longest activity day. Every dwell is intentionally tight to protect the late Ulsan arrival. Jianjae is a route moment, never a timed section.',
       stops:[
         {time:'09:30',type:'Departure',name:'Jeonju Departure',ko:'왕의지밀 출발',link:'https://place.map.kakao.com/945236571'},
-        {time:'10:35',type:'Visit · 45 min',name:'Juknokwon Bamboo Forest',ko:'죽녹원',note:'Departure 11:20.',link:'https://place.map.kakao.com/8070994'},
-        {time:'11:30',type:'Lunch · 45 min',name:'Namdo Yedam',ko:'남도예담 · 한우떡갈비 / 대통밥 정식',note:'Departure 12:15. Please be ready for the longest driving day.',link:'https://place.map.kakao.com/26602406'},
-        {time:'13:25',type:'Drive-through',name:'Jianjae',ko:'지안재',note:'Hairpin-road anchor. No activity stop unless directed.',link:'https://place.map.kakao.com/25681449',pass:true},
-        {time:'14:40',type:'Coffee regroup · 10 min',name:'Cafe Motorade Hapcheon',ko:'카페모토라드 합천',note:'Short regroup before Daegu. Departure 14:50.',link:'https://place.map.kakao.com/1523461898'},
-        {time:'16:05',type:'Car meet · 45 min',name:'Daegu Car Meet',ko:'덤덤커피바',note:'Departure 16:50.',link:'https://place.map.kakao.com/2103541567'},
-        {time:'17:55',type:'Farm · 15 min',name:'Cheongdo Farm',ko:'청도농원',note:'Short peach stop with a large parking area nearby. Departure 18:10.',link:'https://place.map.kakao.com/804049929'},
-        {time:'19:20',type:'Private event · 1h 30',name:'Busan Surprise',ko:'부산 서프라이즈 이벤트',note:'Follow live team instructions. Departure 20:50.',link:'https://place.map.kakao.com/17572978'},
-        {time:'21:30',type:'Overnight',name:'Lotte City Hotel Ulsan',ko:'롯데시티호텔 울산',note:'Day 3 departure: 09:30.',link:'https://place.map.kakao.com/26632548',end:true}
+        {time:'10:28',type:'Visit · 45 min',name:'Juknokwon Bamboo Forest',ko:'죽녹원 · 죽녹원 후문주차장',note:'Navigate to the public rear car park. Departure 11:13.',link:'https://place.map.kakao.com/27418411'},
+        {time:'11:18',type:'Lunch · 45 min',name:'Juknokwon First House',ko:'죽녹원첫집 · 떡갈비 / 대통밥 정식',note:'Departure 12:03. Please be ready for the longest driving day.',link:'https://place.map.kakao.com/9462998'},
+        {time:'13:09',type:'Drive-through',name:'Jianjae',ko:'지안재',note:'Hairpin-road anchor. No activity stop unless directed.',link:'https://place.map.kakao.com/25681449',pass:true},
+        {time:'14:18',type:'Coffee regroup · 10 min',name:'Cafe Motorade Hapcheon',ko:'카페모토라드 합천',note:'Short regroup before Daegu. Departure 14:28.',link:'https://place.map.kakao.com/1523461898'},
+        {time:'15:39',type:'Car meet · 45 min',name:'Daegu Car Meet',ko:'덤덤커피바',note:'Departure 16:24.',link:'https://place.map.kakao.com/2103541567'},
+        {time:'17:32',type:'Farm · 15 min',name:'SC Peach Experience Farm',ko:'SC복숭아체험농원',note:'Kakao address: 경북 청도군 각북면 우산2길 8-7. Departure 17:47.',link:'https://map.kakao.com/link/map/SCPeachFarm,35.6507579498645,128.60912155196'},
+        {time:'19:18',type:'Private event · 1h 30',name:'Busan Surprise · Shinka',ko:'신카 · 부산',note:'Follow live team instructions. Departure 20:48.',link:'https://place.map.kakao.com/757129757'},
+        {time:'21:39',type:'Overnight',name:'Lotte City Hotel Ulsan',ko:'롯데시티호텔 울산',note:'Day 3 departure: 09:30.',link:'https://place.map.kakao.com/26632548',end:true}
       ]
     },
     {
@@ -52,33 +51,32 @@
       date:'Sunday · 16 August',
       title:'Deep mountain Korea',
       summary:'A long inland climb from Ulsan through Cheongsong, Taebaek and Jeongseon—local food, geological scenery, motorsport heritage and Inje Speedium.',
-      distance:'474.4', drive:'7h 30', depart:'09:30', arrive:'19:35',
+      distance:'473.9', drive:'7h 30', depart:'09:30', arrive:'19:40',
       image:'assets/day-3-community.webp', imageAlt:'Korea Grand Tour participants on a forest bridge', imageTag:'Mountain Korea · community · motorsport',
       note:'The highest-fatigue road day. Tell the team early if you are tired. Mountain weather or road conditions may require a live route change.',
       stops:[
         {time:'09:30',type:'Departure',name:'Ulsan Departure',ko:'롯데시티호텔 울산 출발',link:'https://place.map.kakao.com/26632548'},
-        {time:'11:20',type:'Lunch · 1h 10',name:'Bullochon',ko:'불로촌식당 · 닭불고기 / 닭백숙',note:'Lunch service from around 11:30. Departure 12:30.',link:'https://place.map.kakao.com/8398981'},
-        {time:'14:15',type:'Geology · 20 min',name:'Gumunso Limestone Gate',ko:'구문소',note:'Departure 14:35.',link:'https://place.map.kakao.com/8214139'},
-        {time:'14:40',type:'Motorsport stop · 25 min',name:'Taebaek Speedway',ko:'태백스피드웨이',note:'Departure 15:05.',link:'https://place.map.kakao.com/1138992184'},
-        {time:'16:25',type:'Visit · 45 min',name:'Hwaam Cave',ko:'화암동굴',note:'Departure 17:10.',link:'https://place.map.kakao.com/15171645'},
-        {time:'19:35',type:'Overnight',name:'Inje Speedium Hotel',ko:'인제스피디움 호텔',note:'Track program begins Day 4 at 09:00.',link:'https://place.map.kakao.com/25617734',end:true}
+        {time:'11:21',type:'Lunch · 1h 10',name:'World Peace Restaurant',ko:'세계평화식당 · 닭불고기 / 닭백숙',note:'Kakao destination appears as 가든세계평화. Departure 12:31.',link:'https://place.map.kakao.com/11125049'},
+        {time:'14:12',type:'Geology · 20 min',name:'Gumunso Limestone Gate',ko:'구문소',note:'Departure 14:32.',link:'https://place.map.kakao.com/8214139'},
+        {time:'14:39',type:'Motorsport stop · 25 min',name:'Taebaek Speedway',ko:'태백스피드웨이',note:'Departure 15:04.',link:'https://place.map.kakao.com/1138992184'},
+        {time:'16:23',type:'Visit · 45 min',name:'Hwaam Cave',ko:'화암동굴',note:'Departure 17:08.',link:'https://place.map.kakao.com/15171645'},
+        {time:'19:40',type:'Overnight',name:'Inje Speedium Hotel',ko:'인제스피디움 호텔',note:'Track program begins Day 4 at 09:00.',link:'https://place.map.kakao.com/25617734',end:true}
       ]
     },
     {
       day:4,
       date:'Monday · 17 August',
       title:'Track to the sea',
-      summary:'A controlled morning at Inje Speedium, a hidden local lunch, then Naerincheon and Jochimryeong roads leading to the final gathering at Surfyy Beach.',
-      distance:'114.7', drive:'2h 20', depart:'09:00', arrive:'16:50',
+      summary:'A controlled morning at Inje Speedium, a hidden local lunch, then the Jochimryeong approach leading to the final gathering at Surfyy Beach.',
+      distance:'86.1', drive:'1h 47', depart:'09:00', arrive:'16:21',
       image:'assets/day-4-landscape.webp', imageAlt:'A lake surrounded by green Korean mountains', imageTag:'Track · valley roads · East Sea finish',
       note:'Public roads after the circuit are never an extension of the track. Reset, drive calmly and leave the adrenaline at Speedium.',
       stops:[
         {time:'09:00',type:'Track program',name:'Inje Speedium',ko:'인제스피디움 트랙데이',note:'Follow the track briefing and marshal instructions. Lunch departure 13:40.',link:'https://place.map.kakao.com/25617734'},
-        {time:'13:55',type:'Lunch · 45 min',name:'Old Wondae Makguksu',ko:'옛날원대막국수 · 막국수 / 감자전',note:'Departure 14:40, then return to Speedium to regroup.',link:'https://place.map.kakao.com/10692233'},
-        {time:'14:55',type:'Regroup',name:'Inje Speedium Regroup',ko:'인제스피디움 재집결',note:'Final convoy departure toward Yangyang at 15:00.',link:'https://place.map.kakao.com/25617734'},
-        {time:'15:20',type:'Drive-through',name:'Naerincheon Valley Roads',ko:'내린천 계곡길',note:'Pass-through route anchor.',link:'https://place.map.kakao.com/1953984795',pass:true},
-        {time:'16:00',type:'Drive-through',name:'Jochimryeong Approach',ko:'조침령 새터',note:'Winding approach road toward Yangyang.',link:'https://map.kakao.com/link/map/JochimryeongSaeteo,37.962009,128.401267',pass:true},
-        {time:'16:50',type:'Finish',name:'Surfyy Beach',ko:'서피비치 · 양양',note:'Korea Grand Tour 2026 finish gathering.',link:'https://place.map.kakao.com/26911134',end:true}
+        {time:'13:53',type:'Lunch · 45 min',name:'Old Wondae Makguksu',ko:'옛날원대막국수 · 막국수 / 감자전',note:'Departure 14:38, then return to Speedium to regroup.',link:'https://place.map.kakao.com/10692233'},
+        {time:'14:51',type:'Regroup',name:'Inje Speedium Regroup',ko:'인제스피디움 재집결',note:'Final convoy departure toward Yangyang at 15:00.',link:'https://place.map.kakao.com/25617734'},
+        {time:'15:30',type:'Drive-through',name:'Jochimryeong Approach',ko:'조침령 새터',note:'Winding approach road toward Yangyang.',link:'https://map.kakao.com/link/map/JochimryeongSaeteo,37.962009,128.401267',pass:true},
+        {time:'16:21',type:'Finish',name:'Surfyy Beach',ko:'서피비치 · 양양',note:'Korea Grand Tour 2026 finish gathering.',link:'https://place.map.kakao.com/26911134',end:true}
       ]
     }
   ];
@@ -423,8 +421,8 @@
     if (day === 'all') {
       mapTitle.textContent = 'The full journey';
       mapSubtitle.textContent = 'Seoul → Gongju → Jeonju → Damyang → Busan → Ulsan → Inje → Yangyang';
-      mapMetrics.innerHTML = '<span>1,459 km</span><span>4 days</span>';
-      if (!activeStop) mapActiveStop.innerHTML = '<small>Full itinerary</small><strong>28 waypoints across Korea</strong>';
+      mapMetrics.innerHTML = '<span>1,446 km</span><span>4 days</span>';
+      if (!activeStop) mapActiveStop.innerHTML = '<small>Full itinerary</small><strong>26 waypoints across Korea</strong>';
       return;
     }
     const dayCopy = DAYS[Number(day)-1];
@@ -578,7 +576,7 @@
     routeProgress = progressValue ?? (activeDay==='all'?1:0);
     mapControls.forEach(control => control.setAttribute('aria-pressed',String(control.dataset.mapDay===activeDay)));
     updateMapCopy(activeDay);
-    mapActiveStop.innerHTML = activeDay==='all' ? '<small>Full itinerary</small><strong>28 waypoints across Korea</strong>' : `<small>Day ${activeDay}</small><strong>${DAYS[Number(activeDay)-1].stops.length} route points</strong>`;
+    mapActiveStop.innerHTML = activeDay==='all' ? '<small>Full itinerary</small><strong>26 waypoints across Korea</strong>' : `<small>Day ${activeDay}</small><strong>${DAYS[Number(activeDay)-1].stops.length} route points</strong>`;
     routeContext.clearRect(0,0,routeCanvas.width,routeCanvas.height);
     if (fit) fitMap(activeDay); else refreshRouteProjection();
   }
@@ -651,7 +649,7 @@
     activateStop(stop.dataset.day,Number(stop.dataset.stop),{animate:true});
   }));
 
-  const routeDataPromise = fetch('route-data.json?v=20260812-2')
+  const routeDataPromise = fetch('route-data.json?v=20260813-1')
     .then(response => { if (!response.ok) throw new Error('Route data unavailable'); return response.json(); })
     .then(data => {
       routeData = data;
