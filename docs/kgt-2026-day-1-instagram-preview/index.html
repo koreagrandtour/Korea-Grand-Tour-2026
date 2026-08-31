@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Korea Grand Tour 2026 — Day 1 Instagram Preview</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #161616;
+      --muted: #737373;
+      --line: #dbdbdb;
+      --panel: #ffffff;
+      --canvas: #f7f7f5;
+      --link: #00376b;
+      --kgt-red: #b3262d;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 10%, rgba(179, 38, 45, 0.06), transparent 28rem),
+        var(--canvas);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    .review-shell {
+      width: min(1500px, calc(100vw - 64px));
+      margin: 42px auto 72px;
+    }
+
+    .review-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      margin: 0 0 7px;
+      color: var(--kgt-red);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.14;
+      letter-spacing: -0.03em;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border: 1px solid #dfc6c8;
+      border-radius: 999px;
+      background: #fff7f7;
+      color: #7f1c22;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .status::before {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--kgt-red);
+      content: "";
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 612px minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .post,
+    .review-panel {
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: var(--panel);
+      box-shadow: 0 14px 50px rgba(0, 0, 0, 0.055);
+      overflow: hidden;
+    }
+
+    .post-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 72px;
+      padding: 12px 16px;
+    }
+
+    .avatar-ring {
+      width: 42px;
+      height: 42px;
+      padding: 2px;
+      border-radius: 50%;
+      background: conic-gradient(from 210deg, #feda75, #d62976, #4f5bd5, #feda75);
+    }
+
+    .avatar {
+      display: grid;
+      width: 100%;
+      height: 100%;
+      place-items: center;
+      border: 2px solid white;
+      border-radius: 50%;
+      background: #111;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+    }
+
+    .account { min-width: 0; }
+    .account strong { display: block; font-size: 14px; }
+    .account span { display: block; margin-top: 2px; font-size: 12px; color: #444; }
+    .more { margin-left: auto; font-size: 22px; letter-spacing: 2px; }
+
+    .media-stage {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1;
+      overflow: hidden;
+      background: #ececec;
+    }
+
+    .media-stage img,
+    .media-stage video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .media-stage video { display: none; background: #000; }
+
+    .counter {
+      position: absolute;
+      z-index: 3;
+      top: 14px;
+      right: 14px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.72);
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .nav {
+      position: absolute;
+      z-index: 3;
+      top: 50%;
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      transform: translateY(-50%);
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.88);
+      color: #222;
+      box-shadow: 0 2px 9px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .nav.prev { left: 12px; }
+    .nav.next { right: 12px; }
+
+    .post-actions {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      min-height: 58px;
+      padding: 10px 15px 5px;
+    }
+
+    .icons { display: flex; align-items: center; gap: 16px; }
+    .icons.right { justify-self: end; }
+    .icon { width: 25px; height: 25px; fill: none; stroke: #111; stroke-width: 1.8; }
+
+    .dots { display: flex; gap: 4px; align-items: center; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: #c7c7c7; }
+    .dot.active { background: #0095f6; }
+
+    .preview-note {
+      padding: 0 16px 11px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .caption {
+      padding: 0 16px 22px;
+      font-size: 14px;
+      line-height: 1.48;
+      white-space: pre-line;
+    }
+
+    .caption .username { font-weight: 750; }
+    .caption .mention, .caption .hashtag { color: var(--link); }
+
+    .review-panel { padding: 22px; }
+
+    .panel-title {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .panel-title h2 { margin: 0; font-size: 18px; letter-spacing: -0.015em; }
+    .panel-title span { color: var(--muted); font-size: 12px; }
+
+    .thumb-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .thumb {
+      position: relative;
+      display: block;
+      padding: 0;
+      border: 2px solid transparent;
+      border-radius: 9px;
+      overflow: hidden;
+      aspect-ratio: 1;
+      background: #eee;
+      cursor: pointer;
+    }
+
+    .thumb.active { border-color: var(--kgt-red); }
+    .thumb img { width: 100%; height: 100%; display: block; object-fit: cover; }
+
+    .slide-number,
+    .motion-label {
+      position: absolute;
+      z-index: 2;
+      padding: 4px 7px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.74);
+      color: white;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .slide-number { top: 7px; left: 7px; }
+    .motion-label { right: 7px; bottom: 7px; }
+
+    .sequence {
+      margin: 18px 0 0;
+      padding: 17px 18px;
+      border-radius: 11px;
+      background: #f5f5f3;
+    }
+
+    .sequence strong { display: block; margin-bottom: 7px; font-size: 13px; }
+    .sequence p { margin: 0; color: #555; font-size: 13px; line-height: 1.5; }
+
+    .checks {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .check {
+      padding: 11px 12px;
+      border: 1px solid #e6e6e2;
+      border-radius: 9px;
+      color: #444;
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .check::before { content: "✓"; margin-right: 6px; color: #18794e; font-weight: 900; }
+
+    .footer {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 1100px) {
+      .layout { grid-template-columns: 1fr; }
+      .post { max-width: 612px; margin: 0 auto; }
+    }
+
+    @media (max-width: 650px) {
+      .review-shell { width: min(100% - 24px, 1500px); margin-top: 20px; }
+      .review-heading { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <main class="review-shell">
+    <header class="review-heading">
+      <div>
+        <p class="eyebrow">Korea Grand Tour 2026</p>
+        <h1>Day 1 · Instagram carousel preview</h1>
+      </div>
+      <div class="status">Preview only · not published</div>
+    </header>
+
+    <div class="layout">
+      <article class="post" aria-label="Instagram post preview">
+        <header class="post-header">
+          <div class="avatar-ring"><div class="avatar">KGT</div></div>
+          <div class="account">
+            <strong>koreagrandtour</strong>
+            <span>Korea Grand Tour 2026 · Day 1</span>
+          </div>
+          <div class="more">•••</div>
+        </header>
+
+        <div class="media-stage">
+          <img id="main-image" src="https://kgt-day-1-instagram-review.gogogogaigaigo.chatgpt.site/media/01-c04-cars-people-cover.jpg" alt="Day 1 carousel slide">
+          <video id="main-video" loop playsinline controls></video>
+          <div class="counter" id="counter">1/9</div>
+          <button class="nav prev" id="previous" aria-label="Previous slide">‹</button>
+          <button class="nav next" id="next" aria-label="Next slide">›</button>
+        </div>
+
+        <div class="post-actions">
+          <div class="icons">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.8 8.8 0 0 1-3.8-.9L3 20.5l1.5-4.6a8.4 8.4 0 1 1 16.5-4.4Z"/></svg>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+          </div>
+          <div class="dots" id="dots" aria-label="Carousel position"></div>
+          <div class="icons right">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h14v18l-7-4-7 4Z"/></svg>
+          </div>
+        </div>
+
+        <div class="preview-note">Final sequence selected · copy approval pending · video slides include original sound</div>
+
+        <div class="caption"><span class="username">koreagrandtour</span> Day 1 🚗
+13대, 서울에서 출발해서 공주와 부여를 지나 전주까지.
+
+포르쉐 스튜디오 청담에서 출발!
+중간중간 다시 모여 차도 체크하고, 컨디션도 체크하고. 다 같이 페이스 맞춰 달렸습니다.
+
+무령왕릉도 둘러보고, 한옥에서 점심 먹고, 다시 드라이브.
+전주에서는 저녁 먹으면서 가볍게 마무리했습니다.
+
+이 13대 중 어떤 차로 달리고 싶나요? 👀
+댓글로 골라주세요 👇
+
+Day 2도 곧! 🇰🇷
+
+—
+
+Day 1: Seoul to Jeonju with 13 cars. 🚗
+
+We started at Porsche Studio Cheongdam, then drove through Gongju and Buyeo with a few regroup stops along the way.
+
+Good roads, good cars and a solid crew. We visited the royal tombs, had lunch at a hanok, then kept driving south.
+
+By evening, all 13 cars were parked in Jeonju and we headed to dinner.
+
+Which car are you taking for this drive? 👀
+Tell us below. 👇
+
+Day 2 next. 🇰🇷
+
+참가자 | Participants
+기현 <span class="mention">@88_kihyun</span> · 종훈 <span class="mention">@wonsem_is</span> · Kyle <span class="mention">@kyledelamancha</span> · Chris <span class="mention">@chrisdriveskorea</span> · Marc <span class="mention">@rella_n_blanca</span> · Jason · Michelle <span class="mention">@michelle_yjs</span> · Angie <span class="mention">@anzzya</span> · Natalya · Jonathon <span class="mention">@slow.ahhmedia</span> · 현서 <span class="mention">@southern_boii</span> · Marylin <span class="mention">@marylin_niederhauser</span> · 은비 · 진석 <span class="mention">@tennis_party_travel</span>
+
+파트너 | Partners
+Porsche SSCL <span class="mention">@porsche.sscl</span> · Live Your Route <span class="mention">@liveyourroute</span> · Parking <span class="mention">@car_parking4501</span> · BARLE <span class="mention">@barle.official</span> · Tinybot <span class="mention">@tinybot.korea</span> · FORTEC <span class="mention">@forteckorea</span> · Ulanzi <span class="mention">@ulanzi.korea</span> · The Chapter Seoul <span class="mention">@thechapterseoul</span>
+
+<span class="hashtag">#KoreaGrandTour #KoreaGrandTour2026 #코리아그랜투어 #자동차여행 #전국일주 #로드트립 #드라이브 #RoadTripKorea</span></div>
+      </article>
+
+      <aside class="review-panel">
+        <div class="panel-title">
+          <h2>All nine slides</h2>
+          <span>Click to inspect in the post</span>
+        </div>
+
+        <div class="thumb-grid" id="thumbs">
+          <button class="thumb active" data-index="0"><span class="slide-number">1</span><span class="motion-label">COVER</span><img src="https://kgt-day-1-instagram-review.gogogogaigaigo.chatgpt.site/frames/01.jpg?v=final-2" alt="Slide 1 C04 angled lineup with many cars and several participants"></button>
+          <button class="thumb" data-index="1"><span class="slide-number">2</span><span class="motion-label">PEOPLE</span><img src="https://kgt-day-1-instagram-review.gogogogaigaigo.chatgpt.site/frames/02.jpg?v=final-2" alt="Slide 2 C05 participants among cars in the garage"></button>
+          <button class="thumb" data-index="2"><span class="slide-number">3</span><span class="motion-label">ROAD</span><img src="https://kgt-day-1-instagram-review.gogogogaigaigo.chatgpt.site/frames/03.jpg?v=final-2" alt="Slide 3 close rally car with several cars and participants behind"></button>
+          <button class="thumb" data-index="3"><span class="slide-number">4</span><span class="motion-label">SOUND ON</span><img src="https://kgt-day-1-instagram-review.gogogogaigaigo.chatgpt.site/frames/04.jpg?v=final-2" alt="Slide 4 convoy driving on the road"></button>
+          <button class="thumb" data-index="4"><span class="slide-number">5</span><span class="motion-label">SOUND ON</span><img src="https://kgt-day-1-instagram-review.gogogogaigaigo.chatgpt.site/frames/05.jpg?v=final-2" alt="Slide 5 people regrouping"></button>
+          <button class="thumb" data-index="5"><span class="slide-number">6</span><span class="motion-label">LUNCH</span><img src="https://kgt-day-1-instagram-review.gogogogaigaigo.chatgpt.site/frames/06.jpg?v=final-2" alt="Slide 6 participants having lunch together"></button>
+          <button class="thumb" data-index="6"><span class="slide-number">7</span><span class="motion-label">SOUND ON</span><img src="https://kgt-day-1-instagram-review.gogogogaigaigo.chatgpt.site/frames/07.jpg?v=final-2" alt="Slide 7 hanok courtyard"></button>
+          <button class="thumb" data-index="7"><span class="slide-number">8</span><span class="motion-label">SOUND ON</span><img src="https://kgt-day-1-instagram-review.gogogogaigaigo.chatgpt.site/frames/08.jpg?v=final-2" alt="Slide 8 dinner close"></button>
+          <button class="thumb" data-index="8"><span class="slide-number">9</span><span class="motion-label">ROAD</span><img src="https://kgt-day-1-instagram-review.gogogogaigaigo.chatgpt.site/frames/09.jpg?v=final-2" alt="Slide 9 sunset road"></button>
+        </div>
+
+        <div class="sequence">
+          <strong>Story flow</strong>
+          <p>Cars + people → candid garage moment → roadside lineup → convoy driving → people regrouping → lunch → hanok place → dinner → sunset road. Deliberately mixed, not chronological.</p>
+        </div>
+
+        <div class="checks">
+          <div class="check">Nine selected slides at 1080 × 1080</div>
+          <div class="check">Four videos with original sound</div>
+          <div class="check">Public mentions verified</div>
+          <div class="check">No private route details</div>
+          <div class="check">No racing framing</div>
+          <div class="check">Publishing still approval-gated</div>
+        </div>
+      </aside>
+    </div>
+
+    <p class="footer">Review render · Korea Grand Tour · Day 1 · prepared 31 August 2026</p>
+  </main>
+
+  <script>
+    const slides = [
+      { type: "image", src: "https://kgt-day-1-instagram-review.gogogogaigaigo.chatgpt.site/media/01-c04-cars-people-cover.jpg" },
+      { type: "image", src: "https://kgt-day-1-instagram-review.gogogogaigaigo.chatgpt.site/media/02-c05-people-cars-garage.jpg" },
+      { type: "image", src: "https://kgt-day-1-instagram-review.gogogogaigaigo.chatgpt.site/media/03-road-cars-people.jpg" },
+      { type: "video", src: "https://kgt-day-1-instagram-review.gogogogaigaigo.chatgpt.site/media/04-convoy-driving.mp4" },
+      { type: "video", src: "https://kgt-day-1-instagram-review.gogogogaigaigo.chatgpt.site/media/05-people-regroup.mp4" },
+      { type: "image", src: "https://kgt-day-1-instagram-review.gogogogaigaigo.chatgpt.site/media/06-lunch-together.jpg" },
+      { type: "video", src: "https://kgt-day-1-instagram-review.gogogogaigaigo.chatgpt.site/media/07-hanok-place.mp4" },
+      { type: "video", src: "https://kgt-day-1-instagram-review.gogogogaigaigo.chatgpt.site/media/08-dinner-close.mp4" },
+      { type: "image", src: "https://kgt-day-1-instagram-review.gogogogaigaigo.chatgpt.site/media/09-sunset-road.jpg" }
+    ];
+
+    let active = 0;
+    const image = document.getElementById("main-image");
+    const video = document.getElementById("main-video");
+    const counter = document.getElementById("counter");
+    const dots = document.getElementById("dots");
+    const thumbs = [...document.querySelectorAll(".thumb")];
+
+    slides.forEach((_, index) => {
+      const dot = document.createElement("span");
+      dot.className = `dot${index === 0 ? " active" : ""}`;
+      dots.appendChild(dot);
+    });
+
+    function showSlide(index) {
+      active = (index + slides.length) % slides.length;
+      const slide = slides[active];
+      video.pause();
+      video.removeAttribute("src");
+      video.load();
+
+      if (slide.type === "video") {
+        image.style.display = "none";
+        video.style.display = "block";
+        video.src = slide.src;
+        video.muted = false;
+        video.volume = 1;
+        video.play().catch(() => {});
+      } else {
+        video.style.display = "none";
+        image.style.display = "block";
+        image.src = slide.src;
+      }
+
+      counter.textContent = `${active + 1}/${slides.length}`;
+      [...dots.children].forEach((dot, i) => dot.classList.toggle("active", i === active));
+      thumbs.forEach((thumb, i) => thumb.classList.toggle("active", i === active));
+    }
+
+    document.getElementById("previous").addEventListener("click", () => showSlide(active - 1));
+    document.getElementById("next").addEventListener("click", () => showSlide(active + 1));
+    thumbs.forEach(thumb => thumb.addEventListener("click", () => showSlide(Number(thumb.dataset.index))));
+    document.addEventListener("keydown", event => {
+      if (event.key === "ArrowLeft") showSlide(active - 1);
+      if (event.key === "ArrowRight") showSlide(active + 1);
+    });
+  </script>
+</body>
+</html>
